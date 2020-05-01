@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import Konva from 'konva';
-import { Stage, Layer, Rect, Text, Circle, Line } from 'react-konva';
-
+import { Stage, Layer, Text, Circle, Line } from 'react-konva';
+import AtomList from './AtomsList'
 
 export class AtomsShow extends Component {
+    // use arrow functions?
 
-    state= {
+    state = {
         atom: {}
     }
+
+    electronRadius = 5
+    startingXpos = 500
+    startingYpos = 200
 
     componentDidMount() {
         let id = this.props.match.params.id
@@ -32,30 +37,60 @@ export class AtomsShow extends Component {
     
     };
 
+    // makeElectron(i) {
+    //     return (
+    //         <Circle draggable x={500+i} y={200+i} radius={this.electronRadius} fill="black" />
+    //     )
+    // }
+
+    // renderElectrons() {
+    //     const atomicNumberInt = parseInt(this.state.atom.atomic_number)
+
+    //     for (let i=0; i<atomicNumberInt; i++){
+    //         return this.makeElectron(i)
+    //     }
+    // }
+
+    renderElectrons() {
+        const arr = []
+        const atomicNumberInt = (this.state.atom.atomic_number)
+        
+        for (let i=0; i<atomicNumberInt; i++){
+            arr.push(i)
+            }
+        
+            console.log(atomicNumberInt)
+        return (
+            <>
+            {arr.map( i => {
+                console.log(i)
+                // console.log(circle)
+                return <Circle draggable x={500+i} y={200+i} radius={this.electronRadius} fill="black" />
+            })}
+            </>
+        )
+
+    }
+    
     renderAtom() {
+        
+
         return (
             <Stage width={window.innerWidth} height={window.innerHeight}>
             <Layer>
               
-              <Text x={370} y={20} text="Atom" fontSize={15} />
+              <Text x={75} y={20} text={this.state.atom.name} fontSize={15} />
     
-              <Circle x={400} y={100} radius={50} stroke='black' strokeWidth='2' />
-              <Circle  x={400} y={100} radius={10} fill="green"  />
-              <Circle draggable x={350} y={90} radius={5} fill="black"  />
-              <Circle draggable x={350} y={110} radius={5} fill="black"  />
-              <Circle draggable x={450} y={90} radius={5} fill="black"  />
-              <Circle draggable x={450} y={110} radius={5} fill="black"  />
-              <Circle draggable x={410} y={50} radius={5} fill="black"  />
-              <Circle draggable x={390} y={50} radius={5} fill="black"  />
-              <Circle draggable x={390} y={150} radius={5} fill="black"  />
-              <Circle  x={410} y={150} radius={5} fill='white' stroke='black' strokeWidth='1' 
-              lineJoin='round' lineCap='round' tension='0.5' shadowBlur={10}
-              listening={this.onDrop}/>
-              <Circle  x={100} y={100} radius={20} stroke="black" />
-              <Circle  x={100} y={100} radius={8} fill="blue" />
-              <Circle draggable x={100} y={80} radius={5} fill="black" 
+              <Circle className="electronOrbit" x={500} y={200} radius={this.state.atom.atomic_radius} stroke="black" />
+
+              <Circle  className="nucleus" x={500} y={200} radius={this.state.atom.atomic_radius/10} fill={`#${this.state.atom.cpk_hex_color}`}/>
+              <Circle  className="nucleus" x={500} y={200} radius={this.state.atom.atomic_radius/10} stroke="black" strokeWidth='1'/>
+              {/* {this.renderArrayElectrons()} */}
+              {this.renderElectrons()}
+
+              {/* <Circle draggable x={100} y={80} radius={5} fill="black" 
               onDragStart={this.handleDragStart}
-              onDragEnd={this.handleDragEnd} />
+              onDragEnd={this.handleDragEnd} /> */}
             </Layer>
           </Stage>
         )
@@ -64,9 +99,12 @@ export class AtomsShow extends Component {
     render() {
         return (
             <div>
+                {/* <AtomList/> */}
                 <h3>{this.state.atom.name}</h3>
                 <p>{this.state.atom.symbol}</p>
                 <p>Atomic number: {this.state.atom.atomic_number}</p>
+                <p>{this.state.atom.atomic_radius}</p>
+                <p>{this.state.atom.cpk_hex_color}</p>
                 {this.renderAtom()}
             </div>
         )
