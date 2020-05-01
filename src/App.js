@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Header from './components/Header'
+import BondsList from './components/BondsList'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+
+  render() {
+    return (
+      <Router>
+        <NavBar />
+          <Header title={'Chemistry'} />
+          <Switch>
+            <Route
+              exact path="/api/v1/atoms"
+              component={BondsList}
+              />
+              {/* <Route
+                exact path=""
+              /> */}
+          </Switch>
+      </Router>
+    )
+  }
+
 }
 
-export default App;
