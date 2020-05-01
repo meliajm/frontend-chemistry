@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import Header from './components/Header'
 import BondsList from './components/BondsList'
 import AtomsList from './components/AtomsList'
-
+import AtomsShow from './components/AtomsShow'
 
 import './App.css';
 
@@ -20,9 +20,9 @@ export default class App extends React.Component {
               exact path="/api/v1/atoms"
               component={AtomsList}
               />
-              {/* <Route
-                exact path=""
-              /> */}
+              <Route 
+              exact path="/api/v1/atoms/:id" 
+              component={AtomsShow} />
           </Switch>
       </Router>
     )
