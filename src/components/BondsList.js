@@ -12,7 +12,7 @@ class BondsList extends React.Component {
             <div>
                 Atoms
                 <Router>
-                    <Header title={'Bonds'} />
+                    {/* <Header title={'Bonds'} /> */}
                     <Switch>
                         <Route
                         exact path="/api/v1/atoms/1"
