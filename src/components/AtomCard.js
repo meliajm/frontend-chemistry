@@ -5,7 +5,6 @@ const AtomCard = ({ atom }) => {
     return (
         <>
         <Link to={`atoms/${atom.id}`}>{atom.name}<br/></Link>
-       
         </>
     )
 }
