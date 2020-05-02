@@ -17,18 +17,15 @@ export class AtomsShow extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.id
-
         fetch(`http://localhost:3001/api/v1/atoms/${id}`)
             .then(response=>response.json())
             .then(atom => this.setState({ atom }))
     }
 
-
     renderElectrons(atomicRadius) {
         if (atomicRadius==="") {
             atomicRadius = 250
         }
-        
         const arr = []
         let valenceElectrons = this.state.atom.atomic_number
         // const valenceElectrons = (this.state.atom.atomic_number)
@@ -67,21 +64,21 @@ export class AtomsShow extends Component {
 
                 
                     if (i === 0) {
-                        return <Circle draggable x={this.startingXpos-1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
+                        return <Circle className="TopLeft" draggable x={this.startingXpos-1*20} y={this.startingYpos-parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                      
                     } else if ( i === 1) {
-                        return <Circle draggable x={this.startingXpos+1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
+                        return <Circle className="bottomRight" draggable x={this.startingXpos+1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 2) {
-                        return <Circle draggable x={this.startingXpos-1*20} y={this.startingYpos-parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                      
+                        return <Circle className="LeftTop" draggable x={this.startingXpos-parseInt(atomicRadius)} y={this.startingYpos-20} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 3) {
-                        return <Circle draggable x={this.startingXpos+1*20} y={this.startingYpos-parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
+                        return <Circle className="RightBottom" draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                                        
                     } else if ( i === 4) {
-                        return <Circle draggable x={this.startingXpos-parseInt(atomicRadius)} y={this.startingYpos-20} radius={this.electronRadius} fill="black" />                    
+                        return <Circle className="bottomLeft" draggable x={this.startingXpos-1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 5) {
-                        return <Circle draggable x={this.startingXpos-parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                    
+                        return <Circle className="TopRight" draggable x={this.startingXpos+1*20} y={this.startingYpos-parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 6) {
-                        return <Circle draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                                        
+                        return <Circle className="LeftBottom"draggable x={this.startingXpos-parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 7) {
-                        return <Circle draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos-20} radius={this.electronRadius} fill="black" />                                        
+                        return <Circle className="RightTop" draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos-20} radius={this.electronRadius} fill="black" />                                        
                     }
                 
             })}
