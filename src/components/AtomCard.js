@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const AtomCard = ({ atom }) => {
     return (
         <>
-        <Link to={`atoms/${atom.id}`}>{atom.name}<br/></Link>
+        <Link to={`atoms/${atom.id}`}>{atom.atomic_number}. {atom.name}<br/></Link>
         </>
     )
 }
