@@ -21,7 +21,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    console.log(this.props)
+    // console.log('p', this.props)
     this.props.fetchAtoms()
   }
   render() {
@@ -49,7 +49,7 @@ class App extends React.Component {
               component={Atom} />
               {/* {this.yellowRect()} */}
               <div>
-              {/* <p>info about atoms</p> */}
+              <p>info about atoms</p>
               find your state of flow eaiser
               <p>periodic chart</p>
               </div>

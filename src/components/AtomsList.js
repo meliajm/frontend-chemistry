@@ -17,6 +17,7 @@ class AtomsList extends React.Component {
     // }
 
     render() {
+        // console.log('atoms list', this.props)
 
         const atomsRender = this.props.atoms.map((atom, i) => (
             <AtomCard key={i} atom={atom} />

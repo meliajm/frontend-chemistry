@@ -11,10 +11,10 @@ const atomsReducer = (
                 atoms: [...state.atoms],
                 loading: true
             }
-        case 'ADD_CATS':
+        case 'ADD_ATOMS':
             return {
                 ...state,
-                atoms: action.atom,
+                atoms: action.atoms,
                 loading: false
             }
         default:

@@ -9,16 +9,16 @@ import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 import atomsReducer from './reducers/atomsReducer';
 
-const store = createStore(atomsReducer,
-  applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+// const store = createStore(atomsReducer,
+//   applyMiddleware(thunk),
+//   )
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = createStore(atomsReducer, applyMiddleware(thunk))
 
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <React.StrictMode> */}
     <App />
-  {/* </React.StrictMode>, */}
   </Provider>,
   document.getElementById('root')
 );

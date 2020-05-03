@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import Konva from 'konva';
-import { Stage, Layer, Text, Circle, Line } from 'react-konva';
+import { Stage, Layer, Text, Circle } from 'react-konva';
 // import AtomList from './AtomsList'
 
 export class AtomsShow extends Component {
