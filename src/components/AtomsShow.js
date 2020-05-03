@@ -26,7 +26,7 @@ export class AtomsShow extends Component {
         
     // }
 
-    renderElectrons(atomicRadius) {
+    renderElectrons(atomicRadius, startX, startY) {
         if (atomicRadius==="") {
             atomicRadius = 250
         }
@@ -65,18 +65,13 @@ export class AtomsShow extends Component {
                 console.log('i', i)
                 console.log('ar', parseInt(atomicRadius))
                 console.log('startingXpos', this.startingXpos)
-
-                
                     if (i === 0) {
                         return <Circle 
-                        dragBoundFunc={
+                        dragBoundFunc = {
                             function(pos) {
-                              debugger
-                            //   const x = 700/2
-                            //   const y = 70
-                              console.log("x y", this.startingXpos, this.startingYpos)
-                              const x = 300
-                              const y = 300
+                              console.log("x y", startX, startY)
+                              const x = 300-20
+                              const y = 300-parseInt(atomicRadius)
                               const radius = 50
                               let scale = 
                               radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
@@ -89,10 +84,8 @@ export class AtomsShow extends Component {
                               else {
                                 return pos
                               }
-                              
                             }
                           }
-                        className="TopLeft" 
                         draggable 
                         x={this.startingXpos-1*20} 
                         y={this.startingYpos-parseInt(atomicRadius)} 
@@ -100,25 +93,201 @@ export class AtomsShow extends Component {
                         fill="black" 
                         />                      
                     } else if ( i === 1) {
-                        return <Circle className="bottomRight" draggable x={this.startingXpos+1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
+                        return <Circle 
+                        dragBoundFunc = {
+                            function(pos) {
+                                const x = 300+20
+                                const y = 300+parseInt(atomicRadius)
+                                const radius = 50
+                                let scale = 
+                                    radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                                if (scale < 1) {
+                                    return {
+                                        y: Math.round((pos.y - y) * scale + y),
+                                        x: Math.round((pos.x - x) * scale + x)
+                                    }
+                                }
+                                else {
+                                    return pos
+                                }
+                            }
+                        }
+                        draggable 
+                        x={this.startingXpos+1*20} 
+                        y={this.startingYpos+parseInt(atomicRadius)} 
+                        radius={this.electronRadius} 
+                        fill="gray" 
+                        />
+
                     } else if ( i === 2) {
-                        return <Circle className="LeftTop" draggable x={this.startingXpos-parseInt(atomicRadius)} y={this.startingYpos-20} radius={this.electronRadius} fill="black" />                    
+                        return         <Circle 
+                        dragBoundFunc = {
+                            function(pos) {
+                                const x = 300-parseInt(atomicRadius)
+                                const y = 300-20
+                                const radius = 50
+                                let scale = 
+                                radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                                if (scale < 1) {
+                                return {
+                                    y: Math.round((pos.y - y) * scale + y),
+                                    x: Math.round((pos.x - x) * scale + x)
+                                }
+                                }
+                                else {
+                                return pos
+                                }
+                            }
+                            }
+                        draggable 
+                        x={this.startingXpos-parseInt(atomicRadius)} 
+                        y={this.startingYpos-20} 
+                        radius={this.electronRadius} 
+                        fill="green" 
+                        />
                     } else if ( i === 3) {
-                        return <Circle className="RightBottom" draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                                        
+                        return         <Circle 
+                        dragBoundFunc = {
+                            function(pos) {
+                                const x = 300+parseInt(atomicRadius) 
+                                const y = 300-20
+                                const radius = 50
+                                let scale = 
+                                radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                                if (scale < 1) {
+                                return {
+                                    y: Math.round((pos.y - y) * scale + y),
+                                    x: Math.round((pos.x - x) * scale + x)
+                                }
+                                }
+                                else {
+                                return pos
+                                }
+                            }
+                            }
+                        draggable 
+                        x={this.startingXpos+parseInt(atomicRadius)} 
+                        y={this.startingYpos+20}
+                        radius={this.electronRadius} 
+                        fill="orange" 
+                        />
+                        // <Circle className="RightBottom" draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                                        
                     } else if ( i === 4) {
-                        return <Circle className="bottomLeft" draggable x={this.startingXpos-1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
+                        return <Circle 
+                        dragBoundFunc = {
+                            function(pos) {
+                                const x = 300-20
+                                const y = 300+parseInt(atomicRadius)
+                                const radius = 50
+                                let scale = 
+                                radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                                if (scale < 1) {
+                                return {
+                                    y: Math.round((pos.y - y) * scale + y),
+                                    x: Math.round((pos.x - x) * scale + x)
+                                }
+                                }
+                                else {
+                                return pos
+                                }
+                            }
+                            }
+                        draggable 
+                        x={this.startingXpos-1*20} 
+                        y={this.startingYpos+parseInt(atomicRadius)} 
+                        radius={this.electronRadius} 
+                        fill="blue" 
+                        />
+                        // <Circle className="bottomLeft" draggable x={this.startingXpos-1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 5) {
-                        return <Circle className="TopRight" draggable x={this.startingXpos+1*20} y={this.startingYpos-parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
+                        return <Circle 
+                        dragBoundFunc = {
+                            function(pos) {
+                                const x = 300-parseInt(atomicRadius)
+                                const y = 300+20
+                                const radius = 50
+                                let scale = 
+                                radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                                if (scale < 1) {
+                                return {
+                                    y: Math.round((pos.y - y) * scale + y),
+                                    x: Math.round((pos.x - x) * scale + x)
+                                }
+                                }
+                                else {
+                                return pos
+                                }
+                            }
+                            }
+                        draggable 
+                        x={this.startingXpos-parseInt(atomicRadius)} 
+                        y={this.startingYpos+20}
+                        radius={this.electronRadius} 
+                        fill="purple" 
+                        />
+                        // <Circle className="TopRight" draggable x={this.startingXpos+1*20} y={this.startingYpos-parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 6) {
-                        return <Circle className="LeftBottom"draggable x={this.startingXpos-parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                    
+                        return <Circle 
+                        dragBoundFunc = {
+                            function(pos) {
+                                const x = 300+20
+                                const y = 300-parseInt(atomicRadius)
+                                const radius = 50
+                                let scale = 
+                                radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                                if (scale < 1) {
+                                return {
+                                    y: Math.round((pos.y - y) * scale + y),
+                                    x: Math.round((pos.x - x) * scale + x)
+                                }
+                                }
+                                else {
+                                return pos
+                                }
+                            }
+                            }
+                        draggable 
+                        x={this.startingXpos+1*20} 
+                        y={this.startingYpos-parseInt(atomicRadius)} 
+                        radius={this.electronRadius} 
+                        fill="yellow" 
+                        />
+                        // <Circle className="LeftBottom"draggable x={this.startingXpos-parseInt(atomicRadius)} y={this.startingYpos+20} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 7) {
-                        return <Circle className="RightTop" draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos-20} radius={this.electronRadius} fill="black" />                                        
+                        return<Circle 
+                        dragBoundFunc = {
+                            function(pos) {
+                                const x = 300+parseInt(atomicRadius)
+                                const y = 300-20
+                                const radius = 50
+                                let scale = 
+                                radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                                if (scale < 1) {
+                                return {
+                                    y: Math.round((pos.y - y) * scale + y),
+                                    x: Math.round((pos.x - x) * scale + x)
+                                }
+                                }
+                                else {
+                                return pos
+                                }
+                            }
+                            }
+                        draggable 
+                        x={this.startingYpos+parseInt(atomicRadius)}  
+                        y={this.startingXpos-1*20}
+                        radius={this.electronRadius} 
+                        fill="red" 
+                        /> 
+                        // <Circle className="RightTop" draggable x={this.startingXpos+parseInt(atomicRadius)} y={this.startingYpos-20} radius={this.electronRadius} fill="black" />                                        
                     }
                 
             })}
             </>
         )
     }
+
+
     
     renderAtom(atomicRadius) {
         if (atomicRadius ===""){
@@ -151,10 +320,229 @@ export class AtomsShow extends Component {
                 <p>How many protons does this atom have?</p>
 
                 <p>{this.state.atom.cpk_hex_color}</p>
-                {this.renderAtom(this.state.atom.atomic_radius)}
+                {this.renderAtom(this.state.atom.atomic_radius, this.startingXpos, this.startingYpos)}
             </div>
         )
     }
 }
 
 export default AtomsShow
+
+// circleObj = {
+//     0:
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300-20
+//                 const y = 300-parseInt(atomicRadius)
+//                 const radius = 50
+//                 let scale = 
+//                 radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                 return {
+//                     y: Math.round((pos.y - y) * scale + y),
+//                     x: Math.round((pos.x - x) * scale + x)
+//                 }
+//                 }
+//                 else {
+//                 return pos
+//                 }
+//             }
+//             }
+//         className="TopLeft" 
+//         draggable 
+//         x={this.startingXpos-1*20} 
+//         y={this.startingYpos-parseInt(atomicRadius)} 
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />,
+//     1: 
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300+20
+//                 const y = 300+parseInt(atomicRadius)
+//                 const radius = 50
+//                 let scale = 
+//                     radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                     return {
+//                         y: Math.round((pos.y - y) * scale + y),
+//                         x: Math.round((pos.x - x) * scale + x)
+//                     }
+//                 }
+//                 else {
+//                     return pos
+//                 }
+//             }
+//         }
+//         className="bottomRight" 
+//         draggable 
+//         x={this.startingXpos+1*20} 
+//         y={this.startingYpos+parseInt(atomicRadius)} 
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />,
+//     2:
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300-parseInt(atomicRadius)
+//                 const y = 300-20
+//                 const radius = 50
+//                 let scale = 
+//                 radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                 return {
+//                     y: Math.round((pos.y - y) * scale + y),
+//                     x: Math.round((pos.x - x) * scale + x)
+//                 }
+//                 }
+//                 else {
+//                 return pos
+//                 }
+//             }
+//             }
+//         className="LeftTop" 
+//         draggable 
+//         x={this.startingXpos-parseInt(atomicRadius)} 
+//         y={this.startingYpos-20} 
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />,
+//     3:
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300+parseInt(atomicRadius) 
+//                 const y = 300-20
+//                 const radius = 50
+//                 let scale = 
+//                 radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                 return {
+//                     y: Math.round((pos.y - y) * scale + y),
+//                     x: Math.round((pos.x - x) * scale + x)
+//                 }
+//                 }
+//                 else {
+//                 return pos
+//                 }
+//             }
+//             }
+//         className="RightBottom" 
+//         draggable 
+//         x={this.startingXpos+parseInt(atomicRadius)} 
+//         y={this.startingYpos+20}
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />,
+//     4: 
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300-20
+//                 const y = 300+parseInt(atomicRadius)
+//                 const radius = 50
+//                 let scale = 
+//                 radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                 return {
+//                     y: Math.round((pos.y - y) * scale + y),
+//                     x: Math.round((pos.x - x) * scale + x)
+//                 }
+//                 }
+//                 else {
+//                 return pos
+//                 }
+//             }
+//             }
+//         className="bottomLeft" 
+//         draggable 
+//         x={this.startingXpos-1*20} 
+//         y={this.startingYpos+parseInt(atomicRadius)} 
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />,
+//     5:
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300+20
+//                 const y = 300-parseInt(atomicRadius)
+//                 const radius = 50
+//                 let scale = 
+//                 radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                 return {
+//                     y: Math.round((pos.y - y) * scale + y),
+//                     x: Math.round((pos.x - x) * scale + x)
+//                 }
+//                 }
+//                 else {
+//                 return pos
+//                 }
+//             }
+//             }
+//         className="TopRight" 
+//         draggable 
+//         x={this.startingXpos+1*20} 
+//         y={this.startingYpos-parseInt(atomicRadius)} 
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />,
+//     6:
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300-parseInt(atomicRadius)
+//                 const y = 300+20
+//                 const radius = 50
+//                 let scale = 
+//                 radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                 return {
+//                     y: Math.round((pos.y - y) * scale + y),
+//                     x: Math.round((pos.x - x) * scale + x)
+//                 }
+//                 }
+//                 else {
+//                 return pos
+//                 }
+//             }
+//             }
+//         className="LeftBottom" 
+//         draggable 
+//         y={this.startingYpos-parseInt(atomicRadius)} 
+//         x={this.startingXpos+1*20} 
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />,
+//     7:
+//     <Circle 
+//         dragBoundFunc = {
+//             function(pos) {
+//                 const x = 300+parseInt(atomicRadius)
+//                 const y = 300-20
+//                 const radius = 50
+//                 let scale = 
+//                 radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+//                 if (scale < 1) {
+//                 return {
+//                     y: Math.round((pos.y - y) * scale + y),
+//                     x: Math.round((pos.x - x) * scale + x)
+//                 }
+//                 }
+//                 else {
+//                 return pos
+//                 }
+//             }
+//             }
+//         className="RightTop" 
+//         draggable 
+//         x={this.startingYpos+parseInt(atomicRadius)}  
+//         y={this.startingXpos-1*20}
+//         radius={this.electronRadius} 
+//         fill="black" 
+//         />
+// }
