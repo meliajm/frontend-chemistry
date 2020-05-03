@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './Header'
+// import Header from './Header'
 import AtomsList from './AtomsList'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import NavBar from './NavBar';
+// import NavBar from './NavBar';
 
 
 class BondsList extends React.Component {

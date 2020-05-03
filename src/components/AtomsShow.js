@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Konva from 'konva';
+// import Konva from 'konva';
 import { Stage, Layer, Text, Circle, Line } from 'react-konva';
-import AtomList from './AtomsList'
+// import AtomList from './AtomsList'
 
 export class AtomsShow extends Component {
     // use arrow functions?

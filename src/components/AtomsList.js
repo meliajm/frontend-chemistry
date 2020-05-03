@@ -6,19 +6,19 @@ import AtomCard from './AtomCard'
 
 class AtomsList extends React.Component {
 
-    state = {
-        atoms: []
-    }
+    // state = {
+    //     atoms: []
+    // }
 
-    componentDidMount() {
-        fetch('http://localhost:3001/api/v1/atoms')
-            .then(response => response.json())
-            .then(atoms => this.setState({ atoms}))
-    }
+    // componentDidMount() {
+    //     fetch('http://localhost:3001/api/v1/atoms')
+    //         .then(response => response.json())
+    //         .then(atoms => this.setState({ atoms }))
+    // }
 
     render() {
 
-        const atomsRender = this.state.atoms.map((atom, i) => (
+        const atomsRender = this.props.atoms.map((atom, i) => (
             <AtomCard key={i} atom={atom} />
         ))
         return (

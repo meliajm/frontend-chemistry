@@ -2,23 +2,28 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
-import BondsList from './components/BondsList'
+// import BondsList from './components/BondsList'
 import AtomsList from './components/AtomsList'
 import AtomsIntro from './components/AtomsIntro'
 import Atom from './components/Atom'
+import { connect } from 'react-redux'
+import { fetchAtoms } from './actions/atomActions'
 
-import Konva from 'konva';
-import { Stage, Layer, Rect, Text, Circle, Line, Group } from 'react-konva';
+// import Konva from 'konva';
+// import { Stage, Layer, Rect, Text, Circle, Line, Group } from 'react-konva';
 
 
 import AtomsShow from './components/AtomsShow'
 
 import './App.css';
 
-export default class App extends React.Component {
+class App extends React.Component {
 
 
-
+  componentDidMount() {
+    console.log(this.props)
+    this.props.fetchAtoms()
+  }
   render() {
     return (
       <Router>
@@ -30,7 +35,8 @@ export default class App extends React.Component {
           <Switch>
             <Route
               exact path="/api/v1/atoms"
-              component={AtomsList}
+              render={ routerProps => <AtomsList atoms={this.props.atoms}/>}
+
               />
             <Route 
               exact path="/api/v1/atoms/:id" 
@@ -51,8 +57,21 @@ export default class App extends React.Component {
       </Router>
     )
   }
-
 }
+
+const mapStateToProps = state => {
+  return {
+    atoms: state.atoms,
+    loading: state.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAtoms: () => dispatch(fetchAtoms())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 // yellowRect() {
 //   return (
