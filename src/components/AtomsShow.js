@@ -22,6 +22,10 @@ export class AtomsShow extends Component {
             .then(atom => this.setState({ atom }))
     }
 
+    // boundElectron() {
+        
+    // }
+
     renderElectrons(atomicRadius) {
         if (atomicRadius==="") {
             atomicRadius = 250
@@ -64,7 +68,37 @@ export class AtomsShow extends Component {
 
                 
                     if (i === 0) {
-                        return <Circle className="TopLeft" draggable x={this.startingXpos-1*20} y={this.startingYpos-parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                      
+                        return <Circle 
+                        dragBoundFunc={
+                            function(pos) {
+                              debugger
+                            //   const x = 700/2
+                            //   const y = 70
+                              console.log("x y", this.startingXpos, this.startingYpos)
+                              const x = 300
+                              const y = 300
+                              const radius = 50
+                              let scale = 
+                              radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
+                              if (scale < 1) {
+                                return {
+                                  y: Math.round((pos.y - y) * scale + y),
+                                  x: Math.round((pos.x - x) * scale + x)
+                                }
+                              }
+                              else {
+                                return pos
+                              }
+                              
+                            }
+                          }
+                        className="TopLeft" 
+                        draggable 
+                        x={this.startingXpos-1*20} 
+                        y={this.startingYpos-parseInt(atomicRadius)} 
+                        radius={this.electronRadius} 
+                        fill="black" 
+                        />                      
                     } else if ( i === 1) {
                         return <Circle className="bottomRight" draggable x={this.startingXpos+1*20} y={this.startingYpos+parseInt(atomicRadius)} radius={this.electronRadius} fill="black" />                    
                     } else if ( i === 2) {
