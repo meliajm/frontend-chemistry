@@ -1,6 +1,9 @@
 const atomsReducer = (
     state = {
-     atoms: [], loading: false}, 
+     atoms: [], 
+     loading: false,
+     users: []
+    }, 
      action
      ) => {
 
@@ -9,13 +12,22 @@ const atomsReducer = (
             return {
                 ...state,
                 atoms: [...state.atoms],
-                loading: true
+                loading: true,
+                users: [...state.users]
             }
         case 'ADD_ATOMS':
             return {
                 ...state,
                 atoms: action.atoms,
-                loading: false
+                loading: false,
+                users: [...state.users]
+            }
+        case 'ADD_USER':
+            return {
+                ...state,
+                atoms: [...state.atoms],
+                loading: false,
+                users: [...state.users, action.user]
             }
         default:
             return state

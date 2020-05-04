@@ -11,7 +11,8 @@ export default (props) => {
             <Link to='/intro'>Atom Intro</Link>
             <br/>
             <Link to='/theatom'>The Atom</Link>
-
+            <br/>
+            <Link to='/login'>Log In</Link>
         </nav>
     )
 }

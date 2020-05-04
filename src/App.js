@@ -11,7 +11,6 @@ import { fetchAtoms } from './actions/atomActions'
 // import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
 // import RectCard from './components/RectCard'
 import RectsList from './components/RectsList'
-
 // import Konva from 'konva';
 // import { Stage, Layer, Rect, Text, Circle, Line, Group } from 'react-konva';
 
@@ -19,6 +18,7 @@ import RectsList from './components/RectsList'
 import AtomsShow from './components/AtomsShow'
 
 import './App.css';
+import { UsersContainer } from './containers/UsersContainer';
 
 class App extends React.Component {
 
@@ -57,7 +57,6 @@ class App extends React.Component {
             <Route
               exact path="/api/v1/atoms"
               render={ routerProps => <AtomsList atoms={this.props.atoms}/>}
-
               />
             <Route 
               exact path="/api/v1/atoms/:id" 
@@ -72,6 +71,9 @@ class App extends React.Component {
               exact path="/theatom" 
               component={Atom} />
             <Route 
+              exact path="/login"
+              component={UsersContainer} />
+            <Route 
               exact path="/" 
               render={ routerProps => <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
               />
@@ -80,6 +82,7 @@ class App extends React.Component {
               <p>info about atoms</p>
               find your state of flow eaiser
               <p>periodic chart</p>
+             
               </div>
           </Switch>
       </Router>
