@@ -11,6 +11,7 @@ export class AtomsShow extends Component {
     }
 
 
+    // move to state
     electronRadius = 5
     // startingXpos = 500
     // startingYpos = 350

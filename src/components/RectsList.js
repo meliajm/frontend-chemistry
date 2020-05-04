@@ -26,6 +26,10 @@ export default class RectsList extends React.Component {
         let sixteen = []
         let seventeen = []
         let eighteen = []
+        let lanth = []
+        let actin = []
+
+
 
         this.props.atoms.map((atom, i) => {
             if (atom.symbol==="H" || atom.group_block==="Alkali metal") {
@@ -105,6 +109,12 @@ export default class RectsList extends React.Component {
             || atom.symbol==="Og" ) {
                 eighteen.push(atom)
             }
+            if (atom.group_block === "Lanthanide" ) {
+                lanth.push(atom)
+            }
+            if (atom.group_block === "Actinide" ) {
+                actin.push(atom)
+            }
         })
         
         
@@ -144,7 +154,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {two.map((atom, i) => {
+                {two.map((atom, i) => {
                     return <>
                     <Rect
                     
@@ -163,7 +173,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {three.map((atom, i) => {
+                {three.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -181,7 +191,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {four.map((atom, i) => {
+                {four.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -199,7 +209,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {five.map((atom, i) => {
+                {five.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -217,7 +227,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {six.map((atom, i) => {
+                {six.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -235,7 +245,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {seven.map((atom, i) => {
+                {seven.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -253,7 +263,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {eight.map((atom, i) => {
+                {eight.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -271,7 +281,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {nine.map((atom, i) => {
+                {nine.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -289,7 +299,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {ten.map((atom, i) => {
+                {ten.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -307,7 +317,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {eleven.map((atom, i) => {
+                {eleven.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -325,7 +335,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {twelve.map((atom, i) => {
+                {twelve.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -343,7 +353,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {thirteen.map((atom, i) => {
+                {thirteen.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -361,7 +371,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {fourteen.map((atom, i) => {
+                {fourteen.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -379,7 +389,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {fifteen.map((atom, i) => {
+                {fifteen.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -397,7 +407,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {sixteen.map((atom, i) => {
+                {sixteen.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -415,7 +425,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {seventeen.map((atom, i) => {
+                {seventeen.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -433,7 +443,7 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
-                    {eighteen.map((atom, i) => {
+                {eighteen.map((atom, i) => {
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
@@ -451,6 +461,43 @@ export default class RectsList extends React.Component {
                     />
                     </>
                     })}
+                {lanth.map((atom, i) => {
+                    return <>
+                    <Rect
+                    fill={`#${atom.cpk_hex_color}`}
+                    x={70*i+70*3+10}
+                    y={75*7+20}
+                    width={60}
+                    height={65}
+                    stroke="black"
+                    />
+                    <Text 
+                    fontSize={10}
+                    text={`${atom.atomic_number} ${atom.name}`}
+                    x={70*i+70*3+10}
+                    y={75*7+20}
+                    />
+                    </>
+                    })}
+                {actin.map((atom, i) => {
+                    return <>
+                    <Rect
+                    fill={`#${atom.cpk_hex_color}`}
+                    x={70*i+70*3+10}
+                    y={75*7+20+75}
+                    width={60}
+                    height={65}
+                    stroke="black"
+                    />
+                    <Text 
+                    fontSize={10}
+                    text={`${atom.atomic_number} ${atom.name}`}
+                    x={70*i+70*3+10}
+                    y={75*7+20+75}
+                    />
+                    </>
+                    })}
+                
                 </Layer>
             </Stage>
 
