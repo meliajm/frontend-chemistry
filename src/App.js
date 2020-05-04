@@ -8,6 +8,9 @@ import AtomsIntro from './components/AtomsIntro'
 import Atom from './components/Atom'
 import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
+// import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
+// import RectCard from './components/RectCard'
+import RectsList from './components/RectsList'
 
 // import Konva from 'konva';
 // import { Stage, Layer, Rect, Text, Circle, Line, Group } from 'react-konva';
@@ -24,6 +27,24 @@ class App extends React.Component {
     // console.log('p', this.props)
     this.props.fetchAtoms()
   }
+
+//   renderRectColumnOne() {
+
+//     const rectRender = this.props.atoms.map((atom, i) => (
+      
+//         <RectCard key={i} atom={atom} />
+//     ))
+//     return (
+//         <>
+//           <h3>Atoms</h3>
+//           {rectRender}  
+//         </>
+//     )
+// }
+
+
+    
+
   render() {
     return (
       <Router>
@@ -47,6 +68,10 @@ class App extends React.Component {
             <Route 
               exact path="/theatom" 
               component={Atom} />
+            <Route 
+              exact path="/" 
+              render={ routerProps => <RectsList atoms={this.props.atoms} />}
+              />
               {/* {this.yellowRect()} */}
               <div>
               <p>info about atoms</p>

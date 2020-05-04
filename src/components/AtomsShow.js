@@ -318,6 +318,7 @@ export class AtomsShow extends Component {
                 <p>How many electrons does this atom have?</p>
                 <p>How many valence electrons does this atom have?</p>
                 <p>How many protons does this atom have?</p>
+                <p>{this.state.atom.group_block}</p>
 
                 <p>{this.state.atom.cpk_hex_color}</p>
                 {this.renderAtom(this.state.atom.atomic_radius, this.startingXpos, this.startingYpos)}
