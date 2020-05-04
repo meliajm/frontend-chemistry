@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import Konva from 'konva';
 import { Stage, Layer, Text, Circle } from 'react-konva';
-// import AtomList from './AtomsList'
+// import AtomsList from './AtomsList'
 
 export class AtomsShow extends Component {
     // use arrow functions?
@@ -12,8 +12,11 @@ export class AtomsShow extends Component {
 
 
     electronRadius = 5
+    // startingXpos = 500
+    // startingYpos = 350
     startingXpos = 300
     startingYpos = 300
+
 
     componentDidMount() {
         let id = this.props.match.params.id

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
+import { Link } from 'react-router-dom'
+
 // import RectCard from './RectCard'
 
 export default class RectsList extends React.Component {
@@ -120,15 +122,21 @@ export default class RectsList extends React.Component {
                 {one.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
+                    // draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={10}
                     y={i*75}
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
+                    {/* <Link to={`/api/v1/atoms/${atom.id}`}>{atom.name}<br/></Link> */}
+
                     <Text 
+                    align={"center"}
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={10}
@@ -139,7 +147,7 @@ export default class RectsList extends React.Component {
                     {two.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
+                    
                     fill={`#${atom.cpk_hex_color}`}
                     x={80}
                     y={i*75+75}
@@ -158,7 +166,6 @@ export default class RectsList extends React.Component {
                     {three.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150}
                     y={i*75+75+75+75}
@@ -177,7 +184,6 @@ export default class RectsList extends React.Component {
                     {four.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70}
                     y={i*75+75+75+75}
@@ -196,7 +202,6 @@ export default class RectsList extends React.Component {
                     {five.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70}
                     y={i*75+75+75+75}
@@ -215,7 +220,6 @@ export default class RectsList extends React.Component {
                     {six.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70}
                     y={i*75+75+75+75}
@@ -234,7 +238,6 @@ export default class RectsList extends React.Component {
                     {seven.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70}
                     y={i*75+75+75+75}
@@ -253,7 +256,6 @@ export default class RectsList extends React.Component {
                     {eight.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70}
                     y={i*75+75+75+75}
@@ -272,7 +274,6 @@ export default class RectsList extends React.Component {
                     {nine.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70}
                     y={i*75+75+75+75}
@@ -291,7 +292,6 @@ export default class RectsList extends React.Component {
                     {ten.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70}
                     y={i*75+75+75+75}
@@ -310,7 +310,6 @@ export default class RectsList extends React.Component {
                     {eleven.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70}
                     y={i*75+75+75+75}
@@ -329,7 +328,6 @@ export default class RectsList extends React.Component {
                     {twelve.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70+70}
                     y={i*75+75+75+75}
@@ -348,7 +346,6 @@ export default class RectsList extends React.Component {
                     {thirteen.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
@@ -367,7 +364,6 @@ export default class RectsList extends React.Component {
                     {fourteen.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
@@ -386,7 +382,6 @@ export default class RectsList extends React.Component {
                     {fifteen.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
@@ -405,7 +400,6 @@ export default class RectsList extends React.Component {
                     {sixteen.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
@@ -424,7 +418,6 @@ export default class RectsList extends React.Component {
                     {seventeen.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
@@ -443,7 +436,6 @@ export default class RectsList extends React.Component {
                     {eighteen.map((atom, i) => {
                     return <>
                     <Rect
-                    draggable
                     fill={`#${atom.cpk_hex_color}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75}

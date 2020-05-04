@@ -62,6 +62,9 @@ class App extends React.Component {
             <Route 
               exact path="/api/v1/atoms/:id" 
               component={AtomsShow} />
+            {/* <Route 
+              exact path="/api/v1/atoms/:id" 
+              component={RectsList} /> */}
             <Route 
               exact path="/intro" 
               component={AtomsIntro} />
@@ -70,7 +73,7 @@ class App extends React.Component {
               component={Atom} />
             <Route 
               exact path="/" 
-              render={ routerProps => <RectsList atoms={this.props.atoms} />}
+              render={ routerProps => <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
               />
               {/* {this.yellowRect()} */}
               <div>

@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
 
+// not using currently
+
 const RectCard = ({ atom, colX, colY }) => {
     // const pos = 70
     const width = 60
