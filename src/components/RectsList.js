@@ -151,6 +151,7 @@ export default class RectsList extends React.Component {
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={10}
                     y={i*75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -164,6 +165,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -182,6 +186,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -200,6 +207,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -218,6 +228,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -236,6 +249,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -254,6 +270,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -272,6 +291,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -290,6 +312,9 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
@@ -308,12 +333,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70}
                     y={i*75+75+75+75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -326,12 +355,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70}
                     y={i*75+75+75+75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -344,12 +377,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70+70}
                     y={i*75+75+75+75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -362,12 +399,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -380,12 +421,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
+                    fill={"#fff"}
                     />
                     </>
                     })}
@@ -398,12 +443,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -416,12 +465,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -434,12 +487,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75+75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -452,12 +509,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
                     y={i*75}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -470,12 +531,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={70*i+70*3+10}
                     y={75*7+20}
+                    fill={"#555"}
                     />
                     </>
                     })}
@@ -488,12 +553,16 @@ export default class RectsList extends React.Component {
                     width={60}
                     height={65}
                     stroke="black"
+                    onClick={() => {
+                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
+                   }}
                     />
                     <Text 
                     fontSize={10}
                     text={`${atom.atomic_number} ${atom.name}`}
                     x={70*i+70*3+10}
                     y={75*7+20+75}
+                    // fill={"#555"}
                     />
                     </>
                     })}
