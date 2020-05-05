@@ -11,6 +11,9 @@ import { fetchAtoms } from './actions/atomActions'
 // import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
 // import RectCard from './components/RectCard'
 import RectsList from './components/RectsList'
+import IonicBond from './components/IonicBond'
+import CovalentBond from './components/CovalentBond'
+
 // import Konva from 'konva';
 // import { Stage, Layer, Rect, Text, Circle, Line, Group } from 'react-konva';
 
@@ -32,10 +35,7 @@ class App extends React.Component {
     return (
       <Router>
         <NavBar />
-        
           <Header title={'Up and Atom Lab'} />
-          
-          
           <Switch>
             <Route
               exact path="/api/v1/atoms"
@@ -60,6 +60,13 @@ class App extends React.Component {
               exact path="/" 
               render={ routerProps => <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
               />
+            <Route 
+              exact path="/ionicbond" 
+              render={ routerProps => <IonicBond atoms={this.props.atoms} />}
+              />
+            <Route 
+              exact path="/covalentbond" 
+              component={CovalentBond} />
               {/* {this.yellowRect()} */}
               <div>
               <p>info about atoms</p>

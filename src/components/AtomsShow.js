@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import Konva from 'konva';
 import { Stage, Layer, Text, Circle } from 'react-konva';
+import { Link } from 'react-router-dom';
 // import AtomsList from './AtomsList'
 
 export class AtomsShow extends Component {
@@ -326,6 +327,12 @@ export class AtomsShow extends Component {
 
                 <p>{this.state.atom.cpk_hex_color}</p>
                 {this.renderAtom(this.state.atom.atomic_radius, this.startingXpos, this.startingYpos)}
+                
+                { (this.state.atom.symbol==='H') ? <Link to='/ionicbond'>Ionic Bond</Link> : null}
+                <br/>
+                { (this.state.atom.symbol==='H') ? <Link to='/covalentbond'>Covalent Bond</Link> : null}
+                
+            <br/>
             </div>
         )
     }

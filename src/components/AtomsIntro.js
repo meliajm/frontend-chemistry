@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export class AtomsIntro extends Component {
     render() {
@@ -22,6 +23,11 @@ export class AtomsIntro extends Component {
                     -foundations of chemistry, biology, materials science
                     -widespread applications: medicine, mining
                     -crystal structures
+                    
+                <br/>
+                <Link to='/theatom'>The Atom</Link>
+                <br/>
+                <Link to='/api/v1/atoms'>See a list of all 118 elements</Link>
                 <br/>
             </div>
         )

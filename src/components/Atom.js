@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Atom() {
     return (
@@ -14,7 +15,10 @@ export default function Atom() {
             electrons
             <br/>
             who cares?
-
+            <br/>
+            <Link to='/ionicbond'>Ionic Bond</Link>
+            <br/>
+            <Link to='/covalentbond'>Covalent Bond</Link>
         </div>
     )
 }
