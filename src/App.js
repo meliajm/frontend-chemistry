@@ -55,7 +55,7 @@ class App extends React.Component {
               component={Atom} />
             <Route 
               exact path="/login"
-              component={UsersContainer} />
+              render={routerProps => <UsersContainer {...routerProps}/>} />
             <Route 
               exact path="/" 
               render={ routerProps => <RectsList atoms={this.props.atoms} routerProps={routerProps} />}

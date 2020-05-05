@@ -11,23 +11,39 @@ export class UserInput extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
+        console.log('ui', this.props)
     }
     
     handleOnSubmit = event => {
-        console.log('ui', this.props)
         event.preventDefault()
         if (!this.state.email || !this.state.password) return 
-        this.props.addUser(this.state)
-        // might be redirecting so don't need this???
-        this.setState({
-            email: "",
-            password: ""
+        let strongParams = {
+            user: {
+                email: this.state.email,
+                password: this.state.password
+            }
+        }
+
+        fetch("http://localhost:3001/api/v1/users", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(strongParams)
         })
-        console.log('handle submit', this.state)
+        .then(response => response.json())
+        .then(user => {
+            this.props.routerProps.push('/')
+        })
+       
     }
+
+
     render() {
         return (
             <>
+            <h3>Log In</h3>
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
                     <input 
                     type="text"

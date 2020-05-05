@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 
 class UsersContainer extends Component {
   render() {
+      console.log('uc', this.props.history)
     return (
       <div>
-        <UserInput addUser={this.props.addUser}/>
+        <UserInput routerProps={this.props.history} addUser={this.props.addUser}/>
       </div>
     )
   }
