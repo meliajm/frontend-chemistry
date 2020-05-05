@@ -18,7 +18,7 @@ import RectsList from './components/RectsList'
 import AtomsShow from './components/AtomsShow'
 
 import './App.css';
-import { UsersContainer } from './containers/UsersContainer';
+import UsersContainer from './containers/UsersContainer';
 
 class App extends React.Component {
 
@@ -26,24 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     // console.log('p', this.props)
     this.props.fetchAtoms()
-  }
-
-//   renderRectColumnOne() {
-
-//     const rectRender = this.props.atoms.map((atom, i) => (
-      
-//         <RectCard key={i} atom={atom} />
-//     ))
-//     return (
-//         <>
-//           <h3>Atoms</h3>
-//           {rectRender}  
-//         </>
-//     )
-// }
-
-
-    
+  } 
 
   render() {
     return (

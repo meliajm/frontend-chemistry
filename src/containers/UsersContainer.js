@@ -1,26 +1,19 @@
 import React, { Component } from 'react'
+import UserInput from '../components/UserInput';
 import { connect } from 'react-redux'
-import UserInput from '../components/UserInput'
 
-export class UsersContainer extends Component {
-    render() {
-        return (
-            <div>
-                <UserInput addUser={this.props.addUser} />
-            </div>
-        )
-    }
-}
-
-const mapDispatchToProps = dispatch => {
+class UsersContainer extends Component {
+  render() {
     return (
-        {addUser: user => dispatch({type: 'ADD_USER', user})}
+      <div>
+        <UserInput addUser={this.props.addUser}/>
+      </div>
     )
+  }
 }
 
-//will use this in different context???
-const mapStateToProps = ({ users}) => ({
-    users
-})
+const mapStateToProps = ({ users }) => ({ users })
+
+const mapDispatchToProps = dispatch => ({ addUser: user => dispatch({ type: "ADD_USER", user }) })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
