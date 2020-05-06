@@ -5,7 +5,12 @@ export const fetchAtoms = () => {
         .then(response => { return response.json()})
         // .then(response => { console.log(response.json())})
             // .then( atoms => console.log(atoms))
-        .then( atoms => {dispatch({type: 'ADD_ATOMS', atoms: atoms})})
-
+        // .then( atoms => {dispatch({type: 'ADD_ATOMS', atoms: atoms})})
+        .then( atoms => {dispatch(addAtoms(atoms))})
     }
 }
+
+const addAtoms = atoms => ({
+    type: 'ADD_ATOMS',
+    atoms
+})

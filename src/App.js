@@ -43,7 +43,14 @@ class App extends React.Component {
               />
             <Route 
               exact path="/api/v1/atoms/:id" 
-              component={AtomsShow} />
+              render={(routerProps)=> {
+                const atom = this.props.atoms.find( atom => atom.id === parseInt(routerProps.match.params.id))
+                return( 
+                  atom && 
+                <AtomsShow {...routerProps} 
+                atom={atom}/>)
+              }}
+              />
             {/* <Route 
               exact path="/api/v1/atoms/:id" 
               component={RectsList} /> */}

@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 export class AtomsShow extends Component {
     // use arrow functions?
 
-    state = {
-        atom: {}
-    }
+    // state = {
+    //     atom: {}
+    // }
 
 
     // move to state
@@ -20,12 +20,12 @@ export class AtomsShow extends Component {
     startingYpos = 300
 
 
-    componentDidMount() {
-        let id = this.props.match.params.id
-        fetch(`http://localhost:3001/api/v1/atoms/${id}`)
-            .then(response=>response.json())
-            .then(atom => this.setState({ atom }))
-    }
+    // componentDidMount() {
+    //     let id = this.props.match.params.id
+    //     fetch(`http://localhost:3001/api/v1/atoms/${id}`)
+    //         .then(response=>response.json())
+    //         .then(atom => this.setState({ atom }))
+    // }
 
     // boundElectron() {
         
@@ -36,27 +36,27 @@ export class AtomsShow extends Component {
             atomicRadius = 250
         }
         const arr = []
-        let valenceElectrons = this.state.atom.atomic_number
-        // const valenceElectrons = (this.state.atom.atomic_number)
-        if (this.state.atom.atomic_number > 2) {
-            valenceElectrons = this.state.atom.atomic_number - 2
+        let valenceElectrons = this.props.atom.atomic_number
+        // const valenceElectrons = (this.props.atom.atomic_number)
+        if (this.props.atom.atomic_number > 2) {
+            valenceElectrons = this.props.atom.atomic_number - 2
         }
-        if (this.state.atom.atomic_number > 10) {
-            valenceElectrons = this.state.atom.atomic_number - 10
+        if (this.props.atom.atomic_number > 10) {
+            valenceElectrons = this.props.atom.atomic_number - 10
         }
-        if (this.state.atom.atomic_number > 18) {
-            valenceElectrons = this.state.atom.atomic_number - 18
+        if (this.props.atom.atomic_number > 18) {
+            valenceElectrons = this.props.atom.atomic_number - 18
         }
-        // if (this.state.atom.atomic_number >= 26) {
-        //     console.log('atomic number', this.state.atom.atomic_number)
-        //     valenceElectrons = this.state.atom.atomic_number - 24
+        // if (this.props.atom.atomic_number >= 26) {
+        //     console.log('atomic number', this.props.atom.atomic_number)
+        //     valenceElectrons = this.props.atom.atomic_number - 24
         // }
-        if (this.state.atom.atomic_number >= 20) {
-            // console.log('atomic number', this.state.atom.atomic_number)
-            if (this.state.atom.oxidation_states[0]==='+') {
-                valenceElectrons = this.state.atom.oxidation_states[1] 
+        if (this.props.atom.atomic_number >= 20) {
+            // console.log('atomic number', this.props.atom.atomic_number)
+            if (this.props.atom.oxidation_states[0]==='+') {
+                valenceElectrons = this.props.atom.oxidation_states[1] 
             } else {
-                valenceElectrons = this.state.atom.oxidation_states[0]
+                valenceElectrons = this.props.atom.oxidation_states[0]
             }
         }
 
@@ -301,9 +301,9 @@ export class AtomsShow extends Component {
         return (
             <Stage width={window.innerWidth} height={window.innerHeight}>
             <Layer>
-              <Text x={75} y={20} text={this.state.atom.name} fontSize={15} />
+              <Text x={75} y={20} text={this.props.atom.name} fontSize={15} />
               <Circle className="electronOrbit" x={this.startingXpos} y={this.startingYpos} radius={atomicRadius} stroke="black" />
-              <Circle  className="nucleus" x={this.startingXpos} y={this.startingYpos} radius={atomicRadius/10} fill={`#${this.state.atom.cpk_hex_color}`}/>
+              <Circle  className="nucleus" x={this.startingXpos} y={this.startingYpos} radius={atomicRadius/10} fill={`#${this.props.atom.cpk_hex_color}`}/>
               <Circle  className="nucleusOutline" x={this.startingXpos} y={this.startingYpos} radius={atomicRadius/10} stroke="black" strokeWidth='1'/>
               {this.renderElectrons(atomicRadius)}
             </Layer>
@@ -315,22 +315,22 @@ export class AtomsShow extends Component {
         return (
             <div>
                 {/* <AtomList/> */}
-                <h3>{this.state.atom.name}</h3>
-                <p>{this.state.atom.symbol}</p>
-                <p>{this.state.atom.atomic_radius}</p>
-                <p>Atomic number: {this.state.atom.atomic_number}</p>
-                <p>{this.state.atom.oxidation_states}</p>
+                <h3>{this.props.atom.name}</h3>
+                <p>{this.props.atom.symbol}</p>
+                <p>{this.props.atom.atomic_radius}</p>
+                <p>Atomic number: {this.props.atom.atomic_number}</p>
+                <p>{this.props.atom.oxidation_states}</p>
                 <p>How many electrons does this atom have?</p>
                 <p>How many valence electrons does this atom have?</p>
                 <p>How many protons does this atom have?</p>
-                <p>{this.state.atom.group_block}</p>
+                <p>{this.props.atom.group_block}</p>
 
-                <p>{this.state.atom.cpk_hex_color}</p>
-                {this.renderAtom(this.state.atom.atomic_radius, this.startingXpos, this.startingYpos)}
+                <p>{this.props.atom.cpk_hex_color}</p>
+                {this.renderAtom(this.props.atom.atomic_radius, this.startingXpos, this.startingYpos)}
                 
-                { (this.state.atom.symbol==='H') ? <Link to='/ionicbond'>Ionic Bond</Link> : null}
+                { (this.props.atom.symbol==='H') ? <Link to='/ionicbond'>Ionic Bond</Link> : null}
                 <br/>
-                { (this.state.atom.symbol==='H') ? <Link to='/covalentbond'>Covalent Bond</Link> : null}
+                { (this.props.atom.symbol==='H') ? <Link to='/covalentbond'>Covalent Bond</Link> : null}
                 
             <br/>
             </div>
