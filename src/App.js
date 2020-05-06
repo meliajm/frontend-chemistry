@@ -6,7 +6,7 @@ import AtomsList from './components/AtomsList'
 import AtomsIntro from './components/AtomsIntro'
 import Atom from './components/Atom'
 import { connect } from 'react-redux'
-import { fetchAtoms } from './actions/atomActions'
+import { fetchAtoms, fetchUsers } from './actions/atomActions'
 import RectsList from './components/RectsList'
 import IonicBond from './components/IonicBond'
 import CovalentBond from './components/CovalentBond'
@@ -20,6 +20,7 @@ class App extends React.Component {
   componentDidMount() {
     // console.log('p', this.props)
     this.props.fetchAtoms()
+    this.props.fetchUsers()
   } 
 
   render() {
@@ -88,9 +89,12 @@ const mapStateToProps = state => {
   }
 }
 
+// a user is added to store during sign up, when App mounts fetch all users so they are in store
+// best practice here? will this cause problems when a user signs up? i think not because i am redirecting to home page
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAtoms: () => dispatch(fetchAtoms())
+    fetchAtoms: () => dispatch(fetchAtoms()),
+    fetchUsers: () => dispatch(fetchUsers())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)

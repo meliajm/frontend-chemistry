@@ -15,21 +15,30 @@ const atomsReducer = (
             return {
                 ...state,
                 atoms: [...state.atoms],
-                loading: true,
-                users: [...state.users]
+                loading: true
+                // users: [...state.users]
             }
         case 'ADD_ATOMS':
             return {
                 ...state,
                 atoms: action.atoms,
-                loading: false,
+                loading: false
+                // users: [...state.users]
+            }
+        case 'LOADING_USERS':
+            return {
+                ...state,
                 users: [...state.users]
+            }
+        case 'ADD_USERS':
+            return {
+                ...state,
+                users: action.users
             }
         case 'ADD_USER':
             console.log('reducer action', action)
             const user = {
                 id: cuid(),
-                // email: action.email,
                 email: action.email,
                 password: action.password
             }
