@@ -1,3 +1,6 @@
+import cuid from 'cuid'
+export const cuidFn = cuid
+
 const atomsReducer = (
     state = {
      atoms: [], 
@@ -23,12 +26,20 @@ const atomsReducer = (
                 users: [...state.users]
             }
         case 'ADD_USER':
-            return {
-                ...state,
-                atoms: [...state.atoms],
-                loading: false,
-                users: [...state.users, action.user]
+            console.log('reducer action', action)
+            const user = {
+                id: cuid(),
+                // email: action.email,
+                email: action.email,
+                password: action.password
             }
+            return { ...state, users: state.users.concat(user)}
+            // return {
+            //     ...state,
+            //     atoms: [...state.atoms],
+            //     loading: false,
+            //     users: [...state.users, action.user]
+            // }
         default:
             return state
     }

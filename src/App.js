@@ -2,26 +2,17 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
-// import BondsList from './components/BondsList'
 import AtomsList from './components/AtomsList'
 import AtomsIntro from './components/AtomsIntro'
 import Atom from './components/Atom'
 import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
-// import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
-// import RectCard from './components/RectCard'
 import RectsList from './components/RectsList'
 import IonicBond from './components/IonicBond'
 import CovalentBond from './components/CovalentBond'
-
-// import Konva from 'konva';
-// import { Stage, Layer, Rect, Text, Circle, Line, Group } from 'react-konva';
-
-
 import AtomsShow from './components/AtomsShow'
-
-import './App.css';
 import UsersContainer from './containers/UsersContainer';
+import './App.css';
 
 class App extends React.Component {
 
@@ -33,6 +24,7 @@ class App extends React.Component {
 
   render() {
     return (
+      
       <Router>
         <NavBar />
           <Header title={'Up and Atom Lab'} />
@@ -61,7 +53,7 @@ class App extends React.Component {
               exact path="/theatom" 
               component={Atom} />
             <Route 
-              exact path="/login"
+              exact path="/signup"
               render={routerProps => <UsersContainer {...routerProps}/>} />
             <Route 
               exact path="/" 
@@ -79,6 +71,7 @@ class App extends React.Component {
               <p>info about atoms</p>
               find your state of flow eaiser
               <p>periodic chart</p>
+                
              
               </div>
           </Switch>
@@ -90,7 +83,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     atoms: state.atoms,
-    loading: state.loading
+    loading: state.loading,
+    users: state.users
   }
 }
 

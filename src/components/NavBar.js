@@ -8,7 +8,9 @@ export default (props) => {
             <br/>
             <Link to='/intro'>Atom Intro</Link>
             <br/>
-            <Link to='/login'>Log In</Link>
+            <Link to='/signup'>Sign Up</Link>
+            {/* <br/>
+            <Link to='/users'>Users</Link> */}
         </nav>
     )
 }

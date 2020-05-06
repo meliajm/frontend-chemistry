@@ -14,3 +14,14 @@ const addAtoms = atoms => ({
     type: 'ADD_ATOMS',
     atoms
 })
+
+export const addUser =  user => ({
+    type: "ADD_USER",
+    user
+}) 
+
+// export const addUser =  user => ({
+//     type: "ADD_USER",
+//     email: user.email,
+//     password: user.password 
+// })  

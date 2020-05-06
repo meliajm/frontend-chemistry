@@ -17,6 +17,7 @@ export class UserInput extends Component {
     handleOnSubmit = event => {
         event.preventDefault()
         if (!this.state.email || !this.state.password) return 
+        this.props.addUser(this.state.email, this.state.password)
         let strongParams = {
             user: {
                 email: this.state.email,
@@ -43,7 +44,7 @@ export class UserInput extends Component {
     render() {
         return (
             <>
-            <h3>Log In</h3>
+            <h3>Sign Up</h3>
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
                     <input 
                     type="text"
