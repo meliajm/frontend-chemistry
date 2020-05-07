@@ -1,17 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { logout } from '../actions/userAuth'
+import { withRouter } from 'react-router-dom'
 
-const Logout = ({ logout, routerProps }) => {
+const Logout = ({ history, logout }) => {
+    // console.log('logout', routerProps)
     return (
         < form onSubmit={(event) => {
             event.preventDefault()
             logout()
-            routerProps.push('/')
+            history.push('/')
         }}>
             <input type="submit" value="Log Out" />
         </form>
     )
 }
 
-export default connect(null, { logout })(Logout)
+export default withRouter(connect(null, { logout })(Logout))

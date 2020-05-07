@@ -29,7 +29,7 @@ class App extends React.Component {
   } 
 
   render() {
-    console.log("app", this.props)
+    console.log("app", this.props.getCurrentUser())
     return (
       
       <Router>
@@ -50,9 +50,6 @@ class App extends React.Component {
                 atom={atom}/>)
               }}
               />
-            {/* <Route 
-              exact path="/api/v1/atoms/:id" 
-              component={RectsList} /> */}
             <Route 
               exact path="/intro" 
               component={AtomsIntro} />
@@ -66,10 +63,10 @@ class App extends React.Component {
               exact path="/login"
               component={Login} />
 
-            {/* <Route 
+            <Route 
               exact path="/" 
-              render={ routerProps => <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
-              /> */}
+              render={ routerProps => this.props.atoms && <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
+              />
 
             <Route 
               exact path="/ionicbond" 
@@ -94,9 +91,9 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    atoms: state.atoms,
-    loading: state.loading,
-    users: state.users,
+    // atoms: state.atoms,
+    // loading: state.loading,
+    // users: state.users,
     loggedIn: !!state.currentUser
   }
 }
@@ -105,8 +102,8 @@ const mapStateToProps = state => {
 // best practice here? will this cause problems when a user signs up? i think not because i am redirecting to home page
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAtoms: () => dispatch(fetchAtoms()),
-    fetchUsers: () => dispatch(fetchUsers()),
+    // fetchAtoms: () => dispatch(fetchAtoms()),
+    // fetchUsers: () => dispatch(fetchUsers()),
     getCurrentUser: () => dispatch(getCurrentUser())
   }
 }

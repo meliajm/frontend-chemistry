@@ -6,7 +6,7 @@ import Logout from './Logout'
 const NavBar = ({ currentUser, loggedIn }) => {
     return (
         <nav className="nav">
-            { loggedIn ? <> Logged in as {currentUser.attributes.name} <Logout/></> : null}
+            { loggedIn ? <> Logged in as {currentUser.email} <Logout/></> : null}
             <Link to='/'>Home</Link>
             <br/>
             <Link to='/intro'>Atom Intro</Link>
