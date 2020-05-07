@@ -18,18 +18,16 @@ import './App.css';
 
 class App extends React.Component {
 
-
   componentDidMount() {
     // console.log('p', this.props)
 
-    // this.props.fetchAtoms()
-    // this.props.fetchUsers()
-
+    this.props.fetchAtoms()
+    this.props.fetchUsers()
     this.props.getCurrentUser()
   } 
 
   render() {
-    console.log("app", this.props.getCurrentUser())
+    console.log("app", this.props)
     return (
       
       <Router>
@@ -91,9 +89,9 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // atoms: state.atoms,
-    // loading: state.loading,
-    // users: state.users,
+    atoms: state.atomsReducer.atoms,
+    loading: state.atomsReducer.loading,
+    users: state.users,
     loggedIn: !!state.currentUser
   }
 }
@@ -102,51 +100,10 @@ const mapStateToProps = state => {
 // best practice here? will this cause problems when a user signs up? i think not because i am redirecting to home page
 const mapDispatchToProps = dispatch => {
   return {
-    // fetchAtoms: () => dispatch(fetchAtoms()),
-    // fetchUsers: () => dispatch(fetchUsers()),
+    fetchAtoms: () => dispatch(fetchAtoms()),
+    fetchUsers: () => dispatch(fetchUsers()),
     getCurrentUser: () => dispatch(getCurrentUser())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 
-// yellowRect() {
-//   return (
-
-//     <Stage width={window.innerWidth} height={window.innerHeight}>
-//     <Layer>
-//       {/* <Group 
-//       x={700/2}
-//       y={70}
-//       draggable
-
-//       /> */}
-//       <Rect 
-//       draggable
-//       x={700/2}
-//       y={70}
-//       width={20} height={20} fill="yellow" 
-//       dragBoundFunc={
-//         function(pos) {
-          
-//           const x = 700/2
-//           const y = 70
-//           const radius = 50
-//           let scale = 
-//           radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2))
-//           if (scale < 1) {
-//             return {
-//               y: Math.round((pos.y - y) * scale + y),
-//               x: Math.round((pos.x - x) * scale + x)
-//             }
-//           }
-//           else {
-//             return pos
-//           }
-          
-//         }
-//       }
-//       />
-//     </Layer>
-//   </Stage>
-//       )
-// }
