@@ -12,6 +12,8 @@ import IonicBond from './components/IonicBond'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
 import UsersContainer from './containers/UsersContainer';
+import { getCurrentUser } from './actions/userAuth'
+import Login from './components/Login'
 import './App.css';
 
 class App extends React.Component {
@@ -19,11 +21,15 @@ class App extends React.Component {
 
   componentDidMount() {
     // console.log('p', this.props)
-    this.props.fetchAtoms()
-    this.props.fetchUsers()
+
+    // this.props.fetchAtoms()
+    // this.props.fetchUsers()
+
+    this.props.getCurrentUser()
   } 
 
   render() {
+    console.log("app", this.props)
     return (
       
       <Router>
@@ -56,10 +62,15 @@ class App extends React.Component {
             <Route 
               exact path="/signup"
               render={routerProps => <UsersContainer {...routerProps}/>} />
-            <Route 
+            <Route
+              exact path="/login"
+              component={Login} />
+
+            {/* <Route 
               exact path="/" 
               render={ routerProps => <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
-              />
+              /> */}
+
             <Route 
               exact path="/ionicbond" 
               render={ routerProps => <IonicBond atoms={this.props.atoms} />}
@@ -85,7 +96,8 @@ const mapStateToProps = state => {
   return {
     atoms: state.atoms,
     loading: state.loading,
-    users: state.users
+    users: state.users,
+    loggedIn: !!state.currentUser
   }
 }
 
@@ -94,7 +106,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAtoms: () => dispatch(fetchAtoms()),
-    fetchUsers: () => dispatch(fetchUsers())
+    fetchUsers: () => dispatch(fetchUsers()),
+    getCurrentUser: () => dispatch(getCurrentUser())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)

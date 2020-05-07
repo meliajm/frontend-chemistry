@@ -5,7 +5,8 @@ const atomsReducer = (
     state = {
      atoms: [], 
      loading: false,
-     users: []
+     users: [],
+     currentUser: ""
     }, 
      action
      ) => {

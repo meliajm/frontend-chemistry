@@ -30,7 +30,7 @@ export default class RectsList extends React.Component {
         let actin = []
 
 
-
+        console.log("rect list", this.props)
         this.props.atoms.map((atom, i) => {
             if (atom.symbol==="H" || atom.group_block==="Alkali metal") {
                 // console.log(atom, i)

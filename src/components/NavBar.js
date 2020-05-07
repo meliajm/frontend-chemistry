@@ -1,16 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Logout from './Logout'
 
-export default (props) => {
+const NavBar = ({ currentUser, loggedIn }) => {
     return (
         <nav className="nav">
+            { loggedIn ? <> Logged in as {currentUser.attributes.name} <Logout/></> : null}
             <Link to='/'>Home</Link>
             <br/>
             <Link to='/intro'>Atom Intro</Link>
             <br/>
             <Link to='/signup'>Sign Up</Link>
+            <br/>
+            <Link to='/login'>Log In</Link>
+            <br/>
+
             {/* <br/>
             <Link to='/users'>Users</Link> */}
         </nav>
     )
 }
+
+const mapStateToProps = ({ currentUser }) =>{
+    return {
+        currentUser,
+        loggedIn: !!currentUser
+    }
+}
+
+export default connect(mapStateToProps)(NavBar)
+
+// export default (props) => {
+//     return (
+//         <nav className="nav">
+//             <Link to='/'>Home</Link>
+//             <br/>
+//             <Link to='/intro'>Atom Intro</Link>
+//             <br/>
+//             <Link to='/signup'>Sign Up</Link>
+//             {/* <br/>
+//             <Link to='/users'>Users</Link> */}
+//         </nav>
+//     )
+// }
