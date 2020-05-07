@@ -11,7 +11,7 @@ import RectsList from './components/RectsList'
 import IonicBond from './components/IonicBond'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
-import UsersContainer from './containers/UsersContainer';
+// import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
 import Login from './components/Login'
 import './App.css';
@@ -54,9 +54,11 @@ class App extends React.Component {
             <Route 
               exact path="/theatom" 
               component={Atom} />
-            <Route 
+
+            {/* <Route 
               exact path="/signup"
-              render={routerProps => <UsersContainer {...routerProps}/>} />
+              render={routerProps => <UsersContainer {...routerProps}/>} /> */}
+            
             <Route
               exact path="/login"
               component={Login} />
@@ -91,7 +93,7 @@ const mapStateToProps = state => {
   return {
     atoms: state.atomsReducer.atoms,
     loading: state.atomsReducer.loading,
-    users: state.users,
+    // users: state.users,
     loggedIn: !!state.currentUser
   }
 }
