@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-export class AtomsIntro extends Component {
-    render() {
-        return (
-            <div>
+// export class AtomsIntro extends Component {
+    // render() {
+
+const AtomIntro = () =>{
+
+    return (
+        <div>
                 What is an atom?
                 <br/>
                 search for keywords
@@ -31,7 +34,8 @@ export class AtomsIntro extends Component {
                 <br/>
             </div>
         )
-    }
 }
 
-export default AtomsIntro
+
+
+export default AtomIntro

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
 import AtomsList from './components/AtomsList'
-import AtomsIntro from './components/AtomsIntro'
+import AtomIntro from './components/AtomIntro'
 import Atom from './components/Atom'
 import { connect } from 'react-redux'
 import { fetchAtoms, fetchUsers } from './actions/atomActions'
@@ -53,7 +53,7 @@ class App extends React.Component {
               />
             <Route 
               exact path="/intro" 
-              component={AtomsIntro} />
+              component={AtomIntro} />
             <Route 
               exact path="/theatom" 
               component={Atom} />
