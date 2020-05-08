@@ -6,7 +6,7 @@ const atomsReducer = (
      atoms: [], 
      loading: false,
      users: [],
-     currentUser: ""
+    //  currentUser: ""
     }, 
      action
      ) => {
