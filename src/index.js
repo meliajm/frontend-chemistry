@@ -11,6 +11,7 @@ import atomsReducer from './reducers/atomsReducer';
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
+import usersReducer from './reducers/usersReducer'
 
 
 // const store = createStore(atomsReducer,
@@ -23,7 +24,8 @@ const reducer = combineReducers({
   currentUser,
   loginForm,
   atomsReducer,
-  signupForm
+  signupForm,
+  usersReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

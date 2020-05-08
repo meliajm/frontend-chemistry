@@ -5,6 +5,11 @@ import { connect } from 'react-redux'
 import { fetchUsers } from '../actions/userActions'
 
 class UsersContainer extends Component {
+
+  componentDidMount() {
+    console.log('uc p', this.props)
+    this.props.fetchUsers()
+  }
   render() {
       console.log('uc', this.props)
     return (
@@ -17,8 +22,9 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log('state mstp', state)
   return {
-    users: state.usersReducer.user,
+    users: state.usersReducer.users,
   }
 }
 

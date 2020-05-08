@@ -6,7 +6,7 @@ import AtomsList from './components/AtomsList'
 import AtomIntro from './components/AtomIntro'
 import Atom from './components/Atom'
 import { connect } from 'react-redux'
-import { fetchAtoms, fetchUsers } from './actions/atomActions'
+import { fetchAtoms } from './actions/atomActions'
 import RectsList from './components/RectsList'
 import IonicBond from './components/IonicBond'
 import CovalentBond from './components/CovalentBond'
@@ -24,7 +24,6 @@ class App extends React.Component {
     // console.log('p', this.props)
 
     this.props.fetchAtoms()
-    this.props.fetchUsers()
     this.props.getCurrentUser()
   } 
 
@@ -74,10 +73,11 @@ class App extends React.Component {
             <Route 
               exact path="/covalentbond" 
               component={CovalentBond} />
+            
             <Route 
               exact path="/users" 
               component={UsersContainer} />
-              {/* {this.yellowRect()} */}
+
               <div>
               <p>info about atoms</p>
               find your state of flow eaiser
