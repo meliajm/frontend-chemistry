@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import User from './User'
 
 // export class Users extends Component { render() {
-const Users = () => {
+const Users = (props) => {
 
-    const {users} = this.props
-    // console.log('users', users) // this has email as undefined
+    // const {users} = props.users
+    console.log('users', props) 
     return (
         <>
             User List
-            {users.map( user => <User user={user}
+            {props.users.map( user => <User user={user}
             key={user.id}
             />)}  
         </>

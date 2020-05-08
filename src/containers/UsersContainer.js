@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import Users from '../components/Users'
 import { connect } from 'react-redux'
-import { addUser } from '../actions/atomActions'
+// import { addUser } from '../actions/atomActions'
+import { fetchUsers } from '../actions/userActions'
 
 class UsersContainer extends Component {
   render() {
-      console.log('uc', this.props.history)
+      console.log('uc', this.props)
     return (
       <div>
         {/* <UserInput routerProps={this.props.history} addUser={this.props.addUser}/> */}
@@ -15,14 +16,18 @@ class UsersContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => ({ users })
+const mapStateToProps = state => {
+  return {
+    users: state.usersReducer.user,
+  }
+}
 
 // const mapDispatchToProps = dispatch => {addUser: user => dispatch(addUser)}
 // { addUser: user => dispatch({ type: "ADD_USER", user }) }
 
-const mapDispatchToProps = dispatch => ({
-    addUser: (email, password ) => dispatch({type: 'ADD_USER', email, password}),
-  })
+// const mapDispatchToProps = dispatch => ({
+//     addUser: (email, password ) => dispatch({type: 'ADD_USER', email, password}),
+//   })
 
 // const mapDispatchToProps = dispatch => {
 //     return {
@@ -30,5 +35,11 @@ const mapDispatchToProps = dispatch => ({
 //         // console.log('uc', user)
 //     }
 //   }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUsers: () => dispatch(fetchUsers()),
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)

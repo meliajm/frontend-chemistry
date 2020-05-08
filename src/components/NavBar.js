@@ -13,10 +13,13 @@ const NavBar = ({ currentUser, loggedIn }) => {
              <Link to='/login'>Log In</Link>
              <br/>
              </>
-             }
+            }
+
             <Link to='/'>Home</Link>
             <br/>
             <Link to='/intro'>Atom Intro</Link>
+            <br/>
+            <Link to='/users'>Users</Link>
             <br/>
             
 

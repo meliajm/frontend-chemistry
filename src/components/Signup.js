@@ -54,4 +54,4 @@ export class Signup extends Component {
     }
 }
 
-export default connect(null, {signup})(Signup)
+export default connect(null, { signup })(Signup)

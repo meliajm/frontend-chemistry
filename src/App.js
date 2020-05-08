@@ -12,9 +12,8 @@ import IonicBond from './components/IonicBond'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
 import Signup from './components/Signup'
-
 // import UserInput from './components/UserInput'
-// import UsersContainer from './containers/UsersContainer';
+import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
 import Login from './components/Login'
 import './App.css';
@@ -54,6 +53,7 @@ class App extends React.Component {
             <Route 
               exact path="/intro" 
               component={AtomIntro} />
+            
             <Route 
               exact path="/theatom" 
               component={Atom} />
@@ -74,6 +74,9 @@ class App extends React.Component {
             <Route 
               exact path="/covalentbond" 
               component={CovalentBond} />
+            <Route 
+              exact path="/users" 
+              component={UsersContainer} />
               {/* {this.yellowRect()} */}
               <div>
               <p>info about atoms</p>
@@ -102,7 +105,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAtoms: () => dispatch(fetchAtoms()),
-    fetchUsers: () => dispatch(fetchUsers()),
+    // fetchUsers: () => dispatch(fetchUsers()),
     getCurrentUser: () => dispatch(getCurrentUser())
   }
 }
