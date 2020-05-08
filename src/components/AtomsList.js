@@ -2,10 +2,9 @@ import React from 'react'
 import AtomCard from './AtomCard'
 
 // class AtomsList extends React.Component { need to add render back if use class component
-const AtomsList = (atoms) => {
-    console.log('al', atoms)
+const AtomsList = props => {
 
-    const atomsRender = atoms.map((atom, i) => (
+    const atomsRender = props.atoms.map((atom, i) => (
         <AtomCard key={i} atom={atom} />
         ))
 
