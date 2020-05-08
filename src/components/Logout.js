@@ -10,7 +10,7 @@ const Logout = ({ history, logout }) => {
             event.preventDefault()
             logout()
             history.push('/')
-        }}>
+                }}>
             <input type="submit" value="Log Out" />
         </form>
     )

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import UserInput from '../components/UserInput';
 import Users from '../components/Users'
 import { connect } from 'react-redux'
 import { addUser } from '../actions/atomActions'
@@ -9,7 +8,7 @@ class UsersContainer extends Component {
       console.log('uc', this.props.history)
     return (
       <div>
-        <UserInput routerProps={this.props.history} addUser={this.props.addUser}/>
+        {/* <UserInput routerProps={this.props.history} addUser={this.props.addUser}/> */}
         <Users users={this.props.users} />
       </div>
     )
