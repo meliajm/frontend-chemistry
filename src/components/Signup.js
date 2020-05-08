@@ -35,12 +35,14 @@ export class Signup extends Component {
                     type="text"
                     onChange={(event) => this.handleOnChange(event)}
                     name="email"
+                    placeholder="email"
                     value={this.state.email}
                     />
                     <input 
                     type="password"
                     onChange={(event) => this.handleOnChange(event)}
                     name="password"
+                    placeholder="password"
                     value={this.state.password}
                     />
                     <input type="submit" value="Sign Up"/>
