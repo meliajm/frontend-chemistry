@@ -57,22 +57,16 @@ class App extends React.Component {
             <Route 
               exact path="/theatom" 
               component={Atom} />
-            <Route exact path="/signup"
-              render={ (routerProps) => <Signup routerProps={routerProps} />}/>
-
-            {/* <Route 
+            <Route 
               exact path="/signup"
-              render={routerProps => <UsersContainer {...routerProps}/>} /> */}
-            
+              render={ routerProps => <Signup routerProps={routerProps} />}/>
             <Route
               exact path="/login"
               render={ routerProps => <Login routerProps={routerProps}/>} />
-
             <Route 
               exact path="/" 
               render={ routerProps => this.props.atoms && <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
               />
-
             <Route 
               exact path="/ionicbond" 
               render={ routerProps => <IonicBond atoms={this.props.atoms} />}

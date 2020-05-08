@@ -18,31 +18,11 @@ export class Signup extends Component {
     
     handleOnSubmit = event => {
         event.preventDefault()
-        if (!this.state.email || !this.state.password) return 
+        if (!this.state.email || !this.state.password) {
+            console.log('hey you gotta enter your creds')
+        } 
         console.log("user input submit", this.props.routerProps)
-        signup(this.state, this.props.routerProps)
-        // if (!this.state.email || !this.state.password) return 
-        // this.props.addUser(this.state.email, this.state.password)
-        // let strongParams = {
-        //     user: {
-        //         email: this.state.email,
-        //         password: this.state.password
-        //     }
-        // }
-
-        // fetch("http://localhost:3001/api/v1/users", {
-        //     method: "POST",
-        //     headers: {
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(strongParams)
-        // })
-        // .then(response => response.json())
-        // .then(user => {
-        //     this.props.routerProps.push('/')
-        // })
-       
+        this.props.signup(this.state, this.props.routerProps)
     }
 
 
@@ -72,4 +52,4 @@ export class Signup extends Component {
     }
 }
 
-export default Signup
+export default connect(null, {signup})(Signup)
