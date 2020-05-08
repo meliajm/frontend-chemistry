@@ -15,6 +15,7 @@ export const clearCurrentUser = () => {
 
 export const login = (credentials, routerProps) => {
     return dispatch => {
+        console.log('login')
         return fetch("http://localhost:3001/api/v1/login", {
             credentials: 'include',
             method: 'POST',
@@ -30,8 +31,9 @@ export const login = (credentials, routerProps) => {
                     console.log(response.error)
                 } else {
                     dispatch(setCurrentUser(response.current_user))
-                    //reset form
-                    routerProps.push('/')
+                    dispatch(resetLoginForm())
+                    console.log(routerProps)
+                    routerProps.history.push('/')
                 }
             })
             .catch(console.log)
@@ -40,9 +42,7 @@ export const login = (credentials, routerProps) => {
 
 export const signup = (credentials, routerProps) => {
     return dispatch => {
-        const userCred = {
-            user: credentials
-        }
+        console.log('signup')
         return fetch("http://localhost:3001/api/v1/signup", {
             credentials: "include",
             method: 'POST',
@@ -50,7 +50,7 @@ export const signup = (credentials, routerProps) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userCred)
+            body: JSON.stringify({user: credentials})
         })
             .then(response => response.json())
             .then(response => {
@@ -58,8 +58,8 @@ export const signup = (credentials, routerProps) => {
                     console.log(response.error)
                 } else {
                     dispatch(setCurrentUser(response.current_user))
-                    // reset form
-                    routerProps.push('/')
+                    dispatch(resetSignupForm())
+                    routerProps.history.push('/')
                 }
             })
             .catch(console.log)
@@ -105,5 +105,17 @@ export const updateLoginForm = (formData) => {
     return {
         type: "UPDATE_LOGIN_FORM",
         formData
+    }
+}
+
+const resetSignupForm = () => {
+    return {
+        type: "RESET_SIGNUP_FORM"
+    }
+}
+
+const resetLoginForm = () => {
+    return {
+        type: "RESET_LOGIN_FORM"
     }
 }

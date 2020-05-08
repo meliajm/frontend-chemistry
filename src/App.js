@@ -11,6 +11,9 @@ import RectsList from './components/RectsList'
 import IonicBond from './components/IonicBond'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
+import Signup from './components/Signup'
+
+// import UserInput from './components/UserInput'
 // import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
 import Login from './components/Login'
@@ -54,6 +57,8 @@ class App extends React.Component {
             <Route 
               exact path="/theatom" 
               component={Atom} />
+            <Route exact path="/signup"
+              render={ (routerProps) => <Signup routerProps={routerProps} />}/>
 
             {/* <Route 
               exact path="/signup"
@@ -61,7 +66,7 @@ class App extends React.Component {
             
             <Route
               exact path="/login"
-              component={Login} />
+              render={ routerProps => <Login routerProps={routerProps}/>} />
 
             <Route 
               exact path="/" 

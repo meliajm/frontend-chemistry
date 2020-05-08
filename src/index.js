@@ -10,6 +10,8 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import atomsReducer from './reducers/atomsReducer';
 import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
+import signupForm from './reducers/signupForm'
+
 
 // const store = createStore(atomsReducer,
 //   applyMiddleware(thunk),
@@ -20,7 +22,8 @@ import loginForm from './reducers/loginForm'
 const reducer = combineReducers({
   currentUser,
   loginForm,
-  atomsReducer
+  atomsReducer,
+  signupForm
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
