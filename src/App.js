@@ -68,7 +68,7 @@ class App extends React.Component {
               />
             <Route 
               exact path="/ionicbond" 
-              render={ routerProps => <IonicBond atoms={this.props.atoms} />}
+              render={ routerProps => <IonicBond />}
               />
             <Route 
               exact path="/covalentbond" 
