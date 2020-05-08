@@ -21,6 +21,8 @@ const NavBar = ({ currentUser, loggedIn }) => {
             <br/>
             <Link to='/users'>Users</Link>
             <br/>
+            <Link to='/ionicbond'>Ionic Bond</Link>
+            <br/>
             
 
             {/* <br/>
