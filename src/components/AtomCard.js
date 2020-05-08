@@ -9,5 +9,4 @@ const AtomCard = ({ atom }) => {
     )
 }
 
-
 export default AtomCard

@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-// export class AtomsIntro extends Component {
-    // render() {
-
 const AtomIntro = () =>{
 
     return (
@@ -35,7 +32,5 @@ const AtomIntro = () =>{
             </div>
         )
 }
-
-
 
 export default AtomIntro
