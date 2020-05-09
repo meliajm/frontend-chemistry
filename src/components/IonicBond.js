@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stage, Layer, Text, Circle } from 'react-konva';
+import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
 import QuestionInput from './QuestionInput'
 // import { connect } from 'react-redux'
 
@@ -13,16 +13,6 @@ import QuestionInput from './QuestionInput'
 //     textNa: "What is the charge of Sodium now?",
 //     textCl: "What is the charge of Chlorine now?"
 //     });
-const newText = () => ({
-    x: 210,
-    y: 200,
-    text: "What is the charge of Sodium now?",
-    x2: 630,
-    y2: 200,
-    text2: "What is the charge of Chlorine now?"
-  
-});
-
 export default class IonicBond extends React.Component {
 
     state = {
@@ -30,20 +20,19 @@ export default class IonicBond extends React.Component {
           {
             x: 210,
             y: 170,
-            text: "The charge of Sodium is 0",
+            text: "Charge of Sodium: 0",
             x2: 660,
             y2: 170,
-            text2: "The charge of Chlorine is 0"
+            text2: "Charge of Chlorine: 0"
           }
+        ],
+        rect : [
+            {}
         ]
       };
 
     renderElectronsNa = (atom) =>  {
 
-        
-        // const startingXpos = 300
-        // const startingYpos = 300
-        
         const arr = []
         let valenceElectrons = 0
 
@@ -324,56 +313,42 @@ export default class IonicBond extends React.Component {
             //     canvas: [{ ...newText() }]
             //   }));
             this.setState(prevState => ({
-                canvas: [{ ...newText() }]
+                canvas: [{ ...newText() }],
+                rect: [{...newRects()}]
               }));
+              console.log('state', this.state.rect[0].xr)
             // this.popUpQuestion()
         }
+    }
+
+    handleClick = e => {
+        console.log('YOU got it!')
     }
 
     renderSodiumAndChlorine = (sodiumAtom, chlorineAtom) => {
         return (
             <Stage width={window.innerWidth} height={window.innerHeight}>
                 <Layer>
-                {this.state.canvas.map(({ x, y, text, x2, y2, text2 }, key) => (
-                        <>
-                    <Text
-                        key={key}
-                        x={x}
-                        y={y}
-                        text={text}
-                        onClick={this.handleClick}
-                        fontSize={15}
-                    />
-                    <Text
-                        key={key}
-                        x={x2}
-                        y={y2}
-                        text={text2}
-                        onClick={this.handleClick}
-                        fontSize={15}
-                    />
+                
+                    
+                    {this.state.canvas.map(({ x, y, text, x2, y2, text2, xr, yr, width, height }, key) => (
+                    <>
+                        <Text
+                            key={key}
+                            x={x}
+                            y={y}
+                            text={text}
+                            fontSize={15}
+                        />
+                        <Text
+                            key={key}
+                            x={x2}
+                            y={y2}
+                            text={text2}
+                            fontSize={15}
+                        />
                     </>
                     ))}
-                    {/* {this.state.canvas.map(({ x, y, x2, y2, textNa, textCl }, key) => (
-                            <>
-                            <Text
-                                key={key}
-                                x={x}
-                                y={y}
-                                textNa={textNa}
-                                onClick={this.handleClick}
-
-                            />
-                            <Text
-                                key={key}
-                                textCl={textCl}
-                                x2={x2}
-                                y2={y2}
-                                onClick={this.handleClick}
-
-                            />
-                              </>  
-                            ))} */}
                     {/* <Text x={660} y={170} text={`The charge of ${chlorineAtom.name} is 0.`} fontSize={15} /> */}
                     <Circle className="electronOrbit" x={300+450} y={300} radius={chlorineAtom.atomic_radius} stroke="black" />
                     <Circle  className="nucleus" x={300+450} y={300} radius={chlorineAtom.atomic_radius/10} fill={`#${chlorineAtom.cpk_hex_color}`}/>
@@ -385,6 +360,23 @@ export default class IonicBond extends React.Component {
                     <Circle  className="nucleus" x={300} y={300} radius={sodiumAtom.atomic_radius/10} fill={`#${sodiumAtom.cpk_hex_color}`}/>
                     <Circle  className="nucleusOutline" x={300} y={300} radius={sodiumAtom.atomic_radius/10} stroke="black" strokeWidth='1'/>
                     {this.renderElectronsNa(sodiumAtom)}
+
+                    {this.state.rect.map(({ xr, yr, width, height }, key) => (
+                    <>
+                        <Rect 
+                            key={key}
+                            x={xr}
+                            y={yr}
+                            width={width}
+                            height={height}
+                            draggable
+                            onClick={this.handleClick}
+                            fill="green"
+                        />
+                        { this.state.rect[0].xr ? <Text draggable x={xr+(width/2)} y={yr+(height/2)} text="5" onClick={this.handleClick}/> : null }
+                        
+                    </>
+                    ))}
                 </Layer>
             </Stage>
         )
@@ -398,13 +390,19 @@ export default class IonicBond extends React.Component {
     )}
 }
 
-// const mapStateToProps = state => {
-//     console.log('ib', state)
-//     return {
-//       sodium: state.atomsReducer.atoms.find(atom => atom.symbol==="Na"),
-//       chlorine: state.atomsReducer.atoms.find(atom => atom.symbol==="Cl"),
-//     }
-// }
+const newText = () => ({
+    x: 190,
+    y: 200,
+    text: "What is the charge of Sodium now?",
+    x2: 630,
+    y2: 200,
+    text2: "What is the charge of Chlorine now?"
+  
+});
 
-// export default connect(mapStateToProps)(IonicBond)
-
+const newRects = () => ({
+    xr: 190,
+    yr: 250,
+    width: 20,
+    height: 20
+})
