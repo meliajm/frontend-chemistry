@@ -68,7 +68,7 @@ class App extends React.Component {
               />
             <Route 
               exact path="/ionicbond" 
-              render={ routerProps => this.props.atoms && <IonicBond />}
+              render={ routerProps => this.props.atoms && <IonicBond sodium={this.props.sodium} chlorine={this.props.chlorine}/>}
               />
             <Route 
               exact path="/covalentbond" 
@@ -95,7 +95,8 @@ const mapStateToProps = state => {
   return {
     atoms: state.atomsReducer.atoms,
     loading: state.atomsReducer.loading,
-    // users: state.users,
+    sodium: state.atomsReducer.atoms.find(atom => atom.symbol==="Na"),
+    chlorine: state.atomsReducer.atoms.find(atom => atom.symbol==="Cl"),
     loggedIn: !!state.currentUser
   }
 }
