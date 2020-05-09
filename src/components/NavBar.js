@@ -23,6 +23,8 @@ const NavBar = ({ currentUser, loggedIn }) => {
             <br/>
             <Link to='/ionicbond'>Ionic Bond</Link>
             <br/>
+            <Link to='/ionicbondtest'>Test</Link>
+            <br/>
             
 
             {/* <br/>

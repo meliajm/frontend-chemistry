@@ -3,32 +3,42 @@ import { Stage, Layer, Text, Circle } from 'react-konva';
 import QuestionInput from './QuestionInput'
 // import { connect } from 'react-redux'
 
-const IonicBond = (props) => {
+// const IonicBond = (props) => {
 
-    const startingXpos = 300
-    const startingYpos = 300
-    const electronRadius = 5
-    
+// const newText = () => ({
+//     x: 300,
+//     y: 50,
+//     x2: 700,
+//     y2: 50,
+//     textNa: "What is the charge of Sodium now?",
+//     textCl: "What is the charge of Chlorine now?"
+//     });
+const newText = () => ({
+    x: 210,
+    y: 200,
+    text: "What is the charge of Sodium now?",
+    x2: 630,
+    y2: 200,
+    text2: "What is the charge of Chlorine now?"
+  
+});
 
-    console.log('ibb', props)
+export default class IonicBond extends React.Component {
 
-    const handleDragStart = e => {
-        console.log('start drag')
-    };
-    
-    const handleDragEnd = e => {
-        console.log('end drag')
-        console.log(e.target)
-        if (e.target._lastPos.x === 575 && e.target._lastPos.y === 280) {
-            console.log('you did it!')
-            // this.popUpQuestion()
-        }
-    }
+    state = {
+        canvas: [
+          {
+            x: 210,
+            y: 170,
+            text: "The charge of Sodium is 0",
+            x2: 660,
+            y2: 170,
+            text2: "The charge of Chlorine is 0"
+          }
+        ]
+      };
 
-    // const sodium = this.props.sodium
-    // const chlorine = this.props.chlorine
-
-    const renderElectronsNa = (atom) =>  {
+    renderElectronsNa = (atom) =>  {
 
         
         // const startingXpos = 300
@@ -46,13 +56,6 @@ const IonicBond = (props) => {
         if (atom.atomic_number > 18) {
             valenceElectrons = atom.atomic_number - 18
         }
-        if (atom.atomic_number >= 20) {
-            if (this.props.atom.oxidation_states[0]==='+') {
-                valenceElectrons = this.props.atom.oxidation_states[1] 
-            } else {
-                valenceElectrons = this.props.atom.oxidation_states[0]
-            }
-        }
 
         for (let i=0; i<valenceElectrons; i++){
             arr.push(i)
@@ -62,8 +65,9 @@ const IonicBond = (props) => {
             {arr.map( i => {
                 const radius = 50
                     if (i === 0) {
-                        const x = startingXpos+parseInt(atom.atomic_radius)
-                        const y = startingYpos-20
+                        const x = 300+parseInt(atom.atomic_radius)
+
+                        const y = 300-20
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -83,10 +87,10 @@ const IonicBond = (props) => {
                         draggable 
                         x={x} 
                         y={y} 
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="black"
-                        onDragStart={handleDragStart}
-                        onDragEnd={handleDragEnd}
+                        onDragStart={this.handleDragStart}
+                        onDragEnd={this.handleDragEnd}
                         />                      
                     } 
             })}
@@ -94,9 +98,9 @@ const IonicBond = (props) => {
         )
     }
 
-    const renderElectronsCl = (atom) =>  {
+    renderElectronsCl = (atom) =>  {
 
-        const startingXposCl = startingXpos+450
+        const startingXposCl = 300+450
 
         const arr = [7]
         let valenceElectrons = 0
@@ -109,13 +113,7 @@ const IonicBond = (props) => {
         if (atom.atomic_number > 18) {
             valenceElectrons = atom.atomic_number - 18
         }
-        if (atom.atomic_number >= 20) {
-            if (this.props.atom.oxidation_states[0]==='+') {
-                valenceElectrons = this.props.atom.oxidation_states[1] 
-            } else {
-                valenceElectrons = this.props.atom.oxidation_states[0]
-            }
-        }
+
         for (let i=0; i<valenceElectrons; i++){
             arr.push(i)
         }        
@@ -125,7 +123,7 @@ const IonicBond = (props) => {
                 const radius = 50
                     if (i === 0) {
                         const x=startingXposCl-1*20
-                        const y=startingYpos-parseInt(atom.atomic_radius)
+                        const y=300-parseInt(atom.atomic_radius)
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -144,12 +142,12 @@ const IonicBond = (props) => {
                         draggable 
                         x={x}
                         y={y}
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="black" 
                         />                      
                     } else if ( i === 1) {
                         const x = startingXposCl+1*20
-                        const y = startingYpos+parseInt(atom.atomic_radius)
+                        const y = 300+parseInt(atom.atomic_radius)
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -169,13 +167,13 @@ const IonicBond = (props) => {
                         draggable 
                         x={x} 
                         y={y} 
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="gray" 
                         />
 
                     } else if ( i === 2) {
                         const x = startingXposCl+parseInt(atom.atomic_radius)
-                        const y = startingYpos-20
+                        const y = 300-20
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -195,12 +193,12 @@ const IonicBond = (props) => {
                         draggable 
                         x={x} 
                         y={y} 
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="green" 
                         />
                     } else if ( i === 3) {
                         const x = startingXposCl+parseInt(atom.atomic_radius) 
-                        const y = startingYpos+20
+                        const y = 300+20
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -219,12 +217,12 @@ const IonicBond = (props) => {
                         draggable 
                         x={x} 
                         y={y}
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="orange" 
                         />
                     } else if ( i === 4) {
                         const x = startingXposCl-1*20
-                        const y = startingYpos+parseInt(atom.atomic_radius)
+                        const y = 300+parseInt(atom.atomic_radius)
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -244,12 +242,12 @@ const IonicBond = (props) => {
                         draggable 
                         x={x} 
                         y={y} 
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="blue" 
                         />
                     } else if ( i === 5) {
                         const x = startingXposCl+1*20
-                        const y = startingYpos-parseInt(atom.atomic_radius)
+                        const y = 300-parseInt(atom.atomic_radius)
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -268,12 +266,12 @@ const IonicBond = (props) => {
                         draggable 
                         x={x} 
                         y={y} 
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="yellow" 
                         />
                     } else if ( i === 6) {
                         const x = startingXposCl-parseInt(atom.atomic_radius)
-                        const y = startingYpos+20
+                        const y = 300+20
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {
@@ -292,7 +290,7 @@ const IonicBond = (props) => {
                         draggable 
                         x={x} 
                         y={y}
-                        radius={electronRadius} 
+                        radius={5} 
                         fill="purple" 
                         />
                     } else if ( i === 7) {
@@ -300,8 +298,8 @@ const IonicBond = (props) => {
                         return <Circle 
                         fill="white"
                         x={startingXposCl-parseInt(atom.atomic_radius)} 
-                        y={startingYpos-20}
-                        radius={electronRadius}
+                        y={300-20}
+                        radius={5}
                         stroke="black"
                         strokeWidth="1"
                         shadowBlur={10}
@@ -313,31 +311,91 @@ const IonicBond = (props) => {
 
     }
 
-    const renderSodiumAndChlorine = (sodiumAtom, chlorineAtom) => {
+    handleDragStart = e => {
+        console.log('start drag')
+    };
+    
+    handleDragEnd = e => {
+        console.log('end drag')
+        console.log(e.target)
+        if (e.target._lastPos.x === 575 && e.target._lastPos.y === 280) {
+            console.log('you did it!')
+            // this.setState(prevState => ({
+            //     canvas: [{ ...newText() }]
+            //   }));
+            this.setState(prevState => ({
+                canvas: [{ ...newText() }]
+              }));
+            // this.popUpQuestion()
+        }
+    }
+
+    renderSodiumAndChlorine = (sodiumAtom, chlorineAtom) => {
         return (
             <Stage width={window.innerWidth} height={window.innerHeight}>
                 <Layer>
-                    <Text x={710} y={200} text={chlorineAtom.name} fontSize={15} />
-                    <Circle className="electronOrbit" x={startingXpos+450} y={startingYpos} radius={chlorineAtom.atomic_radius} stroke="black" />
-                    <Circle  className="nucleus" x={startingXpos+450} y={startingYpos} radius={chlorineAtom.atomic_radius/10} fill={`#${chlorineAtom.cpk_hex_color}`}/>
-                    <Circle  className="nucleusOutline" x={startingXpos+450} y={startingYpos} radius={chlorineAtom.atomic_radius/10} stroke="black" strokeWidth='1'/>
-                    {renderElectronsCl(chlorineAtom)}
+                {this.state.canvas.map(({ x, y, text, x2, y2, text2 }, key) => (
+                        <>
+                    <Text
+                        key={key}
+                        x={x}
+                        y={y}
+                        text={text}
+                        onClick={this.handleClick}
+                        fontSize={15}
+                    />
+                    <Text
+                        key={key}
+                        x={x2}
+                        y={y2}
+                        text={text2}
+                        onClick={this.handleClick}
+                        fontSize={15}
+                    />
+                    </>
+                    ))}
+                    {/* {this.state.canvas.map(({ x, y, x2, y2, textNa, textCl }, key) => (
+                            <>
+                            <Text
+                                key={key}
+                                x={x}
+                                y={y}
+                                textNa={textNa}
+                                onClick={this.handleClick}
 
-                    <Text x={275} y={200} text={sodiumAtom.name} fontSize={15} />
-                    <Circle className="electronOrbit" x={startingXpos} y={startingYpos} radius={sodiumAtom.atomic_radius} stroke="black" />
-                    <Circle  className="nucleus" x={startingXpos} y={startingYpos} radius={sodiumAtom.atomic_radius/10} fill={`#${sodiumAtom.cpk_hex_color}`}/>
-                    <Circle  className="nucleusOutline" x={startingXpos} y={startingYpos} radius={sodiumAtom.atomic_radius/10} stroke="black" strokeWidth='1'/>
-                    {renderElectronsNa(sodiumAtom)}
+                            />
+                            <Text
+                                key={key}
+                                textCl={textCl}
+                                x2={x2}
+                                y2={y2}
+                                onClick={this.handleClick}
+
+                            />
+                              </>  
+                            ))} */}
+                    {/* <Text x={660} y={170} text={`The charge of ${chlorineAtom.name} is 0.`} fontSize={15} /> */}
+                    <Circle className="electronOrbit" x={300+450} y={300} radius={chlorineAtom.atomic_radius} stroke="black" />
+                    <Circle  className="nucleus" x={300+450} y={300} radius={chlorineAtom.atomic_radius/10} fill={`#${chlorineAtom.cpk_hex_color}`}/>
+                    <Circle  className="nucleusOutline" x={300+450} y={300} radius={chlorineAtom.atomic_radius/10} stroke="black" strokeWidth='1'/>
+                    {this.renderElectronsCl(chlorineAtom)}
+
+                    {/* <Text x={210} y={170} text={`The charge of ${sodiumAtom.name} is 0.`} fontSize={15} /> */}
+                    <Circle className="electronOrbit" x={300} y={300} radius={sodiumAtom.atomic_radius} stroke="black" />
+                    <Circle  className="nucleus" x={300} y={300} radius={sodiumAtom.atomic_radius/10} fill={`#${sodiumAtom.cpk_hex_color}`}/>
+                    <Circle  className="nucleusOutline" x={300} y={300} radius={sodiumAtom.atomic_radius/10} stroke="black" strokeWidth='1'/>
+                    {this.renderElectronsNa(sodiumAtom)}
                 </Layer>
             </Stage>
         )
     }
 
-    return (
+    render() {
+        return (
         <>
-           {renderSodiumAndChlorine(props.sodium, props.chlorine)}
+           {this.renderSodiumAndChlorine(this.props.sodium, this.props.chlorine)}
         </>
-    )
+    )}
 }
 
 // const mapStateToProps = state => {
@@ -350,4 +408,3 @@ const IonicBond = (props) => {
 
 // export default connect(mapStateToProps)(IonicBond)
 
-export default IonicBond

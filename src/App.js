@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
 import RectsList from './components/RectsList'
 import IonicBond from './components/IonicBond'
+import IonicBondTest from './components/IonicBondTest'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
 import Signup from './components/Signup'
@@ -86,7 +87,9 @@ class App extends React.Component {
             <Route 
               exact path="/covalentbond" 
               component={CovalentBond} />
-            
+            <Route 
+              exact path="/ionicbondtest" 
+              component={IonicBondTest} />
             <Route 
               exact path="/users" 
               component={UsersContainer} />
