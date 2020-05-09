@@ -2,8 +2,8 @@ const atomsReducer = (
     state = {
      atoms: [], 
      loading: false,
-     sodium: "",
-     chlorine: "",
+    //  sodium: "",
+    //  chlorine: "",
     //  users: [],
     //  currentUser: ""
     }, 

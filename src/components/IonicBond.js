@@ -3,14 +3,14 @@ import { Stage, Layer, Text, Circle } from 'react-konva';
 import QuestionInput from './QuestionInput'
 // import { connect } from 'react-redux'
 
-const IonicBond = () => {
+const IonicBond = (props) => {
 
     const startingXpos = 300
     const startingYpos = 300
     const electronRadius = 5
     
 
-    // console.log('ibb', props)
+    console.log('ibb', props)
 
     const handleDragStart = e => {
         console.log('start drag')
@@ -335,7 +335,7 @@ const IonicBond = () => {
 
     return (
         <>
-           {renderSodiumAndChlorine(this.props.sodium, this.props.chlorine)}
+           {renderSodiumAndChlorine(props.sodium, props.chlorine)}
         </>
     )
 }

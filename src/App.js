@@ -25,10 +25,13 @@ class App extends React.Component {
 
     this.props.fetchAtoms()
     this.props.getCurrentUser()
-  } 
+  }
 
   render() {
-    console.log("app", this.props)
+    // const sodium = this.props.atoms.find(atom => atom.symbol==="Na")
+    // const chlorine = this.props.atoms.find(atom => atom.symbol==="Cl")
+
+    // console.log("app", sodium)
     return (
       
       <Router>
@@ -50,6 +53,20 @@ class App extends React.Component {
               }}
               />
             <Route 
+              exact path="/ionicbond" 
+              render={ (routerProps) => {
+                // this.props.atoms && <IonicBond sodium={sodium} chlorine={chlorine}/>}}
+                const sodium = this.props.atoms.find( atom => atom.symbol === "Na")
+                const chlorine = this.props.atoms.find( atom => atom.symbol === "Cl")
+                  return (
+                    sodium && chlorine &&
+                    <IonicBond 
+                    sodium={sodium}
+                    chlorine={chlorine}/>
+                  )
+              }}
+              />
+            <Route 
               exact path="/intro" 
               component={AtomIntro} />
             
@@ -65,10 +82,6 @@ class App extends React.Component {
             <Route 
               exact path="/" 
               render={ routerProps => this.props.atoms && <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
-              />
-            <Route 
-              exact path="/ionicbond" 
-              render={ routerProps => this.props.atoms && <IonicBond sodium={this.props.sodium} chlorine={this.props.chlorine}/>}
               />
             <Route 
               exact path="/covalentbond" 
@@ -95,8 +108,6 @@ const mapStateToProps = state => {
   return {
     atoms: state.atomsReducer.atoms,
     loading: state.atomsReducer.loading,
-    sodium: state.atomsReducer.atoms.find(atom => atom.symbol==="Na"),
-    chlorine: state.atomsReducer.atoms.find(atom => atom.symbol==="Cl"),
     loggedIn: !!state.currentUser
   }
 }
