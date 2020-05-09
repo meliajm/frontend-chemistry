@@ -26,7 +26,22 @@ export default class IonicBond extends React.Component {
             text2: "Charge of Chlorine: 0"
           }
         ],
-        rect : [
+        rect1: [
+            {}
+        ],
+        rect2: [
+            {}
+        ],
+        rect3: [
+            {}
+        ],
+        rect4: [
+            {}
+        ],
+        rect5: [
+            {}
+        ],
+        rect6: [
             {}
         ]
       };
@@ -314,9 +329,16 @@ export default class IonicBond extends React.Component {
             //   }));
             this.setState(prevState => ({
                 canvas: [{ ...newText() }],
-                rect: [{...newRects()}]
+                rect1: [{...newRects1()}],
+                rect2: [{...newRects2()}],
+                rect3: [{...newRects3()}],
+                rect4: [{...newRects4()}],
+                rect5: [{...newRects5()}],
+                rect6: [{...newRects6()}]
               }));
-              console.log('state', this.state.rect[0].xr)
+              console.log('state', this.state)
+
+              console.log('state rect', this.state.rect1[0].xr)
             // this.popUpQuestion()
         }
     }
@@ -361,7 +383,7 @@ export default class IonicBond extends React.Component {
                     <Circle  className="nucleusOutline" x={300} y={300} radius={sodiumAtom.atomic_radius/10} stroke="black" strokeWidth='1'/>
                     {this.renderElectronsNa(sodiumAtom)}
 
-                    {this.state.rect.map(({ xr, yr, width, height }, key) => (
+                    {this.state.rect1.map(({ xr, yr, width, height }, key) => (
                     <>
                         <Rect 
                             key={key}
@@ -369,11 +391,85 @@ export default class IonicBond extends React.Component {
                             y={yr}
                             width={width}
                             height={height}
-                            draggable
-                            onClick={this.handleClick}
+                            // onClick={this.handleClick}
                             fill="green"
                         />
-                        { this.state.rect[0].xr ? <Text draggable x={xr+(width/2)} y={yr+(height/2)} text="5" onClick={this.handleClick}/> : null }
+                        { this.state.rect1[0].xr ? <Text fill="white" x={xr+(width/2)-5} y={yr+(height/2)-5} text="+1" onClick={this.handleClick}/> : null }
+                        
+                    </>
+                    ))}
+                    {this.state.rect2.map(({ xr, yr, width, height }, key) => (
+                    <>
+                        <Rect 
+                            key={key}
+                            x={xr}
+                            y={yr}
+                            width={width}
+                            height={height}
+                            // onClick={this.handleClick}
+                            fill="purple"
+                        />
+                        { this.state.rect2[0].xr ? <Text fill="white" x={xr+(width/2)-5} y={yr+(height/2)-5} text="+2" /> : null }
+                        
+                    </>
+                    ))}
+                    {this.state.rect3.map(({ xr, yr, width, height }, key) => (
+                    <>
+                        <Rect 
+                            key={key}
+                            x={xr}
+                            y={yr}
+                            width={width}
+                            height={height}
+                            // onClick={this.handleClick}
+                            fill="blue"
+                        />
+                        { this.state.rect4[0].xr ? <Text fill="white" x={xr+(width/2)-5} y={yr+(height/2)-5} text="-1" /> : null }
+                        
+                    </>
+                    ))}
+                    {this.state.rect4.map(({ xr, yr, width, height }, key) => (
+                    <>
+                        <Rect 
+                            key={key}
+                            x={xr}
+                            y={yr}
+                            width={width}
+                            height={height}
+                            // onClick={this.handleClick}
+                            fill="green"
+                        />
+                        { this.state.rect4[0].xr ? <Text fill="white" x={xr+(width/2)-5} y={yr+(height/2)-5} text="+1" /> : null }
+                        
+                    </>
+                    ))}
+                    {this.state.rect5.map(({ xr, yr, width, height }, key) => (
+                    <>
+                        <Rect 
+                            key={key}
+                            x={xr}
+                            y={yr}
+                            width={width}
+                            height={height}
+                            // onClick={this.handleClick}
+                            fill="purple"
+                        />
+                        { this.state.rect5[0].xr ? <Text fill="white" x={xr+(width/2)-5} y={yr+(height/2)-5} text="+2" /> : null }
+                        
+                    </>
+                    ))}
+                    {this.state.rect6.map(({ xr, yr, width, height }, key) => (
+                    <>
+                        <Rect 
+                            key={key}
+                            x={xr}
+                            y={yr}
+                            width={width}
+                            height={height}
+                            // onClick={this.handleClick}
+                            fill="blue"
+                        />
+                        { this.state.rect6[0].xr ? <Text fill="white" x={xr+(width/2)-5} y={yr+(height/2)-5} text="-1" onClick={this.handleClick}/> : null }
                         
                     </>
                     ))}
@@ -400,8 +496,43 @@ const newText = () => ({
   
 });
 
-const newRects = () => ({
+const newRects1 = () => ({
     xr: 190,
+    yr: 250,
+    width: 20,
+    height: 20
+})
+
+const newRects2 = () => ({
+    xr: 300,
+    yr: 250,
+    width: 20,
+    height: 20
+})
+
+const newRects3 = () => ({
+    xr: 400,
+    yr: 250,
+    width: 20,
+    height: 20
+})
+
+const newRects4 = () => ({
+    xr: 650,
+    yr: 250,
+    width: 20,
+    height: 20
+})
+
+const newRects5 = () => ({
+    xr: 750,
+    yr: 250,
+    width: 20,
+    height: 20
+})
+
+const newRects6 = () => ({
+    xr: 850,
     yr: 250,
     width: 20,
     height: 20
