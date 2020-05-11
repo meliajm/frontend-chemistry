@@ -8,7 +8,8 @@ import Atom from './components/Atom'
 import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
 import RectsList from './components/RectsList'
-import IonicBond from './components/IonicBond'
+import IonicBond1 from './components/IonicBond'
+import IonicBond2 from './components/IonicBond2'
 import IonicBondTest from './components/IonicBondTest'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
@@ -54,16 +55,30 @@ class App extends React.Component {
               }}
               />
             <Route 
-              exact path="/ionicbond" 
+              exact path="/ionicbond1" 
               render={ (routerProps) => {
                 // this.props.atoms && <IonicBond sodium={sodium} chlorine={chlorine}/>}}
                 const sodium = this.props.atoms.find( atom => atom.symbol === "Na")
                 const chlorine = this.props.atoms.find( atom => atom.symbol === "Cl")
                   return (
                     sodium && chlorine &&
-                    <IonicBond 
+                    <IonicBond1 
                     sodium={sodium}
                     chlorine={chlorine}/>
+                  )
+              }}
+              />
+            <Route 
+              exact path="/ionicbond2" 
+              render={ (routerProps) => {
+                // this.props.atoms && <IonicBond sodium={sodium} chlorine={chlorine}/>}}
+                const hydrogen = this.props.atoms.find( atom => atom.symbol === "H")
+                const oxygen = this.props.atoms.find( atom => atom.symbol === "O")
+                  return (
+                    hydrogen && oxygen &&
+                    <IonicBond2 
+                    hydrogen={hydrogen}
+                    oxygen={oxygen}/>
                   )
               }}
               />

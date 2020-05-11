@@ -21,7 +21,9 @@ const NavBar = ({ currentUser, loggedIn }) => {
             <br/>
             <Link to='/users'>Users</Link>
             <br/>
-            <Link to='/ionicbond'>Ionic Bond</Link>
+            <Link to='/ionicbond1'>Ionic Bond</Link>
+            <br/>
+            <Link to='/ionicbond2'>Ionic Bond 2</Link>
             <br/>
             <Link to='/ionicbondtest'>Test</Link>
             <br/>

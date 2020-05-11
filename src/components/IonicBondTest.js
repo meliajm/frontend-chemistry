@@ -28,6 +28,10 @@ export default class App extends Component {
   };
 
   handleClick = () => {
+    // this.setState(prevState => ({
+    //     canvas: [...prevState.canvas, { ...newRectangle() }]
+    //   }));
+
     this.setState(prevState => ({
       canvas: [{ ...newText() }]
     }));
