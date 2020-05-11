@@ -4,17 +4,31 @@ import { Link } from 'react-router-dom'
 const AtomIntro = () =>{
 
     return (
-        <div>
-                What is an atom?
+        <p>
+                <div>
+                    <strong>What is an atom?</strong>
+                </div> 
                 <br/>
+
+                <div>
+                    Definition: The atom is the smallest object that retains the properties of an element.
+                </div>
+                <div>
+                What is an atom made of?
+                </div>
+                <div className="proton">
+                   <p>Protons</p> 
+                </div>
+               
+                <div className="electron">
+                    <p>Electrons,</p>
+                </div> 
+
+                <div className="neutron">
+                    <p>and Neutrons</p> 
+                </div> 
+                                
                 <br/>
-                Atom: The atom is the smallest object that retains the properties of an element.
-                <br/>
-                https://www.chemicool.com/definition/atom.html
-                <br/>
-                what is an atom made of?
-                <br/>
-                protons, electrons, neutrons
                 <br/>
                 Whos cares about any of this?
                     -foundations of chemistry, biology, materials science
@@ -26,7 +40,7 @@ const AtomIntro = () =>{
                 <br/>
                 <Link to='/api/v1/atoms'>See a list of all 118 elements</Link>
                 <br/>
-            </div>
+            </p>
         )
 }
 

@@ -37,3 +37,23 @@
     transform: rotate(360deg);
   }
 }
+
+.proton {
+  color: #3122bb;
+}
+
+.electron {
+  color: #fd0000;
+}
+
+.neutron {
+  color: #16462488;
+}
+
+p {
+  margin-left: 100px;
+}
+
+h3 {
+  text-align: center;
+}
