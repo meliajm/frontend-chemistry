@@ -5,6 +5,16 @@ import { Stage, Layer, Text, Rect } from 'react-konva';
 
 export default class RectsList extends React.Component {
 
+    handleOnMouseEnter = (e) => {
+        const container = e.target.getStage().container();
+        container.style.cursor = "pointer";
+    }
+
+    handleOnMouseLeave = (e) => {
+        const container = e.target.getStage().container();
+        container.style.cursor = "default";
+    } 
+
     render() {
         
         let one = []
@@ -31,7 +41,6 @@ export default class RectsList extends React.Component {
 
         this.props.atoms.map((atom, i) => {
             if (atom.symbol==="H" || atom.group_block==="Alkali metal") {
-                // console.log(atom, i)
                 one.push(atom)
             }
             if (atom.group_block==="Alkaline earth metal") {
@@ -136,15 +145,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
-                    onMouseEnter={e => {
-                        const container = e.target.getStage().container();
-                        container.style.cursor = "pointer";
-                        // this.opacity = 1
-                      }}
-                    onMouseLeave={e => {
-                        const container = e.target.getStage().container();
-                        container.style.cursor = "default";
-                    }}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -156,6 +158,9 @@ export default class RectsList extends React.Component {
                     x={height/2}
                     y={yr+delta}
                     fill={"#C8C8C8"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
@@ -164,6 +169,9 @@ export default class RectsList extends React.Component {
                     x={height/2-delta}
                     y={yr+width/2}
                     fill={"#C8C8C8"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -178,6 +186,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -189,14 +199,20 @@ export default class RectsList extends React.Component {
                     x={height/2+card}
                     y={yr+card+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={height/2+card-delta*2}
+                    x={height/2+card-delta*3}
                     y={yr+card+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -211,9 +227,9 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
-                    onClick={() => {
-                        this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
-                   }}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
@@ -222,14 +238,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -244,6 +266,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -255,14 +279,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -277,6 +307,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -288,14 +320,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -310,6 +348,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -321,14 +361,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -343,6 +389,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -354,14 +402,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -376,6 +430,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -387,14 +443,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -409,6 +471,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -420,14 +484,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"black"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -442,6 +512,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -453,14 +525,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -475,6 +553,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -486,14 +566,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -508,6 +594,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -519,14 +607,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card*3+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card*3+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -541,6 +635,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -552,14 +648,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -574,6 +676,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -585,14 +689,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -607,6 +717,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -618,14 +730,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -640,6 +758,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -651,14 +771,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card+delta}
                     fill={"gray"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card+width/2}
                     fill={"gray"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -673,6 +799,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -684,14 +812,20 @@ export default class RectsList extends React.Component {
                     x={xr+width/2-delta}
                     y={yr+card+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+card+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -706,6 +840,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -717,14 +853,20 @@ export default class RectsList extends React.Component {
                     x={xr+height/2-delta*2}
                     y={yr+delta}
                     fill={"#C8C8C8"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+width/2}
                     fill={"#C8C8C8"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -739,6 +881,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -750,14 +894,20 @@ export default class RectsList extends React.Component {
                     x={xr+height/2-delta*2}
                     y={yr+delta}
                     fill={"gray"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+width/2}
                     fill={"gray"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -772,6 +922,8 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
@@ -783,14 +935,20 @@ export default class RectsList extends React.Component {
                     x={xr+height/2-delta*2}
                     y={yr+delta}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     <Text 
                     align={"center"}
                     fontSize={fontSizeSym}
                     text={`${atom.symbol}`}
-                    x={xr+height/2-delta*2}
+                    x={xr+height/2-delta*3}
                     y={yr+width/2}
                     fill={"white"}
+                    onMouseEnter={this.handleOnMouseEnter}
+                    onMouseLeave={this.handleOnMouseLeave}
+                    onClick={() => {this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)}}
                     />
                     </>
                     })}
@@ -802,37 +960,3 @@ export default class RectsList extends React.Component {
         );
     }
 }
-// export default RectsList
-  
-    // render() {
-
-    //     const colOne = this.props.atoms.filter( atom => atom.symbol==="H" ||
-    //         atom.group_block==="Alkali metal")
-        
-    //     const colOneX = 10
-    //     const colOneY = 10
-
-    //     const colTwo = this.props.atoms.filter( atom => atom.symbol==="H" ||
-    //         atom.group_block==="Alkaline earth metal")
-        
-    //     const colTwoX = 15
-    //     const colTwoY = 10
-        
-    //     console.log('2', colTwo)
-
-    //     const rectsRenderOne = colOne.map((atom, i) => (
-    //         <RectCard key={i} atom={atom} colX={colOneX} colY={colOneY}/>
-    //     ))
-
-    //     const rectsRenderTwo = colTwo.map((atom, i) => (
-    //         <RectCard key={i} atom={atom} colX={colTwoX} colY={colTwoY}/>
-    //     ))
-    //     return (
-    //         <>
-    //           <h3>Rects</h3>
-    //           {rectsRenderOne}  
-    //           {rectsRenderTwo}
-    //         </>
-    //     )
-    // }
-// 
