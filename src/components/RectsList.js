@@ -1,6 +1,5 @@
 import React from 'react'
-import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
-import { Link } from 'react-router-dom'
+import { Stage, Layer, Text, Rect } from 'react-konva';
 
 // import RectCard from './RectCard'
 
@@ -30,7 +29,6 @@ export default class RectsList extends React.Component {
         let actin = []
 
 
-        console.log("rect list", this.props)
         this.props.atoms.map((atom, i) => {
             if (atom.symbol==="H" || atom.group_block==="Alkali metal") {
                 // console.log(atom, i)
@@ -116,453 +114,674 @@ export default class RectsList extends React.Component {
                 actin.push(atom)
             }
         })
+        const width = 60
+        const height = 65
+        const fontSizeNum = 15
+        const fontSizeSym = 25
+        const delta = 5
+        const card = 75
         
-        
-        // console.log('2', two)
-        // const colOne = this.props.atoms.filter( atom => atom.symbol==="H" ||
-        // atom.group_block==="Alkali metal")
-
-        // const colTwo = this.props.atoms.filter( atom => 
-        // atom.group_block==="Alkaline earth metal")
-        // console.log(colTwo)
         return (
-           
+            
             <Stage width={window.innerWidth} height={window.innerHeight}>
                 <Layer>
                 {one.map((atom, i) => {
+                    let xr = 10
+                    let yr = i*75+1
                     return <>
                     <Rect
-                    // draggable
                     fill={`#${atom.cpk_hex_color}`}
-                    x={10}
-                    y={i*75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
-                    {/* <Link to={`/api/v1/atoms/${atom.id}`}>{atom.name}<br/></Link> */}
-
                     <Text 
                     align={"center"}
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={10}
-                    y={i*75}
-                    fill={"#555"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={height/2}
+                    y={yr+delta}
+                    fill={"#C8C8C8"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={height/2-delta}
+                    y={yr+width/2}
+                    fill={"#C8C8C8"}
                     />
                     </>
                     })}
                 {two.map((atom, i) => {
+                    let xr = 10
+                    let yr = i*75+1
                     return <>
                     <Rect
-                    
                     fill={`#${atom.cpk_hex_color}`}
-                    x={80}
-                    y={i*75+75}
-                    width={60}
-                    height={65}
+                    x={card+delta}
+                    y={yr+card}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={80}
-                    y={i*75+75}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={height/2+card}
+                    y={yr+card+delta}
+                    fill={"black"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={height/2+card-delta*2}
+                    y={yr+card+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {three.map((atom, i) => {
+                    let xr = 150
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+card*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150}
-                    y={i*75+75+75+75}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"black"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {four.map((atom, i) => {
+                    let xr = 150+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70}
-                    y={i*75+75+75+75}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"black"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {five.map((atom, i) => {
+                    let xr = 150+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70}
-                    y={i*75+75+75+75}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"black"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {six.map((atom, i) => {
+                    let xr = 150+70+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70}
-                    y={i*75+75+75+75}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"black"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {seven.map((atom, i) => {
+                    let xr = 150+70+70+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70}
-                    y={i*75+75+75+75}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"black"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {eight.map((atom, i) => {
+                    let xr = 150+70+70+70+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
+                     <Text 
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"black"}
+                    />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70}
-                    y={i*75+75+75+75}
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {nine.map((atom, i) => {
+                    let xr = 150+70+70+70+70+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"black"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"black"}
                     />
                     </>
                     })}
                 {ten.map((atom, i) => {
+                    let xr = 150+70+70+70+70+70+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
                 {eleven.map((atom, i) => {
+                    let xr = 150+70+70+70+70+70+70+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
                 {twelve.map((atom, i) => {
+                    let xr = 150+70+70+70+70+70+70+70+70+70
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75*3}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75+75+75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card*3+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card*3+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
                 {thirteen.map((atom, i) => {
+                    let xr = 150+70*10
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
                 {fourteen.map((atom, i) => {
+                    let xr = 150+70*11
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    fill={"#fff"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
                 {fifteen.map((atom, i) => {
+                    let xr = 150+70*12
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
                 {sixteen.map((atom, i) => {
+                    let xr = 150+70*13
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card+delta}
+                    fill={"gray"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card+width/2}
+                    fill={"gray"}
                     />
                     </>
                     })}
                 {seventeen.map((atom, i) => {
+                    let xr = 150+70*14
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr+75}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75+75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+width/2-delta}
+                    y={yr+card+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+card+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
                 {eighteen.map((atom, i) => {
+                    let xr = 150+70*15
+                    let yr = i*75+1
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={150+70+70+70+70+70+70+70+70+70+70+70+70+70+70+70}
-                    y={i*75}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+delta}
+                    fill={"#C8C8C8"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+width/2}
+                    fill={"#C8C8C8"}
                     />
                     </>
                     })}
                 {lanth.map((atom, i) => {
+                    let xr = 70*i+70*3+10
+                    let yr = 75*7+20
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={70*i+70*3+10}
-                    y={75*7+20}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={70*i+70*3+10}
-                    y={75*7+20}
-                    fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+delta}
+                    fill={"gray"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+width/2}
+                    fill={"gray"}
                     />
                     </>
                     })}
                 {actin.map((atom, i) => {
+                    let xr = 70*i+70*3+10
+                    let yr = 75*7+20+75
                     return <>
                     <Rect
                     fill={`#${atom.cpk_hex_color}`}
-                    x={70*i+70*3+10}
-                    y={75*7+20+75}
-                    width={60}
-                    height={65}
+                    x={xr}
+                    y={yr}
+                    width={width}
+                    height={height}
                     stroke="black"
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
                     />
                     <Text 
-                    fontSize={10}
-                    text={`${atom.atomic_number} ${atom.name}`}
-                    x={70*i+70*3+10}
-                    y={75*7+20+75}
-                    // fill={"#555"}
+                    align={"center"}
+                    fontSize={fontSizeNum}
+                    text={`${atom.atomic_number}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+delta}
+                    fill={"white"}
+                    />
+                    <Text 
+                    align={"center"}
+                    fontSize={fontSizeSym}
+                    text={`${atom.symbol}`}
+                    x={xr+height/2-delta*2}
+                    y={yr+width/2}
+                    fill={"white"}
                     />
                     </>
                     })}
