@@ -136,6 +136,15 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    onMouseEnter={e => {
+                        const container = e.target.getStage().container();
+                        container.style.cursor = "pointer";
+                        // this.opacity = 1
+                      }}
+                    onMouseLeave={e => {
+                        const container = e.target.getStage().container();
+                        container.style.cursor = "default";
+                    }}
                     onClick={() => {
                         this.props.routerProps.history.push(`/api/v1/atoms/${atom.id}`)
                    }}
