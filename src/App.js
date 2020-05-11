@@ -8,7 +8,9 @@ import Atom from './components/Atom'
 import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
 import RectsList from './components/RectsList'
-import IonicBond from './components/IonicBond'
+import IonicBond1 from './components/IonicBond'
+import IonicBond2 from './components/IonicBond2'
+import IonicBondTest from './components/IonicBondTest'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
 import Signup from './components/Signup'
@@ -25,10 +27,13 @@ class App extends React.Component {
 
     this.props.fetchAtoms()
     this.props.getCurrentUser()
-  } 
+  }
 
   render() {
-    console.log("app", this.props)
+    // const sodium = this.props.atoms.find(atom => atom.symbol==="Na")
+    // const chlorine = this.props.atoms.find(atom => atom.symbol==="Cl")
+
+    // console.log("app", sodium)
     return (
       
       <Router>
@@ -50,6 +55,34 @@ class App extends React.Component {
               }}
               />
             <Route 
+              exact path="/ionicbond1" 
+              render={ (routerProps) => {
+                // this.props.atoms && <IonicBond sodium={sodium} chlorine={chlorine}/>}}
+                const sodium = this.props.atoms.find( atom => atom.symbol === "Na")
+                const chlorine = this.props.atoms.find( atom => atom.symbol === "Cl")
+                  return (
+                    sodium && chlorine &&
+                    <IonicBond1 
+                    sodium={sodium}
+                    chlorine={chlorine}/>
+                  )
+              }}
+              />
+            <Route 
+              exact path="/ionicbond2" 
+              render={ (routerProps) => {
+                // this.props.atoms && <IonicBond sodium={sodium} chlorine={chlorine}/>}}
+                const lithium = this.props.atoms.find( atom => atom.symbol === "Li")
+                const oxygen = this.props.atoms.find( atom => atom.symbol === "O")
+                  return (
+                    lithium && oxygen &&
+                    <IonicBond2 
+                    lithium={lithium}
+                    oxygen={oxygen}/>
+                  )
+              }}
+              />
+            <Route 
               exact path="/intro" 
               component={AtomIntro} />
             
@@ -67,13 +100,11 @@ class App extends React.Component {
               render={ routerProps => this.props.atoms && <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
               />
             <Route 
-              exact path="/ionicbond" 
-              render={ routerProps => <IonicBond atoms={this.props.atoms} />}
-              />
-            <Route 
               exact path="/covalentbond" 
               component={CovalentBond} />
-            
+            <Route 
+              exact path="/ionicbondtest" 
+              component={IonicBondTest} />
             <Route 
               exact path="/users" 
               component={UsersContainer} />
@@ -95,7 +126,6 @@ const mapStateToProps = state => {
   return {
     atoms: state.atomsReducer.atoms,
     loading: state.atomsReducer.loading,
-    // users: state.users,
     loggedIn: !!state.currentUser
   }
 }
