@@ -7,9 +7,6 @@ const AtomIntro = () =>{
         <div>
                 What is an atom?
                 <br/>
-                search for keywords
-                <br/>
-                respond with yes atom does have that aspect to it or no
                 <br/>
                 Atom: The atom is the smallest object that retains the properties of an element.
                 <br/>

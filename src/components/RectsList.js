@@ -5,9 +5,18 @@ import { Stage, Layer, Text, Rect } from 'react-konva';
 
 export default class RectsList extends React.Component {
 
+    state = {
+        opacity: 1
+    }
+
     handleOnMouseEnter = (e) => {
         const container = e.target.getStage().container();
         container.style.cursor = "pointer";
+        // const container = e.target
+        // container.attrs.opacity = 0.5
+        // const keys = e.target._cache.keys()
+        // console.log(keys.type)
+        // console.log(keys.find( key =>key==="absoluteOpacity"))
     }
 
     handleOnMouseLeave = (e) => {
@@ -145,6 +154,7 @@ export default class RectsList extends React.Component {
                     width={width}
                     height={height}
                     stroke="black"
+                    opacity={this.state.opacity}
                     onMouseEnter={this.handleOnMouseEnter}
                     onMouseLeave={this.handleOnMouseLeave}
                     onClick={() => {
