@@ -72,12 +72,12 @@ class App extends React.Component {
               exact path="/ionicbond2" 
               render={ (routerProps) => {
                 // this.props.atoms && <IonicBond sodium={sodium} chlorine={chlorine}/>}}
-                const hydrogen = this.props.atoms.find( atom => atom.symbol === "H")
+                const lithium = this.props.atoms.find( atom => atom.symbol === "Li")
                 const oxygen = this.props.atoms.find( atom => atom.symbol === "O")
                   return (
-                    hydrogen && oxygen &&
+                    lithium && oxygen &&
                     <IonicBond2 
-                    hydrogen={hydrogen}
+                    lithium={lithium}
                     oxygen={oxygen}/>
                   )
               }}
