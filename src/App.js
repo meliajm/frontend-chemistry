@@ -84,7 +84,14 @@ class App extends React.Component {
               />
             <Route 
               exact path="/intro" 
-              component={AtomIntro} />
+              render={ routerProps => {
+                const lithium = this.props.atoms.find( atom => atom.symbol === "Li")
+                return (
+                  lithium && 
+                  <AtomIntro lithium={lithium}/>
+                )
+              }}
+             />
             
             <Route 
               exact path="/theatom" 
