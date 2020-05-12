@@ -5,9 +5,9 @@ const User = props => {
         <>
             <li>
                 {console.log('user', props)}
-                {props.user.email}
+                {props.user.id}. {props.user.email}
                 <br />
-                {props.user.id}
+                
             </li>
         </>
     )

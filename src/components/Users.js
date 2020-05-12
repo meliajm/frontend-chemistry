@@ -1,18 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import User from './User'
 
-// export class Users extends Component { render() {
 const Users = (props) => {
 
-    // const {users} = props.users
     console.log('users', props) 
     return (
-        <>
-            User List
+        <p>
+            <strong>User List</strong>
             {props.users.map( user => <User user={user}
             key={user.id}
             />)}  
-        </>
+        </p>
     )
 }
 
