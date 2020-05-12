@@ -17,6 +17,7 @@ import Signup from './components/Signup'
 import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
 import Login from './components/Login'
+import IonicBondMain from './components/IonicBondMain'
 import './App.css';
 
 class App extends React.Component {
@@ -96,6 +97,9 @@ class App extends React.Component {
             <Route 
               exact path="/theatom" 
               component={Atom} />
+            <Route 
+              exact path="/ionicbond" 
+              component={IonicBondMain} />
             {/* <Route 
               exact path="/signup"
               render={ routerProps => <Signup routerProps={routerProps} />}/>

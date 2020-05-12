@@ -5,14 +5,16 @@ export default function Atom() {
     return (
         <div>
             Atom orbitals
+            2,8
+            <br/>            
+            charge, forces of attraction
             <br/>
-            strong force 
-            <br/>
-            nuclues
-            <br/>
-            charge
-            <br/>
-            electrons
+            valence electrons - bonding electrons
+            <li>
+                stability of outer most orbital
+                2 or 8
+                electrons in inner orbitals are more tightly bound to nucleus
+            </li>
             <br/>
             who cares?
             <br/>
@@ -21,7 +23,7 @@ export default function Atom() {
             <Link to='/covalentbond'>Covalent Bond</Link>
 
             <br/>
-            <Link to='/ionicbond1'>Ionic Bond</Link>
+            <Link to='/ionicbond1'>Ionic Bond 1</Link>
             <br/>
             <Link to='/ionicbond2'>Ionic Bond 2</Link>
             <br/>
