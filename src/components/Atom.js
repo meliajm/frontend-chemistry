@@ -19,6 +19,14 @@ export default function Atom() {
             <Link to='/ionicbond'>Ionic Bond</Link>
             <br/>
             <Link to='/covalentbond'>Covalent Bond</Link>
+
+            <br/>
+            <Link to='/ionicbond1'>Ionic Bond</Link>
+            <br/>
+            <Link to='/ionicbond2'>Ionic Bond 2</Link>
+            <br/>
+            <Link to='/ionicbondtest'>Test</Link>
+            <br/>
         </div>
     )
 }

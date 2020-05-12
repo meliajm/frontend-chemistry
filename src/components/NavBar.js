@@ -6,35 +6,24 @@ import Logout from './Logout'
 const NavBar = ({ currentUser, loggedIn }) => {
     return (
         <nav className="nav">
-            <div className="auth">
+           
+            
+            { loggedIn ? <><h3 className="logout"> Welcome to your lab, {currentUser.email}!</h3> <Logout/></> :
+            
+             <>
+             <h3 className="logout">
+             <Link to='/signup'>Sign Up</Link>
+             </h3>
+             <h3 className="logout">
+             <Link to='/login'>Log In</Link>
+             </h3>
+             </>
+            }
+            
             <h3 className="home"><Link to='/'>Home</Link></h3>
             <h3 className="intro"><Link to='/intro'>Intro</Link></h3>
             <h3 className="users"><Link to='/users'>Users</Link></h3>
-           <h3 className="logout"> 
-            { loggedIn ? <> Welcome to your lab, {currentUser.email}! <Logout/></> :
-             <>
-             <Link to='/signup'>Sign Up</Link>
-             <br/>
-             <Link to='/login'>Log In</Link>
-             <br/>
-             </>
-            }
-            </h3>
-            </div>
-
-            
-          
-            <br/>
-            <Link to='/ionicbond1'>Ionic Bond</Link>
-            <br/>
-            <Link to='/ionicbond2'>Ionic Bond 2</Link>
-            <br/>
-            <Link to='/ionicbondtest'>Test</Link>
-            <br/>
-            
-
-            {/* <br/>
-            <Link to='/users'>Users</Link> */}
+        
         </nav>
     )
 }

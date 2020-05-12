@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 const Logout = ({ history, logout }) => {
     return (
-        < form className="logout" onSubmit={(event) => {
+        < form className="auth" onSubmit={(event) => {
             event.preventDefault()
             logout()
             history.push('/')
