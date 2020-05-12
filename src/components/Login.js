@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { login } from '../actions/userAuth'
+import Header from './Header'
 
 export class Login extends React.Component {
 
@@ -26,6 +27,9 @@ export class Login extends React.Component {
 
     render() {
         return (
+            <>
+            <Header title={'Log in to Up and Atom Lab'} />
+
             <form onSubmit={(event) => this.handleOnSubmit(event)}>
             <input 
             type="text" 
@@ -42,10 +46,12 @@ export class Login extends React.Component {
             placeholder="password"
             />
             <input
+            className="button"
             type="submit"
             value="Log In"
             />
         </form>
+        </>
         )
     }
 }

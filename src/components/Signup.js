@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signup } from '../actions/userAuth'
+import Header from './Header'
 
 export class Signup extends Component {
 
@@ -29,7 +30,7 @@ export class Signup extends Component {
     render() {
         return (
             <>
-            <h3>Sign Up</h3>
+          <Header title={'Sign up for Up and Atom Lab'} />
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
                     <input 
                     type="text"
@@ -45,7 +46,7 @@ export class Signup extends Component {
                     placeholder="password"
                     value={this.state.password}
                     />
-                    <input type="submit" value="Sign Up"/>
+                    <input className="button" type="submit" value="Sign Up"/>
 
                 </form>
                 

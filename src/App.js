@@ -96,12 +96,12 @@ class App extends React.Component {
             <Route 
               exact path="/theatom" 
               component={Atom} />
-            <Route 
+            {/* <Route 
               exact path="/signup"
               render={ routerProps => <Signup routerProps={routerProps} />}/>
             <Route
               exact path="/login"
-              render={ routerProps => <Login routerProps={routerProps}/>} />
+              render={ routerProps => <Login routerProps={routerProps}/>} /> */}
             <Route 
               exact path="/" 
               render={ routerProps => this.props.atoms && <RectsList atoms={this.props.atoms} routerProps={routerProps} />}
