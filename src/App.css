@@ -60,7 +60,7 @@ h3 {
 
 .home {
   /* padding: 0px 10px; */
-  margin-left: 50px;
+  margin-left: 100px;
   word-wrap: normal;
   display: inline;
 }
@@ -92,5 +92,8 @@ h3 {
   margin-left: 100px;
   word-wrap: normal;
   display: inline;
+}
+.nav {
+  background-color: lavenderblush;
 }
 /* 243470 */

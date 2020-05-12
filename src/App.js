@@ -14,7 +14,6 @@ import IonicBondTest from './components/IonicBondTest'
 import CovalentBond from './components/CovalentBond'
 import AtomsShow from './components/AtomsShow'
 import Signup from './components/Signup'
-// import UserInput from './components/UserInput'
 import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
 import Login from './components/Login'
@@ -35,7 +34,8 @@ class App extends React.Component {
 
     // console.log("app", sodium)
     return (
-      
+      <>
+      { this.props.loggedIn ?  
       <Router>
         <NavBar />
           <Header title={'Up and Atom Lab'} />
@@ -124,7 +124,20 @@ class App extends React.Component {
              
               </div>
           </Switch>
+      </Router> 
+      : 
+      <Router>
+      <NavBar />
+      <Route 
+      exact path="/signup"
+      render={ routerProps => <Signup routerProps={routerProps} />}/>
+    <Route
+      exact path="/login"
+      render={ routerProps => <Login routerProps={routerProps}/>} /> 
       </Router>
+      }
+      </>
+
     )
   }
 }
@@ -137,12 +150,9 @@ const mapStateToProps = state => {
   }
 }
 
-// a user is added to store during sign up, when App mounts fetch all users so they are in store
-// best practice here? will this cause problems when a user signs up? i think not because i am redirecting to home page
 const mapDispatchToProps = dispatch => {
   return {
     fetchAtoms: () => dispatch(fetchAtoms()),
-    // fetchUsers: () => dispatch(fetchUsers()),
     getCurrentUser: () => dispatch(getCurrentUser())
   }
 }
