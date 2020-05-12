@@ -6,7 +6,12 @@ import Logout from './Logout'
 const NavBar = ({ currentUser, loggedIn }) => {
     return (
         <nav className="nav">
-            { loggedIn ? <> Welcome, {currentUser.email}! to your chem lab <Logout/></> :
+            <div className="auth">
+            <h3 className="home"><Link to='/'>Home</Link></h3>
+            <h3 className="intro"><Link to='/intro'>Intro</Link></h3>
+            <h3 className="users"><Link to='/users'>Users</Link></h3>
+           <h3 className="logout"> 
+            { loggedIn ? <> Welcome to your lab, {currentUser.email}! <Logout/></> :
              <>
              <Link to='/signup'>Sign Up</Link>
              <br/>
@@ -14,12 +19,11 @@ const NavBar = ({ currentUser, loggedIn }) => {
              <br/>
              </>
             }
+            </h3>
+            </div>
 
-            <Link to='/'>Home</Link>
-            <br/>
-            <Link to='/intro'>Atom Intro</Link>
-            <br/>
-            <Link to='/users'>Users</Link>
+            
+          
             <br/>
             <Link to='/ionicbond1'>Ionic Bond</Link>
             <br/>
