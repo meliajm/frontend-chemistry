@@ -110,6 +110,19 @@ h3 {
   margin: 3px;
 }
 
+.input {
+  position: relative;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  height: 1.5rem;
+  width: max-content;
+  color: black;
+  /* font-size: 6px; */
+  justify-self: center;
+  /* font-family: 'Segoe UI'; */
+  margin: 3px;
+}
+
 .button:hover {
   /* background-color: whitesmoke; */
   border: gray solid 1px;

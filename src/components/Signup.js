@@ -33,6 +33,7 @@ export class Signup extends Component {
           <Header title={'Sign up for Up and Atom Lab'} />
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
                     <input 
+                    className="input"
                     type="text"
                     onChange={(event) => this.handleOnChange(event)}
                     name="email"
@@ -40,6 +41,7 @@ export class Signup extends Component {
                     value={this.state.email}
                     />
                     <input 
+                    className="input"
                     type="password"
                     onChange={(event) => this.handleOnChange(event)}
                     name="password"

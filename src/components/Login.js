@@ -32,6 +32,7 @@ export class Login extends React.Component {
 
             <form onSubmit={(event) => this.handleOnSubmit(event)}>
             <input 
+            className="input"
             type="text" 
             onChange={(event) => this.handleOnChange(event)}
             name="email"
@@ -39,6 +40,7 @@ export class Login extends React.Component {
             placeholder="email"
             />
             <input 
+            className="input"
             type="password" 
             onChange={(event) => this.handleOnChange(event)}
             name="password"
