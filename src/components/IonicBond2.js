@@ -1,5 +1,6 @@
 import React from 'react'
 import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
+import { Link } from 'react-router-dom'
 
 export default class IonicBond2 extends React.Component {
 
@@ -91,7 +92,6 @@ export default class IonicBond2 extends React.Component {
                         x={x} 
                         y={y} 
                         radius={5} 
-                        // fill={`#${atom.cpk_hex_color}`}
                         fill={this.state.electronColor}
                         onDragStart={this.handleDragStart}
                         onDragEnd={this.handleDragEnd1}
@@ -114,11 +114,8 @@ export default class IonicBond2 extends React.Component {
             {arr.map( i => {
                 const radius = 50
                     if (i === 0) {
-                        //
-                        // const x = this.state.canvas[0].xion1-parseInt(atom.atomic_radius)
                         const x = 340
                         const y = 250
-                        // const y = this.state.canvas[0].ypos
                         return <Circle 
                         dragBoundFunc = {
                             function(pos) {

@@ -1,21 +1,12 @@
 import React from 'react'
 import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
 import QuestionInput from './QuestionInput'
-// import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-// const IonicBond = (props) => {
-
-// const newText = () => ({
-//     x: 300,
-//     y: 50,
-//     x2: 700,
-//     y2: 50,
-//     textNa: "What is the charge of Sodium now?",
-//     textCl: "What is the charge of Chlorine now?"
-//     });
 export default class IonicBond1 extends React.Component {
 
     state = {
+        electronColor: `#${this.props.sodium.cpk_hex_color}`,
         canvas: [
           {
             x: 210,
@@ -76,7 +67,6 @@ export default class IonicBond1 extends React.Component {
                 const radius = 50
                     if (i === 0) {
                         const x = 300+parseInt(atom.atomic_radius)
-
                         const y = 300-20
                         return <Circle 
                         dragBoundFunc = {
@@ -98,7 +88,7 @@ export default class IonicBond1 extends React.Component {
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill="black"
+                        fill={this.state.electronColor}
                         onDragStart={this.handleDragStart}
                         onDragEnd={this.handleDragEnd}
                         />                      
@@ -153,7 +143,7 @@ export default class IonicBond1 extends React.Component {
                         x={x}
                         y={y}
                         radius={5} 
-                        fill="black" 
+                        fill={`#${atom.cpk_hex_color}`}
                         />                      
                     } else if ( i === 1) {
                         const x = startingXposCl+1*20
@@ -178,7 +168,7 @@ export default class IonicBond1 extends React.Component {
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill="gray" 
+                        fill={`#${atom.cpk_hex_color}`} 
                         />
 
                     } else if ( i === 2) {
@@ -204,7 +194,7 @@ export default class IonicBond1 extends React.Component {
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill="green" 
+                        fill={`#${atom.cpk_hex_color}`} 
                         />
                     } else if ( i === 3) {
                         const x = startingXposCl+parseInt(atom.atomic_radius) 
@@ -228,7 +218,7 @@ export default class IonicBond1 extends React.Component {
                         x={x} 
                         y={y}
                         radius={5} 
-                        fill="orange" 
+                        fill={`#${atom.cpk_hex_color}`} 
                         />
                     } else if ( i === 4) {
                         const x = startingXposCl-1*20
@@ -253,7 +243,7 @@ export default class IonicBond1 extends React.Component {
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill="blue" 
+                        fill={`#${atom.cpk_hex_color}`} 
                         />
                     } else if ( i === 5) {
                         const x = startingXposCl+1*20
@@ -277,7 +267,7 @@ export default class IonicBond1 extends React.Component {
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill="yellow" 
+                        fill={`#${atom.cpk_hex_color}`} 
                         />
                     } else if ( i === 6) {
                         const x = startingXposCl-parseInt(atom.atomic_radius)
@@ -301,7 +291,7 @@ export default class IonicBond1 extends React.Component {
                         x={x} 
                         y={y}
                         radius={5} 
-                        fill="purple" 
+                        fill={`#${atom.cpk_hex_color}`} 
                         />
                     } else if ( i === 7) {
                         console.log('here')
@@ -340,7 +330,9 @@ export default class IonicBond1 extends React.Component {
                 rect3: [{...newRects3()}],
                 rect4: [{...newRects4()}],
                 rect5: [{...newRects5()}],
-                rect6: [{...newRects6()}]
+                rect6: [{...newRects6()}],
+                electronColor: `#${this.props.chlorine.cpk_hex_color}`
+
               }));
             //   console.log('state', this.state)
 
@@ -383,7 +375,7 @@ export default class IonicBond1 extends React.Component {
 
     renderSodiumAndChlorine = (sodiumAtom, chlorineAtom) => {
         return (
-            <Stage width={window.innerWidth} height={window.innerHeight}>
+            <Stage width={window.innerWidth} height={window.innerHeight-150}>
                 <Layer>
                 
                     
@@ -547,6 +539,16 @@ export default class IonicBond1 extends React.Component {
         return (
         <>
            {this.renderSodiumAndChlorine(this.props.sodium, this.props.chlorine)}
+           And we can form  <Link to='/ionicbond2'>Ionic Bonds</Link> with 3 atoms!
+?????????????????????
+           <Link to='/covalentbond'>Covalent Bond</Link>
+
+            <br/>
+            <br/>
+            <Link to='/ionicbond2'>Ionic Bond 2</Link>
+            <br/>
+            <Link to='/ionicbondtest'>Test</Link>
+            <br/>
         </>
     )}
 }
