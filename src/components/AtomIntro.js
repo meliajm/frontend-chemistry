@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { Stage, Layer, Text, Circle } from 'react-konva';
 import Lithium from './Lithium'
 import LithiumNucleus from './LithiumNucleus'
 
@@ -57,7 +56,7 @@ const AtomIntro = (props) =>{
             <strong>Who cares about any of this anyways?</strong> 
             <br/>
                 <li>
-                    Foundations of chemistry are applicable in biology, materials science, medicine, mining
+                    Foundations of chemistry are applicable in biology, materials science, medicine, and mining.
                 </li>
                 <li>
                     These fundamentals have widespread applications across many industries. 

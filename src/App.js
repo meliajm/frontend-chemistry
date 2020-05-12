@@ -96,7 +96,22 @@ class App extends React.Component {
             
             <Route 
               exact path="/theatom" 
-              component={Atom} />
+              render={ routerProps => {
+                const lithium = this.props.atoms.find( atom => atom.symbol === "Li")
+                const hydrogen = this.props.atoms.find( atom => atom.symbol === "H")
+                const helium = this.props.atoms.find( atom => atom.symbol === "He")
+
+                return (
+                  lithium &&
+                  hydrogen && 
+                  helium && 
+                  <Atom 
+                  lithium={lithium}
+                  hydrogen={hydrogen}
+                  helium={helium}
+                  />
+                )
+              }}              />
             <Route 
               exact path="/ionicbond" 
               component={IonicBondMain} />
