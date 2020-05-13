@@ -426,7 +426,7 @@ export default class IonicBond2 extends React.Component {
 
     renderCompound = (cation, anion) => {
         return (
-            <Stage width={window.innerWidth} height={window.innerHeight}>
+            <Stage width={window.innerWidth} height={window.innerHeight-150}>
                 <Layer>
                 
                     
@@ -601,6 +601,16 @@ export default class IonicBond2 extends React.Component {
         return (
         <>
            {this.renderCompound(this.props.lithium, this.props.oxygen)}
+           <p>
+               Next let's look at <Link to='/covalentbond'>Covalent Bonding</Link>.
+            </p> 
+
+            {/* <br/>
+            <br/>
+            <Link to='/ionicbond2'>Ionic Bond 2</Link>
+            <br/>
+            <Link to='/ionicbondtest'>Test</Link>
+            <br/> */}
         </>
     )}
 }

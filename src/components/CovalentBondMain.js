@@ -4,7 +4,11 @@ export class CovalentBond extends Component {
     render() {
         return (
             <div>
-                Covalent Bond
+                <p>
+
+                    <h4>Covalent Bonding</h4>
+
+                </p>
             </div>
         )
     }

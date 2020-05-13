@@ -11,7 +11,7 @@ import RectsList from './components/RectsList'
 import IonicBond1 from './components/IonicBond'
 import IonicBond2 from './components/IonicBond2'
 import IonicBondTest from './components/IonicBondTest'
-import CovalentBond from './components/CovalentBond'
+import CovalentBondMain from './components/CovalentBondMain'
 import AtomsShow from './components/AtomsShow'
 import Signup from './components/Signup'
 import UsersContainer from './containers/UsersContainer';
@@ -127,7 +127,7 @@ class App extends React.Component {
               />
             <Route 
               exact path="/covalentbond" 
-              component={CovalentBond} />
+              component={CovalentBondMain} />
             <Route 
               exact path="/ionicbondtest" 
               component={IonicBondTest} />
