@@ -6,8 +6,15 @@ export default class CovalentBond1 extends React.Component {
 
     state = {
         // electronColor: `#${this.props.hydrogen.cpk_hex_color}`,
-        electronColor: "blue",
+        electronColor1: "blue",
+        electronColor2: "blue",
+        electronOxygenColor1: `#${this.props.oxygen.cpk_hex_color}`,
+        electronOxygenColor2: `#${this.props.oxygen.cpk_hex_color}`,
         radius: 50,
+        draggable1: true,
+        draggable2: true,
+        draggable3: true,
+        draggable4: true,
         canvas: [
             {
                 x: 80,
@@ -63,11 +70,11 @@ export default class CovalentBond1 extends React.Component {
                               }
                             }
                           }
-                        draggable 
+                        draggable={this.state.draggable1}
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill={this.state.electronColor}
+                        fill={this.state.electronColor1}
                         onDragStart={this.handleDragStart}
                         onDragEnd={this.handleDragEnd1}
                         />                      
@@ -107,11 +114,11 @@ export default class CovalentBond1 extends React.Component {
                               }
                             }
                           }
-                        draggable 
+                        draggable={this.state.draggable2}
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill={this.state.electronColor}
+                        fill={this.state.electronColor2}
                         onDragStart={this.handleDragStart}
                         onDragEnd={this.handleDragEnd2}
                         />                      
@@ -213,12 +220,13 @@ export default class CovalentBond1 extends React.Component {
                                 }
                             }
                         }
-                        draggable 
+                        draggable={this.state.draggable3}
                         x={x} 
                         y={y} 
                         radius={5} 
-                        fill={`#${atom.cpk_hex_color}`} 
-                        fill='orange'
+                        // fill={`#${atom.cpk_hex_color}`} 
+                        fill={this.state.electronOxygenColor1}
+                        // fill='orange'
                         onDragStart={this.handleDragStart}
                         onDragEnd={this.handleDragEnd3}
                         />
@@ -260,7 +268,7 @@ export default class CovalentBond1 extends React.Component {
                         radius={5} 
                         fill={`#${atom.cpk_hex_color}`} 
                         />
-                    } else if ( i === 5) {
+                    } else if ( i === 6) {
                         let radius = 50
                         const x = startingXposAnion+1*20
                         const y = this.state.canvas[0].yion1-parseInt(atom.atomic_radius)
@@ -308,8 +316,10 @@ export default class CovalentBond1 extends React.Component {
                         x={x} 
                         y={y}
                         radius={5} 
-                        fill={`#${atom.cpk_hex_color}`}
-                        fill="green"
+                        // fill="green"
+                        draggable={this.state.draggable4}
+
+                        fill={this.state.electronOxygenColor2}
                         onDragStart={this.handleDragStart}
                         onDragEnd={this.handleDragEnd4}
                         />
@@ -339,74 +349,126 @@ export default class CovalentBond1 extends React.Component {
     handleDragEnd1 = e => {
         this.handleDragEnd1.called = false
         console.log('end drag')
-        console.log(e.target)
-        if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251 
-            && this.handleDragEnd2.called
-            && this.handleDragEnd3.called
-            && this.handleDragEnd4.called) {
-            this.handleDragEnd()
-        } else if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251) {
-            this.handleDragEnd1.called = true
+        console.log(e.target.attrs.x)
+        if (e.target.attrs.x <= 701 && e.target.attrs.x >= 692 && e.target.attrs.y <= 276 && e.target.attrs.y >= 251 ) {
+            this.setState(prevState => ({
+                electronColor1: "purple",
+                draggable1: false,
+              })); 
+              console.log('1', "here")
+
         }
+
+
     }
 
     handleDragEnd2 = e => {
         this.handleDragEnd2.called = false
         console.log('end drag')
         console.log(e.target)
-        if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251 
-            && this.handleDragEnd1.called
-            && this.handleDragEnd3.called
-            && this.handleDragEnd4.called ) {
-            this.handleDragEnd()
-        } else if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251)  {
-            this.handleDragEnd2.called = true
-            // turn draggable off
-        }
+        if (e.target.attrs.x <= 305 && e.target.attrs.x >= 298 && e.target.attrs.y <= 260 && e.target.attrs.y >= 251 ) {
+            this.setState(prevState => ({
+                electronColor2: "purple",
+                draggable2: false,
+              }));  
+        } 
     }
 
     handleDragEnd3 = e => {
         this.handleDragEnd3.called = false
         console.log('end drag')
         console.log(e.target)
-        if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238
-            && this.handleDragEnd1.called
-            && this.handleDragEnd2.called
-            && this.handleDragEnd4.called) {
-            this.handleDragEnd()
-        } else if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238) {
-            this.handleDragEnd1.called = true
+        if (e.target.attrs.x <= 696 && e.target.attrs.x >= 690 && e.target.attrs.y <= 281 && e.target.attrs.y >= 238) {
+            this.setState(prevState => ({
+                electronOxygenColor1: "purple",
+                draggable3: false,
+              })); 
+              console.log('3', "here")
         }
+
     }
 
     handleDragEnd4 = e => {
         this.handleDragEnd4.called = false
         console.log('end drag')
         console.log(e.target)
-        if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256 
-            && this.handleDragEnd1.called
-            && this.handleDragEnd2.called
-            && this.handleDragEnd3.called) {
-            this.handleDragEnd()
-        } else if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256) {
-            this.handleDragEnd1.called = true
+        if (e.target.attrs.x <= 335 && e.target.attrs.x >= 292 && e.target.attrs.y <= 263 && e.target.attrs.y >= 256) {
+            this.setState(prevState => ({
+                electronOxygenColor2: "purple",
+                draggable4: false,
+              })); 
         }
     }
 
 
+    // handleDragEnd1 = e => {
+    //     this.handleDragEnd1.called = false
+    //     console.log('end drag')
+    //     console.log(e.target.attrs.x)
+    //     if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251 
+    //         && this.handleDragEnd2.called
+    //         && this.handleDragEnd3.called
+    //         && this.handleDragEnd4.called) {
+    //         this.handleDragEnd()
+    //     } else if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251) {
+    //         this.handleDragEnd1.called = true
+    //     }
+    // }
+
+    // handleDragEnd2 = e => {
+    //     this.handleDragEnd2.called = false
+    //     console.log('end drag')
+    //     console.log(e.target)
+    //     if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251 
+    //         && this.handleDragEnd1.called
+    //         && this.handleDragEnd3.called
+    //         && this.handleDragEnd4.called ) {
+    //         this.handleDragEnd()
+    //     } else if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251)  {
+    //         this.handleDragEnd2.called = true
+    //         // turn draggable off
+    //     }
+    //     console.log('2', this.handleDragEnd1.called, this.handleDragEnd2.called, this.handleDragEnd3.called,
+    //     this.handleDragEnd4.called)
+    // }
+
+    // handleDragEnd3 = e => {
+    //     this.handleDragEnd3.called = false
+    //     console.log('end drag')
+    //     console.log(e.target)
+    //     if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238
+    //         && this.handleDragEnd1.called
+    //         && this.handleDragEnd2.called
+    //         && this.handleDragEnd4.called) {
+    //         this.handleDragEnd()
+    //     } else if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238) {
+    //         this.handleDragEnd3.called = true
+    //     }
+    // }
+
+    // handleDragEnd4 = e => {
+    //     this.handleDragEnd4.called = false
+    //     console.log('end drag')
+    //     console.log(e.target)
+    //     if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256 
+    //         && this.handleDragEnd1.called
+    //         && this.handleDragEnd2.called
+    //         && this.handleDragEnd3.called) {
+    //         this.handleDragEnd()
+    //     } else if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256) {
+    //         this.handleDragEnd4.called = true
+    //     }
+    // }
 
     handleDragEnd = () => {
-        console.log('end drag')
+        // console.log('end drag')
         console.log('you did it!')    
             this.setState(prevState => ({
                 electronColor: "purple",
-                radius: 20,
+                electronOxygenColor: "purple",
+                radius: 30,
               }));
     }
-
-   
-
-
 
     renderCompound = (cation, anion) => {
         return (
