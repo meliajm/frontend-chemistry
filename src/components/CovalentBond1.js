@@ -15,6 +15,8 @@ export default class CovalentBond1 extends React.Component {
         draggable2: true,
         draggable3: true,
         draggable4: true,
+        shawodBlur1: 10,
+        shawodBlur2: 10,
         canvas: [
             {
                 x: 80,
@@ -239,7 +241,7 @@ export default class CovalentBond1 extends React.Component {
                         radiusY={20}                        
                         stroke="black"
                         strokeWidth="1"
-                        shadowBlur={10} 
+                        shadowBlur={this.state.shawodBlur1} 
                         />
                     } 
                     else if ( i === 4) {
@@ -333,7 +335,7 @@ export default class CovalentBond1 extends React.Component {
                         radiusY={7}
                         stroke="black"
                         strokeWidth="1"
-                        shadowBlur={10}
+                        shadowBlur={this.state.shawodBlur2}
                         />
                     }
             })}
@@ -354,6 +356,7 @@ export default class CovalentBond1 extends React.Component {
             this.setState(prevState => ({
                 electronColor1: "purple",
                 draggable1: false,
+                shawodBlur1: 0
               })); 
               console.log('1', "here")
 
@@ -390,12 +393,13 @@ export default class CovalentBond1 extends React.Component {
 
     handleDragEnd4 = e => {
         this.handleDragEnd4.called = false
-        console.log('end drag')
+        console.log('4 end drag')
         console.log(e.target)
         if (e.target.attrs.x <= 335 && e.target.attrs.x >= 292 && e.target.attrs.y <= 263 && e.target.attrs.y >= 256) {
             this.setState(prevState => ({
                 electronOxygenColor2: "purple",
                 draggable4: false,
+                shawodBlur2: 0
               })); 
         }
     }
