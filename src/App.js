@@ -23,17 +23,11 @@ import './App.css';
 class App extends React.Component {
 
   componentDidMount() {
-    // console.log('p', this.props)
-
     this.props.fetchAtoms()
     this.props.getCurrentUser()
   }
 
   render() {
-    // const sodium = this.props.atoms.find(atom => atom.symbol==="Na")
-    // const chlorine = this.props.atoms.find(atom => atom.symbol==="Cl")
-
-    // console.log("app", sodium)
     return (
       <>
       { this.props.loggedIn ?  
@@ -136,15 +130,17 @@ class App extends React.Component {
               component={UsersContainer} />
 
               <div>
-              <p>info about atoms</p>
+
+              {/* <p>info about atoms</p>
               find your state of flow eaiser
-              <p>periodic chart</p>
+            <p>periodic chart</p> */}
                 
              
               </div>
           </Switch>
       </Router> 
       : 
+      <>
       <Router>
       <NavBar />
       <Route 
@@ -154,6 +150,8 @@ class App extends React.Component {
       exact path="/login"
       render={ routerProps => <Login routerProps={routerProps}/>} /> 
       </Router>
+    <p>Please log in or sign up to see your chem lab.</p>
+      </>
       }
       </>
 
@@ -175,5 +173,6 @@ const mapDispatchToProps = dispatch => {
     getCurrentUser: () => dispatch(getCurrentUser())
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 

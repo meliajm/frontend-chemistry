@@ -1,5 +1,3 @@
-// imports for resetting forms
-
 export const setCurrentUser = current_user => {
     return {
         type: 'SET_CURRENT_USER',

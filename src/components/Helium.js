@@ -17,7 +17,7 @@ export default function Helium(props) {
                         x={xStart}
                         y={yStart}
                         radius={parseInt(props.helium.atomic_radius)/4}
-                        fill="black"
+                        fill="purple"
                         />
                         <Text
                         x={xStart+20}

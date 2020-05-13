@@ -29,7 +29,7 @@ export class Signup extends Component {
 
     render() {
         return (
-            <>
+            <p>
           <Header title={'Sign up for Up and Atom Lab'} />
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
                     <input 
@@ -52,7 +52,7 @@ export class Signup extends Component {
 
                 </form>
                 
-            </>
+            </p>
         )
     }
 }
