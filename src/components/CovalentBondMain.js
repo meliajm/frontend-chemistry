@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export class CovalentBond extends Component {
     render() {
@@ -25,6 +26,9 @@ export class CovalentBond extends Component {
             </li>
 
                 </p>
+                <p>
+               Next let's take a look at <Link to='/covalentbond1'>Covalent Bonding</Link> in action.
+            </p>
             </div>
         )
     }

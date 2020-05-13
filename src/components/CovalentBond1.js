@@ -1,19 +1,21 @@
 import React from 'react'
-import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
+import { Stage, Layer, Text, Circle, Ellipse, Rect } from 'react-konva';
 import { Link } from 'react-router-dom'
 
-export default class IonicBond2 extends React.Component {
+export default class CovalentBond1 extends React.Component {
 
     state = {
-        electronColor: `#${this.props.lithium.cpk_hex_color}`,
+        // electronColor: `#${this.props.hydrogen.cpk_hex_color}`,
+        electronColor: "blue",
+        radius: 50,
         canvas: [
             {
                 x: 80,
                 y: 130,
-                text: "Charge of Li before bonding: 0",
+                text: "",
                 x2: 410,
                 y2: 130,
-                text2: "Charge of O before bonding: 0",
+                text2: "",
                 xpos: 180,
                 ypos: 300,
                 delta: 20,
@@ -27,33 +29,6 @@ export default class IonicBond2 extends React.Component {
                 yion3: 350,
               }
         ],
-        label: [
-            {}
-        ],
-        rect1: [
-            {}
-        ],
-        rect2: [
-            {}
-        ],
-        rect3: [
-            {}
-        ],
-        rect4: [
-            {}
-        ],
-        rect5: [
-            {}
-        ],
-        rect6: [
-            {}
-        ],
-        circ1: [
-            {}
-        ],
-        circ2: [
-            {}
-        ]
       };
 
     renderElectronsCation = (atom) =>  {
@@ -67,10 +42,10 @@ export default class IonicBond2 extends React.Component {
         return (
             <>
             {arr.map( i => {
-                const radius = 50
-                    if (i === 0) {
+                const radius = this.state.radius
+                if (i === 0) {
                         //
-                        const x = 660
+                        const x = 725
                         const y = 295
                         return <Circle 
                         dragBoundFunc = {
@@ -112,9 +87,9 @@ export default class IonicBond2 extends React.Component {
         return (
             <>
             {arr.map( i => {
-                const radius = 50
+                const radius = this.state.radius
                     if (i === 0) {
-                        const x = 340
+                        const x = 255
                         const y = 250
                         return <Circle 
                         dragBoundFunc = {
@@ -146,12 +121,8 @@ export default class IonicBond2 extends React.Component {
         )
     }
 
-    //rendering anion electrons
     renderElectronsAnion = (atom) =>  {
-        // change this here
         const startingXposAnion = this.state.canvas[0].xion1
-        // const startingXposAnion = 300+250
-        // add to this array
         const arr = [6, 7]
         let valenceElectrons = 0
         if (atom.atomic_number > 2) {
@@ -170,8 +141,8 @@ export default class IonicBond2 extends React.Component {
         return (
             <>
             {arr.map( i => {
-                const radius = 50
-                    if (i === 0) {
+                if (i === 3) {
+                    let radius = 50
                         const x=startingXposAnion-1*20
                         const y=this.state.canvas[0].yion1-parseInt(atom.atomic_radius)
                         return <Circle 
@@ -195,7 +166,8 @@ export default class IonicBond2 extends React.Component {
                         radius={5} 
                         fill={`#${atom.cpk_hex_color}`} 
                         />                      
-                    } else if ( i === 1) {
+                    } else if ( i === 5) {
+                        let radius = 50
                         const x = startingXposAnion+1*20
                         const y = this.state.canvas[0].yion1+parseInt(atom.atomic_radius)
                         return <Circle 
@@ -222,6 +194,7 @@ export default class IonicBond2 extends React.Component {
                         />
 
                     } else if ( i === 2) {
+                        let radius = this.state.looseRadius
                         const x = startingXposAnion+parseInt(atom.atomic_radius)
                         const y = this.state.canvas[0].yion1-20
                         return <Circle 
@@ -245,18 +218,24 @@ export default class IonicBond2 extends React.Component {
                         y={y} 
                         radius={5} 
                         fill={`#${atom.cpk_hex_color}`} 
+                        fill='orange'
+                        onDragStart={this.handleDragStart}
+                        onDragEnd={this.handleDragEnd3}
                         />
-                    } else if ( i === 3) {
-                        return <Circle 
+                    } else if ( i === 0) {
+                        return <Ellipse 
                         fill="white"
-                        x={startingXposAnion+parseInt(atom.atomic_radius)}
-                        y={this.state.canvas[0].yion1+20}
-                        radius={5}
+                        x={30+startingXposAnion+parseInt(atom.atomic_radius)}
+                        y={10+this.state.canvas[0].yion1+20}
+                        radiusX={7}
+                        radiusY={20}                        
                         stroke="black"
                         strokeWidth="1"
                         shadowBlur={10} 
                         />
-                    } else if ( i === 4) {
+                    } 
+                    else if ( i === 4) {
+                        let radius = 50
                         const x = startingXposAnion-1*20
                         const y = this.state.canvas[0].yion1+parseInt(atom.atomic_radius)
                         return <Circle 
@@ -282,6 +261,7 @@ export default class IonicBond2 extends React.Component {
                         fill={`#${atom.cpk_hex_color}`} 
                         />
                     } else if ( i === 5) {
+                        let radius = 50
                         const x = startingXposAnion+1*20
                         const y = this.state.canvas[0].yion1-parseInt(atom.atomic_radius)
                         return <Circle 
@@ -305,7 +285,8 @@ export default class IonicBond2 extends React.Component {
                         radius={5} 
                         fill={`#${atom.cpk_hex_color}`} 
                         />
-                    } else if ( i === 6) {
+                    } else if ( i === 1) {
+                        let radius = this.state.looseRadius
                         const x = startingXposAnion-parseInt(atom.atomic_radius)
                         const y = this.state.canvas[0].yion1+20
                         return <Circle 
@@ -328,14 +309,18 @@ export default class IonicBond2 extends React.Component {
                         y={y}
                         radius={5} 
                         fill={`#${atom.cpk_hex_color}`}
+                        fill="green"
+                        onDragStart={this.handleDragStart}
+                        onDragEnd={this.handleDragEnd4}
                         />
-                    } else if ( i === 7) {
+                     } else if ( i === 7) {
                         console.log('here')
-                        return <Circle 
+                        return <Ellipse 
                         fill="white"
-                        x={startingXposAnion-parseInt(atom.atomic_radius)} 
-                        y={this.state.canvas[0].yion1-20}
-                        radius={5}
+                        x={-45+startingXposAnion-parseInt(atom.atomic_radius)} 
+                        y={50+this.state.canvas[0].yion1-20}
+                        radiusX={20}
+                        radiusY={7}
                         stroke="black"
                         strokeWidth="1"
                         shadowBlur={10}
@@ -355,10 +340,12 @@ export default class IonicBond2 extends React.Component {
         this.handleDragEnd1.called = false
         console.log('end drag')
         console.log(e.target)
-        // if (e.target._lastPos.x === 662 && e.target._lastPos.y === 250 && this.handleDragEnd2.called) {
-        if (e.target._lastPos.x <= 665 && e.target._lastPos.x >= 655 && e.target._lastPos.y <= 255 && e.target._lastPos.y >= 240 && this.handleDragEnd2.called) {
+        if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251 
+            && this.handleDragEnd2.called
+            && this.handleDragEnd3.called
+            && this.handleDragEnd4.called) {
             this.handleDragEnd()
-        } else if (e.target._lastPos.x <= 665 && e.target._lastPos.x >= 655 && e.target._lastPos.y <= 255 && e.target._lastPos.y >= 240) {
+        } else if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251) {
             this.handleDragEnd1.called = true
         }
     }
@@ -367,62 +354,59 @@ export default class IonicBond2 extends React.Component {
         this.handleDragEnd2.called = false
         console.log('end drag')
         console.log(e.target)
-        // if (e.target._lastPos.x === 358 && e.target._lastPos.y === 210 && this.handleDragEnd1.called) {
-        //     this.handleDragEnd()
-        if (e.target._lastPos.x <= 360 && e.target._lastPos.x >= 350 && e.target._lastPos.y <= 215 && e.target._lastPos.y >= 205 && this.handleDragEnd1.called) {
+        if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251 
+            && this.handleDragEnd1.called
+            && this.handleDragEnd3.called
+            && this.handleDragEnd4.called ) {
             this.handleDragEnd()
-        } else if (e.target._lastPos.x <= 360 && e.target._lastPos.x >= 350 && e.target._lastPos.y <= 215 && e.target._lastPos.y >= 205)  {
+        } else if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251)  {
             this.handleDragEnd2.called = true
             // turn draggable off
         }
     }
 
+    handleDragEnd3 = e => {
+        this.handleDragEnd3.called = false
+        console.log('end drag')
+        console.log(e.target)
+        if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238
+            && this.handleDragEnd1.called
+            && this.handleDragEnd2.called
+            && this.handleDragEnd4.called) {
+            this.handleDragEnd()
+        } else if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238) {
+            this.handleDragEnd1.called = true
+        }
+    }
+
+    handleDragEnd4 = e => {
+        this.handleDragEnd4.called = false
+        console.log('end drag')
+        console.log(e.target)
+        if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256 
+            && this.handleDragEnd1.called
+            && this.handleDragEnd2.called
+            && this.handleDragEnd3.called) {
+            this.handleDragEnd()
+        } else if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256) {
+            this.handleDragEnd1.called = true
+        }
+    }
+
+
+
     handleDragEnd = () => {
         console.log('end drag')
         console.log('you did it!')    
             this.setState(prevState => ({
-                // label: [{...newLabel()}],
-                // rect1: [{...newRects1()}],
-                // rect2: [{...newRects2()}],
-                // rect3: [{...newRects3()}],
-                // rect4: [{...newRects4()}],
-                // rect5: [{...newRects5()}],
-                // rect6: [{...newRects6()}],
-                electronColor: `#${this.props.oxygen.cpk_hex_color}`
+                electronColor: "purple",
+                radius: 20,
               }));
     }
 
-    handleClick1 = e => {
-        console.log('YOU got it!')
-        console.log('state', this.state)
-        this.setState(prevState => ({
-            canvas: [...prevState.canvas],
-            rect1: [...prevState.rect1],
-            rect2: [...prevState.rect2],
-            rect3: [...prevState.rect3],
-            rect4: [...prevState.rect4],
-            rect5: [...prevState.rect5],
-            rect6: [...prevState.rect6],
-            circ1: [{...newCirc1()}],
-          })); 
-          console.log('state', this.state)
-    }
+   
 
-    handleClick2 = e => {
-        console.log('YOU got it!')
-        console.log('state', this.state)
-        this.setState(prevState => ({
-            canvas: [...prevState.canvas],
-            rect1: [...prevState.rect1],
-            rect2: [...prevState.rect2],
-            rect3: [...prevState.rect3],
-            rect4: [...prevState.rect4],
-            rect5: [...prevState.rect5],
-            rect6: [...prevState.rect6],
-            circ2: [{...newCirc2()}]
-          })); 
-          console.log('state', this.state)
-    }
+
 
     renderCompound = (cation, anion) => {
         return (
@@ -449,8 +433,8 @@ export default class IonicBond2 extends React.Component {
                     </>
                     ))}
 
-                    <Text x={this.state.canvas[0].ypos} y={this.state.canvas[0].delta} text="Chemical equation: 2Li + O = Li2O" fontSize={25} />
-                    <Text x={this.state.canvas[0].ypos} y={50} text="Can you transfer lithium's electrons to form an ionic bond?" fontSize={18} />
+                    <Text x={this.state.canvas[0].ypos} y={this.state.canvas[0].delta} text="Chemical equation: 2H + O = H2O" fontSize={25} />
+                    {/* <Text x={this.state.canvas[0].ypos} y={50} text="Can you transfer lithium's electrons to form an ionic bond?" fontSize={18} /> */}
                     <Circle className="electronOrbit" x={this.state.canvas[0].xion1} y={this.state.canvas[0].yion1} radius={anion.atomic_radius} stroke="black" />
                     <Circle  className="nucleus" x={this.state.canvas[0].xion1} y={this.state.canvas[0].yion1} radius={anion.atomic_radius/10} fill={`#${anion.cpk_hex_color}`}/>
                     <Circle  className="nucleusOutline" x={this.state.canvas[0].xion1} y={this.state.canvas[0].yion1} radius={anion.atomic_radius/10} stroke="black" strokeWidth='1'/>
@@ -464,133 +448,7 @@ export default class IonicBond2 extends React.Component {
                     {this.renderElectronsCation2(cation)}
                     {this.renderElectronsCation(cation)}
 
-                    {this.state.label.map(({ x, y, text, x2, y2, text2}, key) => (
-                    <>
-                        <Text 
-                            key={key}
-                            x={x}
-                            y={y}
-                            text={text}  
-                        />    
-                        <Text 
-                            key={key}
-                            x={x2}
-                            y={y2}
-                            text={text2}  
-                        />                     
-                    </>
 
-                    ))}
-
-                    {this.state.rect1.map(({ xr, yr, width, height }, key) => (
-                    <>
-                        { this.state.rect1[0].xr ? <Text x={xr+(width/2)-5} y={yr+(height/2)-5} text="+1" /> : null }
-
-                        <Rect 
-                            key={key}
-                            x={xr}
-                            y={yr}
-                            width={width}
-                            height={height}
-                            onClick={this.handleClick1}
-                            stroke="gray"
-                        />
-                        
-                    </>
-                    ))}
-                    {this.state.rect2.map(({ xr, yr, width, height }, key) => (
-                    <>
-                        <Rect 
-                            key={key}
-                            x={xr}
-                            y={yr}
-                            width={width}
-                            height={height}
-                            stroke="gray"
-                        />
-                        { this.state.rect2[0].xr ? <Text x={xr+(width/2)-5} y={yr+(height/2)-5} text="+2" /> : null }
-                        
-                    </>
-                    ))}
-                    {this.state.rect3.map(({ xr, yr, width, height }, key) => (
-                    <>
-                        <Rect 
-                            key={key}
-                            x={xr}
-                            y={yr}
-                            width={width}
-                            height={height}
-                            stroke="gray"
-                        />
-                        { this.state.rect4[0].xr ? <Text x={xr+(width/2)-5} y={yr+(height/2)-5} text="-1" /> : null }
-                        
-                    </>
-                    ))}
-                    {this.state.rect4.map(({ xr, yr, width, height }, key) => (
-                    <>
-                        <Rect 
-                            key={key}
-                            x={xr}
-                            y={yr}
-                            width={width}
-                            height={height}
-                            stroke="gray"
-                        />
-                        { this.state.rect4[0].xr ? <Text x={xr+(width/2)-5} y={yr+(height/2)-5} text="+1" /> : null }
-                        
-                    </>
-                    ))}
-                    {this.state.rect5.map(({ xr, yr, width, height }, key) => (
-                    <>
-                        <Rect 
-                            key={key}
-                            x={xr}
-                            y={yr}
-                            width={width}
-                            height={height}
-                            stroke="gray"
-                        />
-                        { this.state.rect5[0].xr ? <Text x={xr+(width/2)-5} y={yr+(height/2)-5} text="+2" /> : null }
-                        
-                    </>
-                    ))}
-                    {this.state.rect6.map(({ xr, yr, width, height }, key) => (
-                    <>
-                        { this.state.rect6[0].xr ? <Text x={xr+(width/2)-5} y={yr+(height/2)-5} text="-1"/> : null }
-                        <Rect 
-                            key={key}
-                            x={xr}
-                            y={yr}
-                            width={width}
-                            height={height}
-                            stroke="gray"
-                            onClick={this.handleClick2}
-                        />
-                        
-                    </>
-                    ))}
-                    {this.state.circ1.map(({ x, y, radius}, key) => (
-                    <>
-                        <Circle 
-                            key={key}
-                            x={x}
-                            y={y}
-                            radius={radius}                           
-                            stroke="black"
-                        />                        
-                    </>
-                    ))}
-                    {this.state.circ2.map(({ x, y, radius}, key) => (
-                    <>
-                        <Circle 
-                            key={key}
-                            x={x}
-                            y={y}
-                            radius={radius}
-                            stroke="black"
-                        />                        
-                    </>
-                    ))}
                     
                 </Layer>
             </Stage>
@@ -600,9 +458,10 @@ export default class IonicBond2 extends React.Component {
     render() {
         return (
         <>
-           {this.renderCompound(this.props.lithium, this.props.oxygen)}
+           {this.renderCompound(this.props.hydrogen, this.props.oxygen)}
            <p>
-               Next let's look at <Link to='/covalentbond'>Covalent Bonding</Link>.
+               Future works: double and triple bonding
+               {/* Next let's look at <Link to='/covalentbond'>Covalent Bonding</Link>. */}
             </p> 
 
             {/* <br/>
@@ -615,76 +474,4 @@ export default class IonicBond2 extends React.Component {
     )}
 }
 
-const newLabel = () => ({
-    x: 150,
-    y: 200,
-    text: "Charge of Li now?",
-    x2: 460,
-    y2: 250,
-    text2: "Charge of O now?"
-})
-
-const newRects1 = () => ({
-    xr: 75,
-    yr: 250,
-    width: 20,
-    height: 20
-})
-
-const newRects2 = () => ({
-    xr: 175,
-    yr: 250,
-    width: 20,
-    height: 20
-})
-
-const newRects3 = () => ({
-    xr: 275,
-    yr: 250,
-    width: 20,
-    height: 20
-})
-
-const newRects4 = () => ({
-    xr: 400,
-    yr: 280,
-    width: 20,
-    height: 20
-})
-
-const newRects5 = () => ({
-    xr: 500,
-    yr: 280,
-    width: 20,
-    height: 20
-})
-
-const newRects6 = () => ({
-    xr: 600,
-    yr: 280,
-    width: 20,
-    height: 20
-})
-
-const newCirc1 = () => ({
-    x: 85,
-    y: 260,
-    radius: 30,
-    // stroke: "black",
-    // strokeWidth: 1
-})
-
-const newCirc2 = () => ({
-    x: 610,
-    y: 290,
-    radius: 30,
-    // stroke: "black",
-    // strokeWidth: 1
-})
-
-// const changeColor = () => ({
-//     electronColor: this.props.oxygen
-//     // stroke: "black",
-//     // strokeWidth: 1
-// })
 

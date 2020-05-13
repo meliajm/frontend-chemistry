@@ -12,7 +12,7 @@ import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
 import usersReducer from './reducers/usersReducer'
-
+import {BrowserRouter as Router} from 'react-router-dom'
 
 // const store = createStore(atomsReducer,
 //   applyMiddleware(thunk),
@@ -33,7 +33,9 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
 import AtomsList from './components/AtomsList'
@@ -12,6 +12,7 @@ import IonicBond1 from './components/IonicBond'
 import IonicBond2 from './components/IonicBond2'
 import IonicBondTest from './components/IonicBondTest'
 import CovalentBondMain from './components/CovalentBondMain'
+import CovalentBond1 from './components/CovalentBond1'
 import AtomsShow from './components/AtomsShow'
 import Signup from './components/Signup'
 import UsersContainer from './containers/UsersContainer';
@@ -32,7 +33,7 @@ class App extends React.Component {
     return (
       <>
       { this.props.loggedIn ?  
-      <Router>
+      <>
         <NavBar />
         <ScrollToTop>
 
@@ -80,6 +81,21 @@ class App extends React.Component {
                   )
               }}
               />
+
+              <Route 
+              exact path="/covalentbond1" 
+              render={ (routerProps) => {
+                const hydrogen = this.props.atoms.find( atom => atom.symbol === "H")
+                const oxygen = this.props.atoms.find( atom => atom.symbol === "O")
+                  return (
+                    hydrogen && oxygen &&
+                    <CovalentBond1 
+                    hydrogen={hydrogen}
+                    oxygen={oxygen}/>
+                  )
+              }}
+              />
+
             <Route 
               exact path="/intro" 
               render={ routerProps => {
@@ -142,10 +158,9 @@ class App extends React.Component {
               </div>
           </Switch>
           </ScrollToTop>
-      </Router> 
+          </>
       : 
       <>
-      <Router>
       <NavBar />
       <Route 
       exact path="/signup"
@@ -153,7 +168,6 @@ class App extends React.Component {
     <Route
       exact path="/login"
       render={ routerProps => <Login routerProps={routerProps}/>} /> 
-      </Router>
     <p>Please log in or sign up to see your chem lab.</p>
       </>
       }
@@ -178,5 +192,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default (connect(mapStateToProps, mapDispatchToProps)(App))
 
