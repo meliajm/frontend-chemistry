@@ -18,6 +18,7 @@ import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
 import Login from './components/Login'
 import IonicBondMain from './components/IonicBondMain'
+import ScrollToTop from './components/ScrollToTop'
 import './App.css';
 
 class App extends React.Component {
@@ -33,6 +34,8 @@ class App extends React.Component {
       { this.props.loggedIn ?  
       <Router>
         <NavBar />
+        <ScrollToTop>
+
           <Header title={'Up and Atom Lab'} />
           <Switch>
             <Route
@@ -138,6 +141,7 @@ class App extends React.Component {
              
               </div>
           </Switch>
+          </ScrollToTop>
       </Router> 
       : 
       <>
