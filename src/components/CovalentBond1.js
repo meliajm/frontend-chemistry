@@ -6,8 +6,8 @@ export default class CovalentBond1 extends React.Component {
 
     state = {
         // electronColor: `#${this.props.hydrogen.cpk_hex_color}`,
-        electronColor1: "blue",
-        electronColor2: "blue",
+        electronColor1: "#3944BC",
+        electronColor2: "#3944BC",
         electronOxygenColor1: `#${this.props.oxygen.cpk_hex_color}`,
         electronOxygenColor2: `#${this.props.oxygen.cpk_hex_color}`,
         radius: 50,
@@ -354,7 +354,7 @@ export default class CovalentBond1 extends React.Component {
         console.log(e.target.attrs.x)
         if (e.target.attrs.x <= 701 && e.target.attrs.x >= 692 && e.target.attrs.y <= 276 && e.target.attrs.y >= 251 ) {
             this.setState(prevState => ({
-                electronColor1: "purple",
+                electronColor1: "#9C2965",
                 draggable1: false,
                 shawodBlur1: 0
               })); 
@@ -371,7 +371,7 @@ export default class CovalentBond1 extends React.Component {
         console.log(e.target)
         if (e.target.attrs.x <= 305 && e.target.attrs.x >= 298 && e.target.attrs.y <= 260 && e.target.attrs.y >= 251 ) {
             this.setState(prevState => ({
-                electronColor2: "purple",
+                electronColor2: "#9C2965",
                 draggable2: false,
               }));  
         } 
@@ -383,7 +383,7 @@ export default class CovalentBond1 extends React.Component {
         console.log(e.target)
         if (e.target.attrs.x <= 696 && e.target.attrs.x >= 690 && e.target.attrs.y <= 281 && e.target.attrs.y >= 238) {
             this.setState(prevState => ({
-                electronOxygenColor1: "purple",
+                electronOxygenColor1: "#9C2965",
                 draggable3: false,
               })); 
               console.log('3', "here")
@@ -397,82 +397,22 @@ export default class CovalentBond1 extends React.Component {
         console.log(e.target)
         if (e.target.attrs.x <= 335 && e.target.attrs.x >= 292 && e.target.attrs.y <= 263 && e.target.attrs.y >= 256) {
             this.setState(prevState => ({
-                electronOxygenColor2: "purple",
+                electronOxygenColor2: "#9C2965",
                 draggable4: false,
                 shawodBlur2: 0
               })); 
         }
     }
 
-
-    // handleDragEnd1 = e => {
-    //     this.handleDragEnd1.called = false
-    //     console.log('end drag')
-    //     console.log(e.target.attrs.x)
-    //     if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251 
-    //         && this.handleDragEnd2.called
-    //         && this.handleDragEnd3.called
-    //         && this.handleDragEnd4.called) {
-    //         this.handleDragEnd()
-    //     } else if (e.target._lastPos.x <= 701 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 276 && e.target._lastPos.y >= 251) {
-    //         this.handleDragEnd1.called = true
-    //     }
+    // handleDragEnd = () => {
+    //     // console.log('end drag')
+    //     console.log('you did it!')    
+    //         this.setState(prevState => ({
+    //             electronColor: "purple",
+    //             electronOxygenColor: "purple",
+    //             radius: 30,
+    //           }));
     // }
-
-    // handleDragEnd2 = e => {
-    //     this.handleDragEnd2.called = false
-    //     console.log('end drag')
-    //     console.log(e.target)
-    //     if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251 
-    //         && this.handleDragEnd1.called
-    //         && this.handleDragEnd3.called
-    //         && this.handleDragEnd4.called ) {
-    //         this.handleDragEnd()
-    //     } else if (e.target._lastPos.x <= 305 && e.target._lastPos.x >= 298 && e.target._lastPos.y <= 260 && e.target._lastPos.y >= 251)  {
-    //         this.handleDragEnd2.called = true
-    //         // turn draggable off
-    //     }
-    //     console.log('2', this.handleDragEnd1.called, this.handleDragEnd2.called, this.handleDragEnd3.called,
-    //     this.handleDragEnd4.called)
-    // }
-
-    // handleDragEnd3 = e => {
-    //     this.handleDragEnd3.called = false
-    //     console.log('end drag')
-    //     console.log(e.target)
-    //     if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238
-    //         && this.handleDragEnd1.called
-    //         && this.handleDragEnd2.called
-    //         && this.handleDragEnd4.called) {
-    //         this.handleDragEnd()
-    //     } else if (e.target._lastPos.x <= 696 && e.target._lastPos.x >= 693 && e.target._lastPos.y <= 281 && e.target._lastPos.y >= 238) {
-    //         this.handleDragEnd3.called = true
-    //     }
-    // }
-
-    // handleDragEnd4 = e => {
-    //     this.handleDragEnd4.called = false
-    //     console.log('end drag')
-    //     console.log(e.target)
-    //     if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256 
-    //         && this.handleDragEnd1.called
-    //         && this.handleDragEnd2.called
-    //         && this.handleDragEnd3.called) {
-    //         this.handleDragEnd()
-    //     } else if (e.target._lastPos.x <= 335 && e.target._lastPos.x >= 292 && e.target._lastPos.y <= 263 && e.target._lastPos.y >= 256) {
-    //         this.handleDragEnd4.called = true
-    //     }
-    // }
-
-    handleDragEnd = () => {
-        // console.log('end drag')
-        console.log('you did it!')    
-            this.setState(prevState => ({
-                electronColor: "purple",
-                electronOxygenColor: "purple",
-                radius: 30,
-              }));
-    }
 
     renderCompound = (cation, anion) => {
         return (
@@ -506,10 +446,10 @@ export default class CovalentBond1 extends React.Component {
                     <Circle  className="nucleusOutline" x={this.state.canvas[0].xion1} y={this.state.canvas[0].yion1} radius={anion.atomic_radius/10} stroke="black" strokeWidth='1'/>
                     {this.renderElectronsAnion(anion)} 
                     <Circle className="electronOrbit" x={this.state.canvas[0].xion2} y={this.state.canvas[0].yion2} radius={cation.atomic_radius} stroke="black" />
-                    <Circle  className="nucleus" x={this.state.canvas[0].xion2} y={this.state.canvas[0].yion2} radius={cation.atomic_radius/10} fill={`#${cation.cpk_hex_color}`}/>
+                    <Circle  className="nucleus" x={this.state.canvas[0].xion2} y={this.state.canvas[0].yion2} radius={cation.atomic_radius/10} fill={"#3944BC"}/>
                     <Circle  className="nucleusOutline" x={this.state.canvas[0].xion2} y={this.state.canvas[0].yion2} radius={cation.atomic_radius/10} stroke="black" strokeWidth='1'/>
                     <Circle className="electronOrbit" x={this.state.canvas[0].xion3} y={this.state.canvas[0].yion3} radius={cation.atomic_radius} stroke="black" />
-                    <Circle  className="nucleus" x={this.state.canvas[0].xion3} y={this.state.canvas[0].yion3} radius={cation.atomic_radius/10} fill={`#${cation.cpk_hex_color}`}/>
+                    <Circle  className="nucleus" x={this.state.canvas[0].xion3} y={this.state.canvas[0].yion3} radius={cation.atomic_radius/10} fill={"#3944BC"}/>
                     <Circle  className="nucleusOutline" x={this.state.canvas[0].xion3} y={this.state.canvas[0].yion3} radius={cation.atomic_radius/10} stroke="black" strokeWidth='1'/>
                     {this.renderElectronsCation2(cation)}
                     {this.renderElectronsCation(cation)}
