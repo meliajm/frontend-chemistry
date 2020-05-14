@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
 import AtomsList from './components/AtomsList'
@@ -15,6 +15,7 @@ import CovalentBondMain from './components/CovalentBondMain'
 import CovalentBond1 from './components/CovalentBond1'
 import AtomsShow from './components/AtomsShow'
 import Signup from './components/Signup'
+import QuestionsContainer from './containers/QuestionsContainer';
 import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
 import Login from './components/Login'
@@ -147,6 +148,9 @@ class App extends React.Component {
             <Route 
               exact path="/users" 
               component={UsersContainer} />
+            <Route 
+              exact path="/questions" 
+              component={QuestionsContainer} />
 
               <div>
 

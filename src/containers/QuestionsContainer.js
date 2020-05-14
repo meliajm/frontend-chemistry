@@ -1,17 +1,36 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-// import { fetchQuestions } from '../actions/questionActions'
 import Questions from '../components/Questions'
+import { connect } from 'react-redux'
+import { fetchQuestions } from '../actions/questionActions'
 
+class QuestionsContainer extends Component {
 
-export class QuestionsContainer extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+  componentDidMount() {
+    console.log('uc p', this.props)
+    this.props.fetchQuestions()
+  }
+  render() {
+      console.log('uc', this.props)
+    return (
+      <div className="div">
+        <Questions questions={this.props.questions} />
+      </div>
+    )
+  }
 }
 
-export default QuestionsContainer
+const mapStateToProps = state => {
+  console.log('state mstp', state)
+  return {
+    questions: state.questionsReducer.questions,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchQuestions: () => dispatch(fetchQuestions()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionsContainer)
+
