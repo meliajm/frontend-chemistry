@@ -7,6 +7,7 @@ import AtomIntro from './components/AtomIntro'
 import Atom from './components/Atom'
 import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
+import { fetchQuestions } from './actions/questionActions'
 import RectsList from './components/RectsList'
 import IonicBond1 from './components/IonicBond'
 import IonicBond2 from './components/IonicBond2'
@@ -28,6 +29,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.fetchAtoms()
     this.props.getCurrentUser()
+    this.props.fetchQuestions()
   }
 
   render() {
@@ -192,7 +194,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAtoms: () => dispatch(fetchAtoms()),
-    getCurrentUser: () => dispatch(getCurrentUser())
+    getCurrentUser: () => dispatch(getCurrentUser()),
+    fetchQuestions: () => dispatch(fetchQuestions()),
   }
 }
 

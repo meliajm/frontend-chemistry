@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 const Question = (props) => {
     return (
         <>
-        {console.log('q', props)}
+        hi
+        {console.log('q?', props)}
             <li>
                 {props.question.content}
                 {/* {props.question}              */}
@@ -12,11 +13,5 @@ const Question = (props) => {
         </>
     )
 }
-
-// const mapStateToProps = state => {
-//     return {
-//       questions: state.questionReducer.questions,
-//     }
-//   }
 
 export default Question
