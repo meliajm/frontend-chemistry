@@ -7,19 +7,27 @@ import QuestionInput from '../components/QuestionInput'
 import QuestionEdit from '../components/QuestionEdit'
 import { Switch, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import SideBar from './SideBar'
+// import SideBar from './SideBar'
+
 // add a question // rethink how to set up question container with
 // routing
 
 const QuestionsContainer = ({ questions }) => {
     console.log('qu c', questions)
+
+    // hook?
+
     return (
         <>
             <h4>Questions</h4>
-                <SideBar questions={questions} />
+                <p>
+                    <QuestionInput />
+                </p>
+                <Questions questions={questions} />
                 <Switch>
-                    <Route exact path="/questions/:id" 
+                    {/* <Route exact path="/questions/:id" 
                         render={(routerProps) => {
+                            console.log('route quest id', routerProps.match.params.id)
                             const question = questions.find(question => question.id === parseInt(routerProps.match.params.id))
                             return <Question {...routerProps} question={question} />
                         }}/>
@@ -27,7 +35,7 @@ const QuestionsContainer = ({ questions }) => {
                         render={(routerProps) => {
                             const question = questions.find(question => question.id === parseInt(routerProps.match.params.id))
                             return <QuestionEdit {...routerProps} question={question} />
-                       }} />
+                       }} /> */}
                 </Switch>
                     {/* <p>
                         <Link to='/questions/:id'>Questions</Link>

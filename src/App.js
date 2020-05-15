@@ -9,18 +9,25 @@ import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
 import { fetchQuestions } from './actions/questionActions'
 import RectsList from './components/RectsList'
+import AtomsShow from './components/AtomsShow'
+
 import IonicBond1 from './components/IonicBond'
 import IonicBond2 from './components/IonicBond2'
 import IonicBondTest from './components/IonicBondTest'
 import CovalentBondMain from './components/CovalentBondMain'
 import CovalentBond1 from './components/CovalentBond1'
-import AtomsShow from './components/AtomsShow'
+import IonicBondMain from './components/IonicBondMain'
+
+import Login from './components/Login'
 import Signup from './components/Signup'
+
 import QuestionsContainer from './containers/QuestionsContainer';
+// import Questions from './component/Questions';
+import Question from './components/Question'
+import QuestionEdit from './components/QuestionEdit';
+
 import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
-import Login from './components/Login'
-import IonicBondMain from './components/IonicBondMain'
 import ScrollToTop from './components/ScrollToTop'
 import './App.css';
 
@@ -153,6 +160,18 @@ class App extends React.Component {
             <Route 
               exact path="/questions" 
               component={QuestionsContainer} />
+            <Route exact path="/questions/:id" 
+                render={(routerProps) => {
+                    const question = this.props.questions.find(question => question.id === parseInt(routerProps.match.params.id))
+                    return ( question &&
+                    <Question {...routerProps} question={question} />)
+                }}/>
+            <Route exact path="/questions/:id/edit"
+                render={(routerProps) => {
+                    const question = this.props.questions.find(question => question.id === parseInt(routerProps.match.params.id))
+                    return ( question &&
+                       <QuestionEdit {...routerProps} question={question} />)
+                }} />
 
               <div>
 
@@ -187,7 +206,8 @@ const mapStateToProps = state => {
   return {
     atoms: state.atomsReducer.atoms,
     loading: state.atomsReducer.loading,
-    loggedIn: !!state.currentUser
+    loggedIn: (Object.keys(state.currentUser).length === 0) ? false : true,
+    questions: state.questionsReducer.questions
   }
 }
 

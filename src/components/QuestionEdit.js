@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-// import { updateQuestion } from '../actions/updateQuestion'
+import { updateQuestion } from '../actions/questionActions'
 import { connect } from 'react-redux'
 
 export class QuestionEdit extends Component {
     
     state = this.props.question ? {
-        content: this.props.question.content
-    } :
-    { content: ""}
+        content: this.props.question.content,
+        id: this.props.question.id
+    } : { content: "", id: 0}
 
     handleChange = (event) => {
         this.setState({
@@ -21,6 +21,7 @@ export class QuestionEdit extends Component {
             .then(response => {
                 if (!response.error) {
                     this.resetForm()
+                    this.props.history.push('/questions')
                 }
             })
     }
@@ -30,23 +31,25 @@ export class QuestionEdit extends Component {
     }
     
     render() {
+        console.log('qe', this.props)
         return (
+            
             this.props.question ?
-            <>
+            <div className="div">
                 <h4>Edit Question</h4>
-                <form onSubmit={(event) => this.handleOnSubmit(event)}>
+                <form onSubmit={(event) => this.handleSubmit(event)}>
                     <input 
                     type="text"
-                    onChange={(event) => this.handleOnChange(event)}
+                    onChange={(event) => this.handleChange(event)}
                     name="content"
                     value={this.state.content}
                     placeholder="Edit your question"
                     />
                     <input type="submit"/>
                 </form>  
-            </> : <h4>Loading</h4>
-        )
+            </div> : <h4>Loading</h4>
+            )
     }
 }
 
-export default QuestionEdit
+export default connect(null, {updateQuestion})(QuestionEdit)

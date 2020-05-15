@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Question from '../Question'
 
 const SideBar = ({ questions }) => {
     const questionLinks = questions.map ( (question, i) => (
