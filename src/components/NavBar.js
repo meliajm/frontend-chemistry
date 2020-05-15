@@ -7,10 +7,11 @@ const NavBar = ({ currentUser, loggedIn }) => {
     return (
         <nav className="nav">
             { loggedIn ? <><h3 className="logout"> Welcome to your lab, {currentUser.email}!</h3> <Logout/>
+            <br/>
+            <h3 className="home"><Link to='/'>Home</Link></h3>
             <h3 className="intro"><Link to='/intro'>Intro</Link></h3>
             <h3 className="users"><Link to='/users'>Users</Link></h3>
             <h3 className="questions"><Link to='/questions'>Questions</Link></h3>
-            <h3 className="home"><Link to='/'>Home</Link></h3>
             </> :
              <>
              <h3 className="logout">

@@ -3,6 +3,7 @@ import Questions from '../components/Questions'
 import { connect } from 'react-redux'
 import { fetchQuestions } from '../actions/questionActions'
 import QuestionInput from '../components/QuestionInput'
+
 // add a qustion
 
 class QuestionsContainer extends Component {
@@ -15,8 +16,10 @@ class QuestionsContainer extends Component {
       console.log('uc', this.props)
     return (
       <div className="div">
-        <Questions questions={this.props.questions} />
         <QuestionInput />
+
+        <Questions questions={this.props.questions} question={this.props.question} />
+        {/* addQuestion={this.props.addQuestion} */}
       </div>
     )
   }

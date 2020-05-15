@@ -54,6 +54,10 @@ p {
   margin-left: 100px;
 }
 
+h4 {
+  margin-left: 100px;
+}
+
 h3 {
   text-align: center;
 }
@@ -73,6 +77,13 @@ h3 {
 }
 
 .users {
+  /* padding: 0px 10px; */
+  margin-left: 100px;
+  word-wrap: normal;
+  display: inline;
+}
+
+.questions {
   /* padding: 0px 10px; */
   margin-left: 100px;
   word-wrap: normal;

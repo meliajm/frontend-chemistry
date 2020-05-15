@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Users from '../components/Users'
 import { connect } from 'react-redux'
 import { fetchUsers } from '../actions/userActions'
+// import QuestionInput from '../components/QuestionInput'
 
 class UsersContainer extends Component {
 
