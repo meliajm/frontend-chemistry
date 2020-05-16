@@ -17,19 +17,34 @@ const questionsReducer = (
                 questions: action.questions
             }
         case 'ADD_QUESTION':
-            console.log(action)
-            // return {...state, questions: state.questions.concat(action.question.content)}
-            return {...state, questions: [...state.questions, action.question.content]}
+            return {...state, questions: state.questions.concat(action.question)}
         case "UPDATE_QUESTION_SUCCESS":
-            return state.questions.map ( question => {
-                if (question.id === action.question.id) {
-                    return action.question
-                } else {
+            console.log("state in update question suc", state)
+            console.log(action.question.id)
+            console.log(state.questions)
+
+            return Object.assign({}, state, {
+                questions: state.questions.map(question => {
+                  if (question.id !== action.question.id) {
                     return question
-                }
-            })
-        case "DELETE_QUESTION":
-            return {...state, questions: state.questions.filter(question => question.id!==action.id)}
+                  }
+        
+                  return Object.assign({}, question, {
+                    content: action.question.content
+                  })
+                })
+              })
+
+            // state.questions.map ( question => {
+            //     if (question.id === action.question.id) {
+            //         console.log('question in update edit', state.questions.concat(action.question))
+            //         return {...state, questions: state.questions.concat(action.question)}
+            //     } else {
+            //         return {...state}
+            //     }
+            // })
+            case "DELETE_QUESTION":    
+                return {...state, questions: state.questions.filter(question => question.id!==action.questionId)}
         default:
             return state
     }

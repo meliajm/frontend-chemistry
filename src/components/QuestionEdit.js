@@ -17,12 +17,16 @@ export class QuestionEdit extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        this.props.updateQuestion(this.state)
+        if (!this.state.content) {
+            console.log('hey you gotta enter your question, no blanks')
+        }
+        this.props.updateQuestion(this.state, this.props.routerProps)
             .then(response => {
-                if (!response.error) {
-                    this.resetForm()
-                    this.props.history.push('/questions')
-                }
+                this.resetForm()
+                this.props.history.push('/questions')
+                // if (!response.error) {
+                //     
+                // }
             })
     }
 
@@ -34,7 +38,7 @@ export class QuestionEdit extends Component {
         console.log('qe', this.props)
         return (
             
-            this.props.question ?
+            
             <div className="div">
                 <h4>Edit Question</h4>
                 <form onSubmit={(event) => this.handleSubmit(event)}>
@@ -47,9 +51,9 @@ export class QuestionEdit extends Component {
                     />
                     <input type="submit"/>
                 </form>  
-            </div> : <h4>Loading</h4>
+            </div>
             )
     }
 }
 
-export default connect(null, {updateQuestion})(QuestionEdit)
+export default connect(null, { updateQuestion })(QuestionEdit)

@@ -12,45 +12,43 @@ const addQuestions = questions => ({
     questions
 })
 
-export const addQuestion = (question) => {
+export const addQuestion = (question, routerProps) => {
     return dispatch => {
-        const body = {
-            question
-        }
         return fetch("http://localhost:3001/api/v1/questions", {
+            credentials: "include",
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify({question: question})
         })
         .then(response => response.json())
         .then( newQuestion => {
+            console.log('qaaaaAA', newQuestion)
             if (newQuestion.error) {
                 console.log(newQuestion.error)
             } else {
                 dispatch(addQ(newQuestion))
+                // routerProps.history.push('/questions')
             }
-            return newQuestion
+            // return newQuestion
         })
     }
 }
 
 export const addQ = question => ({ type: "ADD_QUESTION", question})
 
-export const updateQuestion = (question) => {
+export const updateQuestion = (question, routerProps) => {
     return dispatch => {
-        const body = {
-            question
-        }
         return fetch(`http://localhost:3001/api/v1/questions/${question.id}`, {
+            credentials: "include",
             method: "PATCH",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify({question: question})
         })
             .then( response => response.json())
             .then( question => {
@@ -58,8 +56,9 @@ export const updateQuestion = (question) => {
                     console.log(question.error)
                 } else {
                     dispatch(updateQuestionSuccess(question))
+                    // routerProps.push('/questions')
                 }
-                return question
+                // return question
             })
     }
 }

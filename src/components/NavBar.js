@@ -12,6 +12,8 @@ const NavBar = ({ currentUser }) => {
             <h3 className="intro"><Link to='/intro'>Intro</Link></h3>
             <h3 className="users"><Link to='/users'>Users</Link></h3>
             <h3 className="questions"><Link to='/questions'>Questions</Link></h3>
+            {/* <h3 className="questions"><Link to='/new_question'>Add a Question</Link></h3> */}
+
             </> :
              <>
              <h3 className="logout">

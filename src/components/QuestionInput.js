@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import currentUser from '../reducers/currentUser'
 import { addQuestion } from '../actions/questionActions'
 import { connect } from 'react-redux'
+// import { withRouter } from 'react-router-dom'
 
 export class QuestionInput extends Component {
 
@@ -14,19 +15,21 @@ export class QuestionInput extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log('ui', this.props)
     }
     
     handleOnSubmit = event => {
         console.log('submit', this.state)
         event.preventDefault()
-        this.props.addQuestion(this.state)
+        if (!this.state.content) {
+            console.log('hey you gotta enter your question, no blanks')
+        }
+        this.props.addQuestion(this.state, this.props.routerProps)
             .then(response => {
-                if (!response.error) {
-                    console.log('no error?')
+                // if (!response.error) {
+                //     console.log('no error?')
                     this.resetForm()
                     // this.props.history.push('/questions')
-                }
+                // }
             })
     }
 
@@ -56,4 +59,4 @@ export class QuestionInput extends Component {
     }
 }
 
-export default connect(null, { addQuestion })(QuestionInput)
+export default (connect(null, { addQuestion })(QuestionInput))

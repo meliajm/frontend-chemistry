@@ -25,6 +25,7 @@ import QuestionsContainer from './containers/QuestionsContainer';
 // import Questions from './component/Questions';
 import Question from './components/Question'
 import QuestionEdit from './components/QuestionEdit';
+import QuestionInput from './components/QuestionInput'
 
 import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
@@ -44,6 +45,8 @@ class App extends React.Component {
       <>
       { this.props.loggedIn ?  
       <>
+        {/* <QuestionInput /> */}
+
         <NavBar />
         <ScrollToTop>
 
@@ -172,6 +175,9 @@ class App extends React.Component {
                     return ( question &&
                        <QuestionEdit {...routerProps} question={question} />)
                 }} />
+              <Route 
+              exact path="/questions"
+              render={ routerProps => <QuestionInput routerProps={routerProps} />}/>
               <div>
 
               {/* <p>info about atoms</p>

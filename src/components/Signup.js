@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { signup } from '../actions/userAuth'
+import { connect } from 'react-redux'
 import Header from './Header'
 
 export class Signup extends Component {
@@ -14,7 +14,6 @@ export class Signup extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log('ui', this.props)
     }
     
     handleOnSubmit = event => {

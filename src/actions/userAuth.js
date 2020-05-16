@@ -39,7 +39,6 @@ export const login = (credentials, routerProps) => {
 }
 
 export const signup = (credentials, routerProps) => {
-    console.log('signup')
     return dispatch => {
         return fetch("http://localhost:3001/api/v1/signup", {
             credentials: "include",
