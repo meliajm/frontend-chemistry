@@ -1,8 +1,6 @@
 import React from 'react'
 import { Stage, Layer, Text, Rect } from 'react-konva';
 
-// import RectCard from './RectCard'
-
 export default class RectsList extends React.Component {
 
     state = {
@@ -12,11 +10,6 @@ export default class RectsList extends React.Component {
     handleOnMouseEnter = (e) => {
         const container = e.target.getStage().container();
         container.style.cursor = "pointer";
-        // const container = e.target
-        // container.attrs.opacity = 0.5
-        // const keys = e.target._cache.keys()
-        // console.log(keys.type)
-        // console.log(keys.find( key =>key==="absoluteOpacity"))
     }
 
     handleOnMouseLeave = (e) => {

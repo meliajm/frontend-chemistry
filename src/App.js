@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/Header'
 import AtomsList from './components/AtomsList'
@@ -7,18 +7,28 @@ import AtomIntro from './components/AtomIntro'
 import Atom from './components/Atom'
 import { connect } from 'react-redux'
 import { fetchAtoms } from './actions/atomActions'
+import { fetchQuestions } from './actions/questionActions'
 import RectsList from './components/RectsList'
+import AtomsShow from './components/AtomsShow'
+
 import IonicBond1 from './components/IonicBond'
 import IonicBond2 from './components/IonicBond2'
 import IonicBondTest from './components/IonicBondTest'
 import CovalentBondMain from './components/CovalentBondMain'
 import CovalentBond1 from './components/CovalentBond1'
-import AtomsShow from './components/AtomsShow'
+import IonicBondMain from './components/IonicBondMain'
+
+import Login from './components/Login'
 import Signup from './components/Signup'
+
+import QuestionsContainer from './containers/QuestionsContainer';
+// import Questions from './component/Questions';
+import Question from './components/Question'
+import QuestionEdit from './components/QuestionEdit';
+import QuestionInput from './components/QuestionInput'
+
 import UsersContainer from './containers/UsersContainer';
 import { getCurrentUser } from './actions/userAuth'
-import Login from './components/Login'
-import IonicBondMain from './components/IonicBondMain'
 import ScrollToTop from './components/ScrollToTop'
 import './App.css';
 
@@ -27,6 +37,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.fetchAtoms()
     this.props.getCurrentUser()
+    this.props.fetchQuestions()
   }
 
   render() {
@@ -34,6 +45,8 @@ class App extends React.Component {
       <>
       { this.props.loggedIn ?  
       <>
+        {/* <QuestionInput /> */}
+
         <NavBar />
         <ScrollToTop>
 
@@ -147,7 +160,24 @@ class App extends React.Component {
             <Route 
               exact path="/users" 
               component={UsersContainer} />
-
+            <Route 
+              exact path="/questions" 
+              render={routerProps => <QuestionsContainer questions={this.props.questions} />} />
+            <Route exact path="/questions/:id" 
+                render={(routerProps) => {
+                    const question = this.props.questions.find(question => question.id === parseInt(routerProps.match.params.id))
+                    return ( question &&
+                    <Question {...routerProps} question={question} />)
+                }}/>
+            <Route exact path="/questions/:id/edit"
+                render={(routerProps) => {
+                    const question = this.props.questions.find(question => question.id === parseInt(routerProps.match.params.id))
+                    return ( question &&
+                       <QuestionEdit {...routerProps} question={question} />)
+                }} />
+              <Route 
+              exact path="/questions"
+              render={ routerProps => <QuestionInput routerProps={routerProps} />}/>
               <div>
 
               {/* <p>info about atoms</p>
@@ -158,6 +188,7 @@ class App extends React.Component {
               </div>
           </Switch>
           </ScrollToTop>
+            {/* <QuestionsContainer questions={this.props.questions} /> */}
           </>
       : 
       <>
@@ -181,14 +212,16 @@ const mapStateToProps = state => {
   return {
     atoms: state.atomsReducer.atoms,
     loading: state.atomsReducer.loading,
-    loggedIn: !!state.currentUser
+    loggedIn: (Object.keys(state.currentUser).length === 0) ? false : true,
+    questions: state.questionsReducer.questions
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchAtoms: () => dispatch(fetchAtoms()),
-    getCurrentUser: () => dispatch(getCurrentUser())
+    getCurrentUser: () => dispatch(getCurrentUser()),
+    fetchQuestions: () => dispatch(fetchQuestions()),
   }
 }
 

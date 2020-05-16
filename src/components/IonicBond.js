@@ -1,6 +1,5 @@
 import React from 'react'
 import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
-import QuestionInput from './QuestionInput'
 import { Link } from 'react-router-dom'
 
 export default class IonicBond1 extends React.Component {
@@ -334,10 +333,7 @@ export default class IonicBond1 extends React.Component {
                 electronColor: `#${this.props.chlorine.cpk_hex_color}`
 
               }));
-            //   console.log('state', this.state)
-
-            //   console.log('state rect', this.state.rect1[0].xr)
-            // this.popUpQuestion()
+            
         }
     }
 

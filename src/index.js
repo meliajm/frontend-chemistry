@@ -12,6 +12,8 @@ import currentUser from './reducers/currentUser'
 import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
 import usersReducer from './reducers/usersReducer'
+import questionsReducer from './reducers/questionsReducer'
+
 import {BrowserRouter as Router} from 'react-router-dom'
 
 // const store = createStore(atomsReducer,
@@ -25,7 +27,8 @@ const reducer = combineReducers({
   loginForm,
   atomsReducer,
   signupForm,
-  usersReducer
+  usersReducer,
+  questionsReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

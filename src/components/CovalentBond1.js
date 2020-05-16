@@ -1,6 +1,5 @@
 import React from 'react'
-import { Stage, Layer, Text, Circle, Ellipse, Rect } from 'react-konva';
-import { Link } from 'react-router-dom'
+import { Stage, Layer, Text, Circle, Ellipse } from 'react-konva';
 
 export default class CovalentBond1 extends React.Component {
 
@@ -318,7 +317,6 @@ export default class CovalentBond1 extends React.Component {
                         x={x} 
                         y={y}
                         radius={5} 
-                        // fill="green"
                         draggable={this.state.draggable4}
 
                         fill={this.state.electronOxygenColor2}

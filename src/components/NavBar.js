@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Logout from './Logout'
 
-const NavBar = ({ currentUser, loggedIn }) => {
+const NavBar = ({ currentUser }) => {
     return (
         <nav className="nav">
-            { loggedIn ? <><h3 className="logout"> Welcome to your lab, {currentUser.email}!</h3> <Logout/>
+            { Object.keys(currentUser).length > 0 ? <><h3 className="logout"> Welcome to your lab, {currentUser.email}!</h3> <Logout/>
+            <br/>
+            <h3 className="home"><Link to='/'>Home</Link></h3>
             <h3 className="intro"><Link to='/intro'>Intro</Link></h3>
             <h3 className="users"><Link to='/users'>Users</Link></h3>
-            <h3 className="home"><Link to='/'>Home</Link></h3>
+            <h3 className="questions"><Link to='/questions'>Questions</Link></h3>
+
             </> :
              <>
              <h3 className="logout">
@@ -27,7 +30,6 @@ const NavBar = ({ currentUser, loggedIn }) => {
 const mapStateToProps = ({ currentUser }) =>{
     return {
         currentUser,
-        loggedIn: !!currentUser
     }
 }
 
