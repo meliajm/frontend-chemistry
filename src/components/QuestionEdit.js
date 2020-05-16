@@ -24,9 +24,6 @@ export class QuestionEdit extends Component {
             .then(response => {
                 this.resetForm()
                 this.props.history.push('/questions')
-                // if (!response.error) {
-                //     
-                // }
             })
     }
 

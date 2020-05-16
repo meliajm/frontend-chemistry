@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Questions from '../components/Questions'
-// import { connect } from 'react-redux'
 import QuestionInput from '../components/QuestionInput'
 
 

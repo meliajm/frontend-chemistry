@@ -34,15 +34,6 @@ const questionsReducer = (
                   })
                 })
               })
-
-            // state.questions.map ( question => {
-            //     if (question.id === action.question.id) {
-            //         console.log('question in update edit', state.questions.concat(action.question))
-            //         return {...state, questions: state.questions.concat(action.question)}
-            //     } else {
-            //         return {...state}
-            //     }
-            // })
             case "DELETE_QUESTION":    
                 return {...state, questions: state.questions.filter(question => question.id!==action.questionId)}
         default:

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Konva from "konva";
 import { Stage, Layer, Rect, Text } from "react-konva";
 
 

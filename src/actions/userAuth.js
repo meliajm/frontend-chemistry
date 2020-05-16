@@ -97,20 +97,6 @@ export const getCurrentUser = () => {
             .catch(console.log)
     }
 }
-//do not really need updateloginform
-// export const updateLoginForm = (formData) => {
-//     return {
-//         type: "UPDATE_LOGIN_FORM",
-//         formData
-//     }
-// }
-
-// export const updateSignupForm = formData => {
-//     return {
-//       type: "UPDATE_SIGNUP_FORM",
-//       formData
-//     }
-// }
 
 const resetSignupForm = () => {
     return {

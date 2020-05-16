@@ -235,7 +235,6 @@ export class AtomsShow extends Component {
                         radius={this.state.electronRadius} 
                         fill="purple" 
                         />
-                        // <Circle className="LeftBottom"draggable x={this.state.startingXpos-parseInt(atomicRadius)} y={this.state.startingYpos+20} radius={this.state.electronRadius} fill="black" />                    
                     } else if ( i === 7) {
                         const x = this.state.startingXpos+parseInt(atomicRadius)
                         const y = this.state.startingYpos-20
@@ -261,7 +260,6 @@ export class AtomsShow extends Component {
                         radius={this.state.electronRadius} 
                         fill="red" 
                         /> 
-                        // <Circle className="RightTop" draggable x={this.state.startingXpos+parseInt(atomicRadius)} y={this.state.startingYpos-20} radius={this.state.electronRadius} fill="black" />                                        
                     }
                 
             })}
@@ -291,17 +289,11 @@ export class AtomsShow extends Component {
     render() {
         return (
             <div>
-                {/* <AtomList/> */}
                 <h4>{this.props.atom.name}: {this.props.atom.group_block}</h4>
                 <p>Atomic number: {this.props.atom.atomic_number}</p>
                 <p>How many electrons does this atom have? Valence electrons?</p>
                 <p>How many protons does this atom have?</p>
-                {this.renderAtom(this.props.atom.atomic_radius, this.state.startingXpos, this.state.startingYpos)}
-                
-                {/* { (this.props.atom.symbol==='H') ? <Link to='/ionicbond'>Ionic Bond</Link> : null}
-                <br/>
-                { (this.props.atom.symbol==='H') ? <Link to='/covalentbond'>Covalent Bond</Link> : null} */}
-                
+                {this.renderAtom(this.props.atom.atomic_radius, this.state.startingXpos, this.state.startingYpos)}                
             <br/>
             </div>
         )
