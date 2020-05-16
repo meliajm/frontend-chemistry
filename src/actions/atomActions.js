@@ -15,15 +15,15 @@ const addAtoms = atoms => ({
     atoms
 })
 
-const addUsers = users => ({
-    type: 'ADD_USERS',
-    users
-})
+// const addUsers = users => ({
+//     type: 'ADD_USERS',
+//     users
+// })
 
-export const addUser =  user => ({
-    type: "ADD_USER",
-    user
-}) 
+// export const addUser =  user => ({
+//     type: "ADD_USER",
+//     user
+// }) 
 
 // export const addUser =  user => ({
 //     type: "ADD_USER",

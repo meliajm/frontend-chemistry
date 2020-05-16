@@ -18,7 +18,8 @@ const questionsReducer = (
             }
         case 'ADD_QUESTION':
             console.log(action)
-            return {...state, questions: state.questions.concat(action.question.content)}
+            // return {...state, questions: state.questions.concat(action.question.content)}
+            return {...state, questions: [...state.questions, action.question.content]}
         case "UPDATE_QUESTION_SUCCESS":
             return state.questions.map ( question => {
                 if (question.id === action.question.id) {

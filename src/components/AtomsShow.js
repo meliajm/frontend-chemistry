@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Stage, Layer, Text, Circle } from 'react-konva';
-import { Link } from 'react-router-dom';
 
 export class AtomsShow extends Component {
 

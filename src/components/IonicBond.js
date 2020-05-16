@@ -1,6 +1,5 @@
 import React from 'react'
 import { Stage, Layer, Text, Circle, Rect } from 'react-konva';
-import QuestionInput from './QuestionInput'
 import { Link } from 'react-router-dom'
 
 export default class IonicBond1 extends React.Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import currentUser from '../reducers/currentUser'
+// import currentUser from '../reducers/currentUser'
 import { addQuestion } from '../actions/questionActions'
 import { connect } from 'react-redux'
 

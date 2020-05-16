@@ -159,7 +159,7 @@ class App extends React.Component {
               component={UsersContainer} />
             <Route 
               exact path="/questions" 
-              component={QuestionsContainer} />
+              render={routerProps => <QuestionsContainer questions={this.props.questions} />} />
             <Route exact path="/questions/:id" 
                 render={(routerProps) => {
                     const question = this.props.questions.find(question => question.id === parseInt(routerProps.match.params.id))
@@ -172,7 +172,6 @@ class App extends React.Component {
                     return ( question &&
                        <QuestionEdit {...routerProps} question={question} />)
                 }} />
-
               <div>
 
               {/* <p>info about atoms</p>
@@ -183,6 +182,7 @@ class App extends React.Component {
               </div>
           </Switch>
           </ScrollToTop>
+            {/* <QuestionsContainer questions={this.props.questions} /> */}
           </>
       : 
       <>
