@@ -1,7 +1,7 @@
 export const fetchQuestions = () => {
     return (dispatch) => {
         dispatch({type: 'LOADING_QUESTIONS'})
-        fetch('http://localhost:3001/api/v1/questions')
+        fetch('https://warm-fortress-71971.herokuapp.com/api/v1/questions')
         .then(response => { return response.json()})
         .then( questions => {dispatch(addQuestions(questions))})
     }
@@ -14,7 +14,7 @@ const addQuestions = questions => ({
 
 export const addQuestion = (question, routerProps) => {
     return dispatch => {
-        return fetch("http://localhost:3001/api/v1/questions", {
+        return fetch("https://warm-fortress-71971.herokuapp.com/api/v1/questions", {
             credentials: "include",
             method: "POST",
             headers: {
@@ -41,7 +41,7 @@ export const addQ = question => ({ type: "ADD_QUESTION", question})
 
 export const updateQuestion = (question, routerProps) => {
     return dispatch => {
-        return fetch(`http://localhost:3001/api/v1/questions/${question.id}`, {
+        return fetch(`https://warm-fortress-71971.herokuapp.com/api/v1/questions/${question.id}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
@@ -67,7 +67,7 @@ export const updateQuestionSuccess = question => ({ type: "UPDATE_QUESTION_SUCCE
 
 export const deleteQuestion = (questionId, routerProps) => {
     return dispatch => {
-        return fetch(`http://localhost:3001/api/v1/questions/${questionId}`, {
+        return fetch(`https://warm-fortress-71971.herokuapp.com/api/v1/questions/${questionId}`, {
             method: "DELETE",
             headers: {
                 'Accept': 'application/json',

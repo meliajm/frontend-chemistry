@@ -14,7 +14,7 @@ export const clearCurrentUser = () => {
 export const login = (credentials, routerProps) => {
     console.log('login')
     return dispatch => {
-        return fetch("http://localhost:3001/api/v1/login", {
+        return fetch("https://warm-fortress-71971.herokuapp.com/api/v1/login", {
             credentials: 'include',
             method: 'POST',
                 headers: {
@@ -40,7 +40,7 @@ export const login = (credentials, routerProps) => {
 
 export const signup = (credentials, routerProps) => {
     return dispatch => {
-        return fetch("http://localhost:3001/api/v1/signup", {
+        return fetch("https://warm-fortress-71971.herokuapp.com/api/v1/signup", {
             credentials: "include",
             method: 'POST',
             headers: {
@@ -66,7 +66,7 @@ export const signup = (credentials, routerProps) => {
 export const logout = event => {
     return dispatch => {
         dispatch(clearCurrentUser())
-        return fetch('http://localhost:3001/api/v1/logout', {
+        return fetch('https://warm-fortress-71971.herokuapp.com/api/v1/logout', {
             credentials: "include",
             method: "POST"
         })
@@ -76,7 +76,7 @@ export const logout = event => {
 export const getCurrentUser = () => {
     return dispatch => {
         console.log('get current user')
-        return fetch('http://localhost:3001/api/v1/get_current_user', {
+        return fetch('https://warm-fortress-71971.herokuapp.com/api/v1/get_current_user', {
             credentials: "include",
             method: "GET",
             headers: {
