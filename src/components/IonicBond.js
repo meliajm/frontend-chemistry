@@ -537,7 +537,6 @@ export default class IonicBond1 extends React.Component {
            {this.renderSodiumAndChlorine(this.props.sodium, this.props.chlorine)}
            <p>
                And we can form  <Link to='/ionicbond2'>Ionic Bonds</Link> with 3 atoms!
-                ?????????????????????
             </p>
         </>
     )}
