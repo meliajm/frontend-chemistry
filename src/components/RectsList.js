@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stage, Layer, Text, Rect } from 'react-konva';
-
+// import { stages } from 'konva/types/Stage';
 export default class RectsList extends React.Component {
 
     state = {
@@ -17,7 +17,16 @@ export default class RectsList extends React.Component {
         container.style.cursor = "default";
     } 
 
+    
     render() {
+
+        const canvasWidth = 1000
+        const canvasHeight = 1000
+
+        const scale = Math.min(
+            window.innerWidth / canvasWidth,
+            window.innerHeight / canvasHeight
+        )
         
         let one = []
         let two = []
@@ -132,9 +141,10 @@ export default class RectsList extends React.Component {
         const delta = 5
         const card = 75
         
+        
         return (
             
-            <Stage width={window.innerWidth} height={window.innerHeight}>
+            <Stage width={window.innerWidth} height={window.innerHeight} scaleX={scale} scaleY={scale}>
                 <Layer>
                 {one.map((atom, i) => {
                     let xr = 10
