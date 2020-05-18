@@ -20,13 +20,13 @@ export default class RectsList extends React.Component {
     
     render() {
 
-        const canvasWidth = 1000
-        const canvasHeight = 1000
+        // const canvasWidth = 1000
+        // const canvasHeight = 1000
 
-        const scale = Math.min(
-            window.innerWidth / canvasWidth,
-            window.innerHeight / canvasHeight
-        )
+        // const scale = Math.min(
+        //     window.innerWidth / canvasWidth,
+        //     window.innerHeight / canvasHeight
+        // )
         
         let one = []
         let two = []
@@ -144,7 +144,8 @@ export default class RectsList extends React.Component {
         
         return (
             
-            <Stage width={window.innerWidth} height={window.innerHeight} scaleX={scale} scaleY={scale}>
+            <Stage width={window.innerWidth} height={window.innerHeight}>
+            {/* // <Stage width={window.innerWidth} height={window.innerHeight} scaleX={scale} scaleY={scale}> */}
                 <Layer>
                 {one.map((atom, i) => {
                     let xr = 10
