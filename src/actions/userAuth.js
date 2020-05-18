@@ -1,3 +1,7 @@
+// const baseURL = "http://localhost:3001/api/v1/"
+const baseURL = "https://warm-fortress-71971.herokuapp.com/api/v1/"
+
+
 export const setCurrentUser = current_user => {
     return {
         type: 'SET_CURRENT_USER',
@@ -14,7 +18,7 @@ export const clearCurrentUser = () => {
 export const login = (credentials, routerProps) => {
     console.log('login')
     return dispatch => {
-        return fetch("https://warm-fortress-71971.herokuapp.com/api/v1/login", {
+        return fetch(baseURL+"login", {
             credentials: 'include',
             method: 'POST',
                 headers: {
