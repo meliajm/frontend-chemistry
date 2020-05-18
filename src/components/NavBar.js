@@ -16,7 +16,7 @@ const NavBar = ({ currentUser }) => {
             </> :
              <>
              <h3 className="logout">
-             <Link to='/signup'>Sign Up</Link>
+             <Link to='/signup'>Sign Up!!!!!!!!!!!</Link>
              </h3>
              <h3 className="logout">
              <Link to='/login'>Log In</Link>
