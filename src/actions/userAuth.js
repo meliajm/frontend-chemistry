@@ -44,7 +44,7 @@ export const login = (credentials, routerProps) => {
 
 export const signup = (credentials, routerProps) => {
     return dispatch => {
-        return fetch("https://warm-fortress-71971.herokuapp.com/api/v1/signup", {
+        return fetch(baseURL+"signup", {
             credentials: "include",
             method: 'POST',
             headers: {
