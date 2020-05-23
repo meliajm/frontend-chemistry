@@ -19,7 +19,9 @@ const addQuestions = questions => ({
 })
 
 export const addQuestion = (question, routerProps) => {
+    console.log('b')
     return dispatch => {
+        console.log('c')
         return fetch(baseURL+"questions", {
             credentials: "include",
             method: "POST",
@@ -32,6 +34,7 @@ export const addQuestion = (question, routerProps) => {
         .then(response => response.json())
         .then( newQuestion => {
             console.log('qaaaaAA', newQuestion)
+            console.log('d')
             if (newQuestion.error) {
                 console.log(newQuestion.error)
             } else {
@@ -40,7 +43,9 @@ export const addQuestion = (question, routerProps) => {
             }
             // return newQuestion
         })
+        console.log('e')
     }
+    console.log('f')
 }
 
 export const addQ = question => ({ type: "ADD_QUESTION", question})

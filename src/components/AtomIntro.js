@@ -69,7 +69,7 @@ const AtomIntro = (props) =>{
             Want to learn more about <Link to='/theatom'>The Atom</Link>? 
                 <br/>
                 <br/>
-                <Link to='/api/v1/atoms'>See a list of all 118 elements</Link>
+                <Link to='/atoms'>See a list of all 118 elements</Link>
                 <br/>   
             </p>
         </>

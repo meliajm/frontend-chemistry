@@ -15,7 +15,7 @@ class BondsList extends React.Component {
                     {/* <Header title={'Bonds'} /> */}
                     <Switch>
                         <Route
-                        exact path="/api/v1/atoms/1"
+                        exact path="/atoms/1"
                         component={AtomsList}
                         />
                         {/* <Route

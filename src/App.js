@@ -53,11 +53,11 @@ class App extends React.Component {
           <Header title={'Up and Atom Lab'} />
           <Switch>
             <Route
-              exact path="/api/v1/atoms"
+              exact path="/atoms"
               render={ routerProps => <AtomsList atoms={this.props.atoms}/>}
               />
             <Route 
-              exact path="/api/v1/atoms/:id" 
+              exact path="/atoms/:id" 
               render={(routerProps)=> {
                 const atom = this.props.atoms.find( atom => atom.id === parseInt(routerProps.match.params.id))
                 return( 

@@ -23,6 +23,7 @@ export class QuestionInput extends Component {
         if (!this.state.content) {
             console.log('hey you gotta enter your question, no blanks')
         }
+        console.log('a')
         this.props.addQuestion(this.state, this.props.routerProps)
             .then(response => {
                 // if (!response.error) {
@@ -31,6 +32,7 @@ export class QuestionInput extends Component {
                     // this.props.history.push('/questions')
                 // }
             })
+        console.log('g')
     }
 
     resetForm = () => {
